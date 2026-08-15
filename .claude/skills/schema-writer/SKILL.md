@@ -1,12 +1,12 @@
 ---
 name: schema-writer
-description: Maintain the data-schema docs under doc/demo-spec/data-schema/ for the oTree apps in demo/. Use whenever a model field, constant, page form_fields list, session config, or PARTICIPANT_FIELDS/SESSION_FIELDS entry is added, removed, renamed, retyped, or has its validation changed — and when asked to write, refresh, or audit the schema docs.
+description: Maintain the data-schema docs under doc/validated-doc/data-schema/ for the oTree apps in demo/. Use whenever a model field, constant, page form_fields list, session config, or PARTICIPANT_FIELDS/SESSION_FIELDS entry is added, removed, renamed, retyped, or has its validation changed — and when asked to write, refresh, or audit the schema docs.
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash
 ---
 
 # schema-writer
 
-Keeps `doc/demo-spec/data-schema/` a faithful, human-readable description of the
+Keeps `doc/validated-doc/data-schema/` a faithful, human-readable description of the
 data every oTree app in `demo/` produces: one doc per app, plus an index.
 
 The schema is **derived from source, never invented**. Every row in every table
@@ -32,7 +32,7 @@ which fields are player-entered.
 ## Files this skill owns
 
 ```text
-doc/demo-spec/data-schema/
+doc/validated-doc/data-schema/
   README.md              # index: apps, session configs, project-wide fields
   <app_label>.md         # one per package in demo/ (e.g. public_goods_simple.md)
 ```
