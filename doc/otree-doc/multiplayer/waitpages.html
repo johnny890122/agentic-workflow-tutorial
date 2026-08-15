@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wait pages &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chat" href="chat.html" />
+    <link rel="prev" title="Groups" href="groups.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Multiplayer games</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="groups.html">Groups</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Wait pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#after-all-players-arrive">after_all_players_arrive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#is-displayed">is_displayed()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-by-arrival-time">group_by_arrival_time</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#presence-detection">Presence detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#group-by-arrival-time-method">group_by_arrival_time_method()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#timeouts-on-wait-pages">Timeouts on wait pages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#preventing-players-from-getting-stuck-on-wait-pages">Preventing players from getting stuck on wait pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#use-group-by-arrival-time">Use <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-page-timeouts">Use page timeouts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-timeout-happened">Check timeout_happened</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#replacing-dropped-out-player-with-a-bot">Replacing dropped out player with a bot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-wait-page-s-appearance">Customizing the wait page’s appearance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chat.html">Chat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Multiplayer games</a></li>
+      <li class="breadcrumb-item active">Wait pages</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/multiplayer/waitpages.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wait-pages">
+<span id="id1"></span><h1>Wait pages<a class="headerlink" href="#wait-pages" title="Link to this heading"></a></h1>
+<p>Wait pages are necessary when one player needs to wait for
+others to take some action before they can proceed. For example,
+in an ultimatum game, player 2 cannot accept or reject before they have
+seen player 1’s offer.</p>
+<p>If you have a <code class="docutils literal notranslate"><span class="pre">WaitPage</span></code> in your sequence of pages,
+then oTree waits until all players in the group have
+arrived at that point in the sequence, and then all players are allowed
+to proceed.</p>
+<p>If your subsession has multiple groups playing simultaneously, and you
+would like a wait page that waits for all groups (i.e. all players in
+the subsession), you can set the attribute
+<code class="docutils literal notranslate"><span class="pre">wait_for_all_groups</span> <span class="pre">=</span> <span class="pre">True</span></code> on the wait page.</p>
+<p>For more information on groups, see <a class="reference internal" href="groups.html#groups"><span class="std std-ref">Groups</span></a>.</p>
+<section id="after-all-players-arrive">
+<span id="id2"></span><h2>after_all_players_arrive<a class="headerlink" href="#after-all-players-arrive" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">after_all_players_arrive</span></code> lets you run some calculations
+once all players have arrived at the wait
+page. This is a good place to set the players’ payoffs
+or determine the winner.
+You should first define a Group function that does the desired calculations.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_payoffs</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">get_players</span><span class="p">():</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>Then trigger this function by doing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="n">after_all_players_arrive</span> <span class="o">=</span> <span class="n">set_payoffs</span>
+</pre></div>
+</div>
+<p>If you set <code class="docutils literal notranslate"><span class="pre">wait_for_all_groups</span> <span class="pre">=</span> <span class="pre">True</span></code>,
+then <code class="docutils literal notranslate"><span class="pre">after_all_players_arrive</span></code> must be a <em>Subsession</em> function.</p>
+<p>If you are using a text editor, <code class="docutils literal notranslate"><span class="pre">after_all_players_arrive</span></code> can also be defined directly in the WaitPage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">after_all_players_arrive</span><span class="p">(</span><span class="n">group</span><span class="p">:</span> <span class="n">Group</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">get_players</span><span class="p">():</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>It can also be a string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="n">after_all_players_arrive</span> <span class="o">=</span> <span class="s1">&#39;set_payoffs&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="is-displayed">
+<h2>is_displayed()<a class="headerlink" href="#is-displayed" title="Link to this heading"></a></h2>
+<p>Works the same way as with regular pages.</p>
+</section>
+<section id="group-by-arrival-time">
+<span id="id3"></span><h2>group_by_arrival_time<a class="headerlink" href="#group-by-arrival-time" title="Link to this heading"></a></h2>
+<p>If you set <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span> <span class="pre">=</span> <span class="pre">True</span></code> on a WaitPage,
+players will be grouped in the order they arrive at that wait page:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="n">group_by_arrival_time</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>For example, if <code class="docutils literal notranslate"><span class="pre">PLAYERS_PER_GROUP</span> <span class="pre">=</span> <span class="pre">2</span></code>, the first 2 players to arrive
+at the wait page will be grouped together, then the next 2 players, and so on.</p>
+<p>This is useful in sessions where some participants
+might drop out (e.g. online experiments,
+or experiments with consent pages that let the participant quit early), or
+sessions where some participants take much longer than others.</p>
+<p>A typical way to use <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code> is to put it after an app
+that filters out participants. For example, if your session has a consent page
+that gives participants the chance to opt out of the study, you can make a “consent” app
+that just contains the consent pages, and
+then have an <code class="docutils literal notranslate"><span class="pre">app_sequence</span></code> like <code class="docutils literal notranslate"><span class="pre">['consent',</span> <span class="pre">'my_game']</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">my_game</span></code> uses <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code>.
+This means that if someone opts out in <code class="docutils literal notranslate"><span class="pre">consent</span></code>,
+they will be excluded from the grouping in <code class="docutils literal notranslate"><span class="pre">my_game</span></code>.</p>
+<section id="presence-detection">
+<h3>Presence detection<a class="headerlink" href="#presence-detection" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In <a class="reference internal" href="../misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a>, this behavior has changed.
+If a participant has not shown any signs of activity within a certain period of time,
+they are asked if they are still there.
+If they don’t respond quickly enough,
+they are sent to an “inactive” page and need to click a button to rejoin.</p>
+</div>
+<p>oTree detects and excludes participants who switched away to another tab or window.
+In order to be grouped, a user must be active on the wait page.
+There is a colored dot in the tab of their web page (maybe not visible on mobile).
+‘🟢’ means they are considered active. ‘🟡’ means they are considered inactive.
+We recommend you put some text in your wait page’s <code class="docutils literal notranslate"><span class="pre">body_text</span></code>
+to tell participants to be aware of this and stay active on the page.</p>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<p>If a game has multiple rounds,
+you may want to only group by arrival time in round 1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="n">group_by_arrival_time</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">round_number</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>If you do this, then subsequent rounds will keep the same group structure as
+round 1. Otherwise, players will be re-grouped by their arrival time
+in each round.
+(<code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code> copies the group structure to future rounds.)</p>
+<p>Notes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id_in_group</span></code> is not necessarily assigned in the order players arrived at the page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code> can only be used if the wait page is the first page in <code class="docutils literal notranslate"><span class="pre">page_sequence</span></code></p></li>
+<li><p>If you use <code class="docutils literal notranslate"><span class="pre">is_displayed</span></code> on a page with <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code>,
+it should only be based on the round number. Don’t use <code class="docutils literal notranslate"><span class="pre">is_displayed</span></code>
+to show the page to some players but not others.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span> <span class="pre">=</span> <span class="pre">True</span></code>, then in <code class="docutils literal notranslate"><span class="pre">creating_session</span></code>,
+all players will initially be in the same group. Groups are only created
+“on the fly” as players arrive at the wait page.</p></li>
+</ul>
+<p>If you need further control on arranging players into groups,
+use <a class="reference internal" href="#group-by-arrival-time-method"><span class="std std-ref">group_by_arrival_time_method()</span></a>.</p>
+</section>
+</section>
+<section id="group-by-arrival-time-method">
+<span id="id4"></span><h2>group_by_arrival_time_method()<a class="headerlink" href="#group-by-arrival-time-method" title="Link to this heading"></a></h2>
+<p>If you’re using <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code> and want more control over
+which players are assigned together, you can also use <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time_method()</span></code>.</p>
+<p>Let’s say that in addition to grouping by arrival time, you need each group
+to consist of 2 men and 2 women.</p>
+<p>If you define a function called <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time_method</span></code>,
+it will get called whenever a new player reaches the wait page.
+The function’s second argument is the list of players who are currently waiting at your wait page.
+If you pick some of these players and return them as a list,
+those players will be assigned to a group, and move forward.
+If you don’t return anything, then no grouping occurs.</p>
+<p>Here’s an example where each group has 2 men and 2 women.
+It assumes that in a previous app, you assigned <code class="docutils literal notranslate"><span class="pre">participant.category</span></code> to each participant.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># note: this function goes at the module level, not inside the WaitPage.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">group_by_arrival_time_method</span><span class="p">(</span><span class="n">subsession</span><span class="p">,</span> <span class="n">waiting_players</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in group_by_arrival_time_method&#39;</span><span class="p">)</span>
+    <span class="n">m_players</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">waiting_players</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">participant</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">]</span>
+    <span class="n">f_players</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">waiting_players</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">participant</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m_players</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">f_players</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;about to create a group&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">m_players</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">m_players</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">f_players</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_players</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;not enough players yet to create a group&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="timeouts-on-wait-pages">
+<h3>Timeouts on wait pages<a class="headerlink" href="#timeouts-on-wait-pages" title="Link to this heading"></a></h3>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time_method</span></code> to put a timeout on the wait page,
+for example to allow the participant to proceed individually if they have been waiting
+longer than 5 minutes. First, you must record <code class="docutils literal notranslate"><span class="pre">time.time()</span></code> on the final page before the app with <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code>.
+Store it in a <a class="reference internal" href="../rounds.html#vars"><span class="std std-ref">participant field</span></a>.</p>
+<p>Then define a Player function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">waiting_too_long</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="n">participant</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">participant</span>
+
+    <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+    <span class="c1"># assumes you set wait_page_arrival in PARTICIPANT_FIELDS.</span>
+    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">participant</span><span class="o">.</span><span class="n">wait_page_arrival</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">*</span><span class="mi">60</span>
+</pre></div>
+</div>
+<p>Now use this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">group_by_arrival_time_method</span><span class="p">(</span><span class="n">subsession</span><span class="p">,</span> <span class="n">waiting_players</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">waiting_players</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">waiting_players</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">waiting_players</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">waiting_too_long</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+            <span class="c1"># make a single-player group.</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">player</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This works because the wait page automatically refreshes once or twice a minute,
+which re-executes <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time_method</span></code>.</p>
+</section>
+</section>
+<section id="preventing-players-from-getting-stuck-on-wait-pages">
+<span id="wait-page-stuck"></span><h2>Preventing players from getting stuck on wait pages<a class="headerlink" href="#preventing-players-from-getting-stuck-on-wait-pages" title="Link to this heading"></a></h2>
+<p>A common problem especially with online experiments is players getting stuck
+waiting for another player in their group who dropped out or is too slow.</p>
+<p>Here are some things you can do to reduce this problem:</p>
+<section id="use-group-by-arrival-time">
+<h3>Use <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code><a class="headerlink" href="#use-group-by-arrival-time" title="Link to this heading"></a></h3>
+<p>As described above, you can use <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code> so that only
+players who are actively playing around the same time get grouped together.</p>
+<p><code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code> works well if used after a “lock-in” task.
+In other words, before your multiplayer game, you can have a
+single-player effort task. The idea is that a
+participant takes the effort to complete this initial task, they are
+less likely to drop out after that point.</p>
+</section>
+<section id="use-page-timeouts">
+<h3>Use page timeouts<a class="headerlink" href="#use-page-timeouts" title="Link to this heading"></a></h3>
+<p>Use <a class="reference internal" href="../timeouts.html#timeout-seconds"><span class="std std-ref">timeout_seconds</span></a> on each page, so that if a player is slow or inactive,
+their page will automatically advance. Or, you can manually force a timeout by clicking
+the “Advance slowest participants” button in the admin interface.</p>
+</section>
+<section id="check-timeout-happened">
+<h3>Check timeout_happened<a class="headerlink" href="#check-timeout-happened" title="Link to this heading"></a></h3>
+<p>You can tell users they must submit a page before its <code class="docutils literal notranslate"><span class="pre">timeout_seconds</span></code>,
+or else they will be counted as a dropout.
+Even have a page that just says “click the next button to confirm you are still playing”.
+Then check <a class="reference internal" href="../timeouts.html#timeout-happened"><span class="std std-ref">timeout_happened</span></a>. If it is True, you can do various things such as
+set a field on that player/group to indicate the dropout, and skip the rest of the pages in the round.</p>
+</section>
+<section id="replacing-dropped-out-player-with-a-bot">
+<h3>Replacing dropped out player with a bot<a class="headerlink" href="#replacing-dropped-out-player-with-a-bot" title="Link to this heading"></a></h3>
+<p>Here’s an example that combines some of the above techniques, so that even if a player drops out,
+they continue to auto-play, like a bot.
+First, define a <a class="reference internal" href="../rounds.html#participant-fields"><span class="std std-ref">participant field</span></a> called <code class="docutils literal notranslate"><span class="pre">is_dropout</span></code>, and set its initial value to
+<code class="docutils literal notranslate"><span class="pre">False</span></code> in <code class="docutils literal notranslate"><span class="pre">creating_session</span></code>. Then use <code class="docutils literal notranslate"><span class="pre">get_timeout_seconds</span></code> and <code class="docutils literal notranslate"><span class="pre">before_next_page</span></code> on every page,
+like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Page1</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;player&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;contribution&#39;</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_timeout_seconds</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="n">participant</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">participant</span>
+
+        <span class="k">if</span> <span class="n">participant</span><span class="o">.</span><span class="n">is_dropout</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>  <span class="c1"># instant timeout, 1 second</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">5</span><span class="o">*</span><span class="mi">60</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">before_next_page</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">timeout_happened</span><span class="p">):</span>
+        <span class="n">participant</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">participant</span>
+
+        <span class="k">if</span> <span class="n">timeout_happened</span><span class="p">:</span>
+            <span class="n">player</span><span class="o">.</span><span class="n">contribution</span> <span class="o">=</span> <span class="n">cu</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">participant</span><span class="o">.</span><span class="n">is_dropout</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>If the player fails to submit the page on time, we set <code class="docutils literal notranslate"><span class="pre">is_dropout</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p>Once <code class="docutils literal notranslate"><span class="pre">is_dropout</span></code> is set, each page gets auto-submitted instantly.</p></li>
+<li><p>When a page is auto-submitted, you use <code class="docutils literal notranslate"><span class="pre">timeout_happened</span></code> to decide what value gets submitted on the user’s behalf.</p></li>
+</ul>
+</section>
+</section>
+<section id="customizing-the-wait-page-s-appearance">
+<h2>Customizing the wait page’s appearance<a class="headerlink" href="#customizing-the-wait-page-s-appearance" title="Link to this heading"></a></h2>
+<p>You can customize the text that appears on a wait page
+by setting the <code class="docutils literal notranslate"><span class="pre">title_text</span></code> and <code class="docutils literal notranslate"><span class="pre">body_text</span></code> attributes, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="n">title_text</span> <span class="o">=</span> <span class="s2">&quot;Custom title text&quot;</span>
+    <span class="n">body_text</span> <span class="o">=</span> <span class="s2">&quot;Custom body text&quot;</span>
+</pre></div>
+</div>
+<p>See also: <a class="reference internal" href="../misc/advanced.html#customize-wait-page"><span class="std std-ref">Custom wait page template</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="groups.html" class="btn btn-neutral float-left" title="Groups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chat.html" class="btn btn-neutral float-right" title="Chat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

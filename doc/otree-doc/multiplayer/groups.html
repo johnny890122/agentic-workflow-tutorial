@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Groups &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Wait pages" href="waitpages.html" />
+    <link rel="prev" title="Multiplayer games" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Multiplayer games</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-players">Getting players</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-players">get_players()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-player-by-id-n">get_player_by_id(n)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-other-players">Getting other players</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-matching">Group matching</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fixed-matching">Fixed matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-randomly">group_randomly()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-like-round">group_like_round()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-group-matrix">get_group_matrix()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-group-matrix">set_group_matrix()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-set-players">group.set_players()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shuffling-during-the-session">Shuffling during the session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-by-arrival-time">Group by arrival time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="waitpages.html">Wait pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chat.html">Chat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Multiplayer games</a></li>
+      <li class="breadcrumb-item active">Groups</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/multiplayer/groups.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="groups">
+<span id="id1"></span><h1>Groups<a class="headerlink" href="#groups" title="Link to this heading"></a></h1>
+<p>You can divide players into groups for multiplayer games.
+(If you just need groups in the sense of “treatment groups”,
+where players don’t actually interact with each other,
+then see <a class="reference internal" href="../treatments.html#treatments"><span class="std std-ref">Treatments</span></a>.)</p>
+<p>To set the group size, set
+<code class="docutils literal notranslate"><span class="pre">C.PLAYERS_PER_GROUP</span></code>. For example, for a 2-player game,
+set <code class="docutils literal notranslate"><span class="pre">PLAYERS_PER_GROUP</span> <span class="pre">=</span> <span class="pre">2</span></code>.</p>
+<p>If all players should be in the same group,
+or if it’s a single-player game, set it to <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<p>Each player has an attribute <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>,
+which will tell you if it is player <code class="docutils literal notranslate"><span class="pre">1</span></code>, player <code class="docutils literal notranslate"><span class="pre">2</span></code>, etc.</p>
+<section id="getting-players">
+<h2>Getting players<a class="headerlink" href="#getting-players" title="Link to this heading"></a></h2>
+<p>Group objects have the following methods:</p>
+<section id="get-players">
+<h3>get_players()<a class="headerlink" href="#get-players" title="Link to this heading"></a></h3>
+<p>Returns a list of the players in the group (ordered by <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>).</p>
+</section>
+<section id="get-player-by-id-n">
+<h3>get_player_by_id(n)<a class="headerlink" href="#get-player-by-id-n" title="Link to this heading"></a></h3>
+<p>Returns the player in the group with the given <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>.</p>
+</section>
+</section>
+<section id="getting-other-players">
+<h2>Getting other players<a class="headerlink" href="#getting-other-players" title="Link to this heading"></a></h2>
+<p>Player objects have methods <code class="docutils literal notranslate"><span class="pre">get_others_in_group()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">get_others_in_subsession()</span></code> that return a list of the <em>other</em> players
+in the group and subsession.</p>
+</section>
+<section id="roles">
+<span id="id2"></span><h2>Roles<a class="headerlink" href="#roles" title="Link to this heading"></a></h2>
+<p>If each group has multiple roles, such as buyer/seller, principal/agent, etc.,
+you can define them in constants. Make their names end with <code class="docutils literal notranslate"><span class="pre">_ROLE</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">BaseConstants</span><span class="p">):</span>
+    <span class="o">...</span>
+
+    <span class="n">PRINCIPAL_ROLE</span> <span class="o">=</span> <span class="s1">&#39;Principal&#39;</span>
+    <span class="n">AGENT_ROLE</span> <span class="o">=</span> <span class="s1">&#39;Agent</span>
+</pre></div>
+</div>
+<p>oTree will then automatically assign each <code class="docutils literal notranslate"><span class="pre">role</span></code> to a different player
+(sequentially according to <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>).
+You can use this to show each role different content, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AgentPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="n">C</span><span class="o">.</span><span class="n">AGENT_ROLE</span>
+</pre></div>
+</div>
+<p>In a template:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>You are the {{ player.role }}.
+</pre></div>
+</div>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">group.get_player_by_role()</span></code>, which is similar to <code class="docutils literal notranslate"><span class="pre">get_player_by_id()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_payoffs</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_player_by_role</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">PRINCIPAL_ROLE</span><span class="p">)</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_player_by_role</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">AGENT_ROLE</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>If you want to switch players’ roles,
+you should rearrange the groups, using <code class="docutils literal notranslate"><span class="pre">group.set_players()</span></code>, <code class="docutils literal notranslate"><span class="pre">subsession.group_randomly()</span></code>,
+etc.</p>
+</section>
+<section id="group-matching">
+<span id="shuffling"></span><h2>Group matching<a class="headerlink" href="#group-matching" title="Link to this heading"></a></h2>
+<section id="fixed-matching">
+<span id="id3"></span><h3>Fixed matching<a class="headerlink" href="#fixed-matching" title="Link to this heading"></a></h3>
+<p>By default, in each round, players are split into groups of <code class="docutils literal notranslate"><span class="pre">C.PLAYERS_PER_GROUP</span></code>.
+They are grouped sequentially – for example, if there are 2 players per group,
+then P1 and P2 would be grouped together, and so would P3 and P4, and so on.
+<code class="docutils literal notranslate"><span class="pre">id_in_group</span></code> is also assigned sequentially within each group.</p>
+<p>This means that by default, the groups are the same in each round,
+and even between apps that have the same <code class="docutils literal notranslate"><span class="pre">PLAYERS_PER_GROUP</span></code>.</p>
+<p>If you want to rearrange groups, you can use the below techniques.</p>
+</section>
+<section id="group-randomly">
+<h3>group_randomly()<a class="headerlink" href="#group-randomly" title="Link to this heading"></a></h3>
+<p>Subsessions have a method <code class="docutils literal notranslate"><span class="pre">group_randomly()</span></code> that shuffles players randomly,
+so they can end up in any group, and any position within the group.</p>
+<p>If you would like to shuffle players between groups but keep players in fixed roles,
+use <code class="docutils literal notranslate"><span class="pre">group_randomly(fixed_id_in_group=True)</span></code>.</p>
+<p>For example, this will group players randomly each round:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">creating_session</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+    <span class="n">subsession</span><span class="o">.</span><span class="n">group_randomly</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will group players randomly each round, but keep <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code> fixed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">creating_session</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+    <span class="n">subsession</span><span class="o">.</span><span class="n">group_randomly</span><span class="p">(</span><span class="n">fixed_id_in_group</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For the following example, assume that <code class="docutils literal notranslate"><span class="pre">PLAYERS_PER_GROUP</span> <span class="pre">=</span> <span class="pre">3</span></code>, and that there are 12 participants in the session:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">creating_session</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">subsession</span><span class="o">.</span><span class="n">get_group_matrix</span><span class="p">())</span> <span class="c1"># outputs the following:</span>
+    <span class="c1"># [[1, 2, 3],</span>
+    <span class="c1">#  [4, 5, 6],</span>
+    <span class="c1">#  [7, 8, 9],</span>
+    <span class="c1">#  [10, 11, 12]]</span>
+
+    <span class="n">subsession</span><span class="o">.</span><span class="n">group_randomly</span><span class="p">(</span><span class="n">fixed_id_in_group</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">subsession</span><span class="o">.</span><span class="n">get_group_matrix</span><span class="p">())</span> <span class="c1"># outputs the following:</span>
+    <span class="c1"># [[1, 8, 12],</span>
+    <span class="c1">#  [10, 5, 3],</span>
+    <span class="c1">#  [4, 2, 6],</span>
+    <span class="c1">#  [7, 11, 9]]</span>
+
+    <span class="n">subsession</span><span class="o">.</span><span class="n">group_randomly</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">subsession</span><span class="o">.</span><span class="n">get_group_matrix</span><span class="p">())</span> <span class="c1"># outputs the following:</span>
+    <span class="c1"># [[8, 10, 3],</span>
+    <span class="c1">#  [4, 11, 2],</span>
+    <span class="c1">#  [9, 1, 6],</span>
+    <span class="c1">#  [12, 5, 7]]</span>
+</pre></div>
+</div>
+</section>
+<section id="group-like-round">
+<span id="id4"></span><h3>group_like_round()<a class="headerlink" href="#group-like-round" title="Link to this heading"></a></h3>
+<p>To copy the group structure from one round to another round,
+use the <code class="docutils literal notranslate"><span class="pre">group_like_round(n)</span></code> method.
+The argument to this method is the round number
+whose group structure should be copied.</p>
+<p>In the below example, the groups are shuffled in round 1,
+and then subsequent rounds copy round 1’s grouping structure.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">creating_session</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">subsession</span><span class="o">.</span><span class="n">round_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># &lt;some shuffling code here&gt;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">subsession</span><span class="o">.</span><span class="n">group_like_round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="get-group-matrix">
+<h3>get_group_matrix()<a class="headerlink" href="#get-group-matrix" title="Link to this heading"></a></h3>
+<p>Subsessions have a method called <code class="docutils literal notranslate"><span class="pre">get_group_matrix()</span></code> that
+return the structure of groups as a matrix, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
+</pre></div>
+</div>
+</section>
+<section id="set-group-matrix">
+<span id="id5"></span><h3>set_group_matrix()<a class="headerlink" href="#set-group-matrix" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">set_group_matrix()</span></code> lets you modify the group structure in any way you want.
+First, get the list of players with <code class="docutils literal notranslate"><span class="pre">get_players()</span></code>, or the pre-existing
+group matrix with <code class="docutils literal notranslate"><span class="pre">get_group_matrix()</span></code>.
+Make your matrix then pass it to <code class="docutils literal notranslate"><span class="pre">set_group_matrix()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">creating_session</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">subsession</span><span class="o">.</span><span class="n">get_group_matrix</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+
+    <span class="c1"># now the &#39;matrix&#39; variable looks like this,</span>
+    <span class="c1"># but it hasn&#39;t been saved yet!</span>
+    <span class="c1"># [[3, 2, 1],</span>
+    <span class="c1">#  [6, 5, 4],</span>
+    <span class="c1">#  [9, 8, 7],</span>
+    <span class="c1">#  [12, 11, 10]]</span>
+
+    <span class="c1"># save it</span>
+    <span class="n">subsession</span><span class="o">.</span><span class="n">set_group_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also pass a matrix of integers.
+It must contain all integers from 1 to the number of players
+in the subsession. Each integer represents the player who has that <code class="docutils literal notranslate"><span class="pre">id_in_subsession</span></code>.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">creating_session</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+
+    <span class="n">new_structure</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">]]</span>
+    <span class="n">subsession</span><span class="o">.</span><span class="n">set_group_matrix</span><span class="p">(</span><span class="n">new_structure</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">subsession</span><span class="o">.</span><span class="n">get_group_matrix</span><span class="p">())</span> <span class="c1"># will output this:</span>
+
+    <span class="c1"># [[1, 3, 5],</span>
+    <span class="c1">#  [7, 9, 11],</span>
+    <span class="c1">#  [2, 4, 6],</span>
+    <span class="c1">#  [8, 10, 12]]</span>
+</pre></div>
+</div>
+<p>To check if your group shuffling worked correctly,
+open your browser to the “Results” tab of your session,
+and look at the <code class="docutils literal notranslate"><span class="pre">group</span></code> and <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code> columns in each round.</p>
+</section>
+<section id="group-set-players">
+<h3>group.set_players()<a class="headerlink" href="#group-set-players" title="Link to this heading"></a></h3>
+<p>This is similar to <code class="docutils literal notranslate"><span class="pre">set_group_matrix</span></code>, but it only shuffles players within a group,
+e.g. so that you can give them different roles.</p>
+</section>
+<section id="shuffling-during-the-session">
+<h3>Shuffling during the session<a class="headerlink" href="#shuffling-during-the-session" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">creating_session</span></code> is usually a good place to shuffle groups,
+but remember that <code class="docutils literal notranslate"><span class="pre">creating_session</span></code> is run when the session is created,
+before players begin playing. So, if your shuffling logic needs to depend on
+something that happens after the session starts, you should do the
+shuffling in a wait page instead.</p>
+<p>You need to make a <code class="docutils literal notranslate"><span class="pre">WaitPage</span></code> with <code class="docutils literal notranslate"><span class="pre">wait_for_all_groups=True</span></code>
+and put the shuffling code in <code class="docutils literal notranslate"><span class="pre">after_all_players_arrive</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ShuffleWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+
+    <span class="n">wait_for_all_groups</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">after_all_players_arrive</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+        <span class="n">subsession</span><span class="o">.</span><span class="n">group_randomly</span><span class="p">()</span>
+        <span class="c1"># etc...</span>
+</pre></div>
+</div>
+</section>
+<section id="group-by-arrival-time">
+<h3>Group by arrival time<a class="headerlink" href="#group-by-arrival-time" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="waitpages.html#group-by-arrival-time"><span class="std std-ref">group_by_arrival_time</span></a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro.html" class="btn btn-neutral float-left" title="Multiplayer games" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="waitpages.html" class="btn btn-neutral float-right" title="Wait pages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

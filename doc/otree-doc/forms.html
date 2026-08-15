@@ -1,0 +1,618 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multiplayer games" href="multiplayer/intro.html" />
+    <link rel="prev" title="Templates" href="templates.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#forms-in-templates">Forms in templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-form-field-validation">Simple form field validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#min-and-max">min and max</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choices">choices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-fields">Optional fields</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-form-field-validation">Dynamic form field validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#field-name-choices">{field_name}_choices()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#field-name-max">{field_name}_max()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#field-name-min">{field_name}_min()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#field-name-error-message">{field_name}_error_message()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validating-multiple-fields-together">Validating multiple fields together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#determining-form-fields-dynamically">Determining form fields dynamically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#widgets">Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formfield">{{ formfield }}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-a-field-s-appearance">Customizing a field’s appearance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-radio-buttons-arranged-like-a-slider">Example: Radio buttons arranged like a slider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-radio-buttons-in-tables-and-other-custom-layouts">Example: Radio buttons in tables and other custom layouts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#raw-html-widgets">Raw HTML widgets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#raw-html-example-custom-user-interface-with-javascript">Raw HTML example: custom user interface with JavaScript</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#preserving-unsubmitted-inputs">Preserving unsubmitted inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#buttons">Buttons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#button-that-submits-the-form">Button that submits the form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#button-that-doesn-t-submit-the-form">Button that doesn’t submit the form</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#miscellaneous-advanced">Miscellaneous &amp; advanced</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#form-fields-with-dynamic-labels">Form fields with dynamic labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#javascript-access-to-form-inputs">JavaScript access to form inputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Forms</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/forms.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="forms">
+<span id="id1"></span><h1>Forms<a class="headerlink" href="#forms" title="Link to this heading"></a></h1>
+<p>Each page in oTree can contain a form, which the player should fill out
+and submit by clicking the “Next” button. To create a form, first
+you need fields on the player model, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Your name:&quot;</span><span class="p">)</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Your age:&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, in your Page class, set <code class="docutils literal notranslate"><span class="pre">form_model</span></code> and <code class="docutils literal notranslate"><span class="pre">form_fields</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Page1</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;player&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="c1"># this means player.name, player.age</span>
+</pre></div>
+</div>
+<p>When the user submits the form, the submitted data is automatically
+saved to the corresponding fields on the player model.</p>
+<section id="forms-in-templates">
+<span id="label"></span><h2>Forms in templates<a class="headerlink" href="#forms-in-templates" title="Link to this heading"></a></h2>
+<p>In your template, you can display the form with:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ formfields }}
+</pre></div>
+</div>
+</section>
+<section id="simple-form-field-validation">
+<span id="form-validation"></span><h2>Simple form field validation<a class="headerlink" href="#simple-form-field-validation" title="Link to this heading"></a></h2>
+<section id="min-and-max">
+<h3>min and max<a class="headerlink" href="#min-and-max" title="Link to this heading"></a></h3>
+<p>To require an integer to be between 12 and 24:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">offer</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the max/min are not fixed, you should use <a class="reference internal" href="#foo-max"><span class="std std-ref">{field_name}_max()</span></a></p>
+</section>
+<section id="choices">
+<span id="id2"></span><h3>choices<a class="headerlink" href="#choices" title="Link to this heading"></a></h3>
+<p>If you want a field to be a dropdown menu with a list of choices,
+set <code class="docutils literal notranslate"><span class="pre">choices=</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>To use radio buttons instead of a dropdown menu,
+you should set the <code class="docutils literal notranslate"><span class="pre">widget</span></code> to <code class="docutils literal notranslate"><span class="pre">RadioSelect</span></code> or <code class="docutils literal notranslate"><span class="pre">RadioSelectHorizontal</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>If the list of choices needs to be determined dynamically, use <a class="reference internal" href="#foo-choices"><span class="std std-ref">{field_name}_choices()</span></a></p>
+<p>You can also set display names for each choice
+by making a list of [value, display] pairs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Low&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;High&#39;</span><span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>If you do this, users will just see a menu with “Low”, “Medium”, “High”,
+but their responses will be recorded as 1, 2, or 3.</p>
+<p>You can do this for <code class="docutils literal notranslate"><span class="pre">BooleanField</span></code>, <code class="docutils literal notranslate"><span class="pre">StringField</span></code>, etc.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cooperated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Defect&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Cooperate&#39;</span><span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>You can get the human-readable label corresponding to the user’s choice like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">cooperated</span>  <span class="c1"># returns e.g. False</span>
+<span class="n">player</span><span class="o">.</span><span class="n">field_display</span><span class="p">(</span><span class="s1">&#39;cooperated&#39;</span><span class="p">)</span>  <span class="c1"># returns e.g. &#39;Defect&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">field_display</span></code> is new in oTree 5.4 (August 2021).</p>
+</div>
+</section>
+<section id="optional-fields">
+<h3>Optional fields<a class="headerlink" href="#optional-fields" title="Link to this heading"></a></h3>
+<p>If a field is optional, you can use <code class="docutils literal notranslate"><span class="pre">blank=True</span></code> like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">offer</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dynamic-form-field-validation">
+<span id="dynamic-validation"></span><h2>Dynamic form field validation<a class="headerlink" href="#dynamic-form-field-validation" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, and <code class="docutils literal notranslate"><span class="pre">choices</span></code> described above are only
+for fixed (constant) values.</p>
+<p>If you want them to be determined dynamically
+(e.g. different from player to player),
+then you can instead define one of the below functions.</p>
+<section id="field-name-choices">
+<span id="foo-choices"></span><h3>{field_name}_choices()<a class="headerlink" href="#field-name-choices" title="Link to this heading"></a></h3>
+<p>Like setting <code class="docutils literal notranslate"><span class="pre">choices=</span></code>,
+this will set the choices for the form field
+(e.g. the dropdown menu or radio buttons).</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">fruit</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fruit_choices</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+    <span class="n">choices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span> <span class="s1">&#39;mango&#39;</span><span class="p">]</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">choices</span>
+</pre></div>
+</div>
+</section>
+<section id="field-name-max">
+<span id="foo-max"></span><h3>{field_name}_max()<a class="headerlink" href="#field-name-max" title="Link to this heading"></a></h3>
+<p>The dynamic alternative to setting <code class="docutils literal notranslate"><span class="pre">max=</span></code> in the model field. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">offer</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+    <span class="n">budget</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">offer_max</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">budget</span>
+</pre></div>
+</div>
+</section>
+<section id="field-name-min">
+<h3>{field_name}_min()<a class="headerlink" href="#field-name-min" title="Link to this heading"></a></h3>
+<p>The dynamic alternative to setting <code class="docutils literal notranslate"><span class="pre">min=</span></code> on the model field.</p>
+</section>
+<section id="field-name-error-message">
+<span id="foo-error-message"></span><h3>{field_name}_error_message()<a class="headerlink" href="#field-name-error-message" title="Link to this heading"></a></h3>
+<p>This is the most flexible method for validating a field.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">offer</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+    <span class="n">budget</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">offer_error_message</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;value is&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">player</span><span class="o">.</span><span class="n">budget</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Cannot offer more than your remaining budget&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="validating-multiple-fields-together">
+<span id="error-message"></span><h3>Validating multiple fields together<a class="headerlink" href="#validating-multiple-fields-together" title="Link to this heading"></a></h3>
+<p>Let’s say your form has 3 number fields whose values must sum to 100.
+You can enforce this with the <code class="docutils literal notranslate"><span class="pre">error_message</span></code> function, which goes on the page:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;player&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;int1&#39;</span><span class="p">,</span> <span class="s1">&#39;int2&#39;</span><span class="p">,</span> <span class="s1">&#39;int3&#39;</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">error_message</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;values is&#39;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;int1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;int2&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;int3&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;The numbers must add up to 100&#39;</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>If a field was left blank (and you set <code class="docutils literal notranslate"><span class="pre">blank=True</span></code>), its value here will be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p>This function is only executed if there are no other errors in the form.</p></li>
+<li><p>You can also return a dict that maps field names to error messages.
+This way, you don’t need to write many repetitive FIELD_error_message methods
+(see <a class="reference internal" href="misc/tips_and_tricks.html#duplicate-validation-methods"><span class="std std-ref">here</span></a>).</p></li>
+</ul>
+</section>
+</section>
+<section id="determining-form-fields-dynamically">
+<span id="get-form-fields"></span><h2>Determining form fields dynamically<a class="headerlink" href="#determining-form-fields-dynamically" title="Link to this heading"></a></h2>
+<p>If you need the list of form fields to be dynamic, instead of
+<code class="docutils literal notranslate"><span class="pre">form_fields</span></code> you can define a function <code class="docutils literal notranslate"><span class="pre">get_form_fields</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_form_fields</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">num_bids</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;bid_1&#39;</span><span class="p">,</span> <span class="s1">&#39;bid_2&#39;</span><span class="p">,</span> <span class="s1">&#39;bid_3&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;bid_1&#39;</span><span class="p">,</span> <span class="s1">&#39;bid_2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="widgets">
+<h2>Widgets<a class="headerlink" href="#widgets" title="Link to this heading"></a></h2>
+<p>You can set a model field’s <code class="docutils literal notranslate"><span class="pre">widget</span></code> to <code class="docutils literal notranslate"><span class="pre">RadioSelect</span></code> or <code class="docutils literal notranslate"><span class="pre">RadioSelectHorizontal</span></code> if you want choices
+to be displayed with radio buttons, instead of a dropdown menu.</p>
+</section>
+<section id="formfield">
+<h2>{{ formfield }}<a class="headerlink" href="#formfield" title="Link to this heading"></a></h2>
+<p>If you want to position the fields individually,
+instead of <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfields</span> <span class="pre">}}</span></code> you can use <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfield</span> <span class="pre">}}</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ formfield &#39;bid&#39; }}
+</pre></div>
+</div>
+<p>You can also put the <code class="docutils literal notranslate"><span class="pre">label</span></code> in directly in the template:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ formfield &#39;bid&#39; label=&quot;How much do you want to contribute?&quot; }}
+</pre></div>
+</div>
+<p>The previous syntax of <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">formfield</span> <span class="pre">player.bid</span> <span class="pre">%}</span></code> is still supported.</p>
+</section>
+<section id="customizing-a-field-s-appearance">
+<span id="manual-forms"></span><h2>Customizing a field’s appearance<a class="headerlink" href="#customizing-a-field-s-appearance" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfields</span> <span class="pre">}}</span></code> and <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfield</span> <span class="pre">}}</span></code> are easy to use because they automatically output
+all necessary parts of a form field (the input, the label, and any error messages),
+with Bootstrap styling.</p>
+<p>However, if you want more control over the appearance and layout,
+you can use manual field rendering. Instead of <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfield</span> <span class="pre">'my_field'</span> <span class="pre">}}</span></code>,
+do <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">form.my_field</span> <span class="pre">}}</span></code>, to get just the input element.
+Just remember to also include <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfield_errors</span> <span class="pre">'my_field'</span> <span class="pre">}}</span></code>.</p>
+<section id="example-radio-buttons-arranged-like-a-slider">
+<h3>Example: Radio buttons arranged like a slider<a class="headerlink" href="#example-radio-buttons-arranged-like-a-slider" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pizza</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+    <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Choose the point on the scale that represents how much you like pizza:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    Least <span class="ni">&amp;nbsp;</span>
+    {{ for choice in form.pizza }}
+        {{ choice }}
+    {{ endfor }}
+    <span class="ni">&amp;nbsp;</span> Most
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="example-radio-buttons-in-tables-and-other-custom-layouts">
+<span id="subwidgets"></span><span id="radio-table"></span><h3>Example: Radio buttons in tables and other custom layouts<a class="headerlink" href="#example-radio-buttons-in-tables-and-other-custom-layouts" title="Link to this heading"></a></h3>
+<p>Let’s say you have a set of <code class="docutils literal notranslate"><span class="pre">IntegerField</span></code> in your model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">offer_1</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">offer_2</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">offer_3</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">offer_4</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">offer_5</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>And you’d like to present them as a likert scale, where each option is
+in a separate column.</p>
+<p>(First, try to reduce the code duplication in your model by following
+the instructions in <a class="reference internal" href="misc/tips_and_tricks.html#many-fields"><span class="std std-ref">How to make many fields</span></a>.)</p>
+<p>Because the options must be in separate table cells,
+the ordinary <code class="docutils literal notranslate"><span class="pre">RadioSelectHorizontal</span></code> widget will not work here.</p>
+<p>Instead, you should simply loop over the choices in the field as follows:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ form.offer_1.label }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    {{ for choice in form.offer_1 }}
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ choice }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    {{ endfor }}
+<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>If you have many fields with the same number of choices,
+you can arrange them in a table:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table&quot;</span><span class="p">&gt;</span>
+    {{ for field in form }}
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>{{ field.label }}<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            {{ for choice in field }}
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ choice }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            {{ endfor }}
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    {{ endfor }}
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="raw-html-widgets">
+<span id="raw-html"></span><h2>Raw HTML widgets<a class="headerlink" href="#raw-html-widgets" title="Link to this heading"></a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfields</span> <span class="pre">}}</span></code> and <a class="reference internal" href="#manual-forms"><span class="std std-ref">manual field rendering</span></a>
+don’t give you the appearance you want,
+you can write your own widget in raw HTML.</p>
+<p>First, add an <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> element.
+For example, if your <code class="docutils literal notranslate"><span class="pre">form_fields</span></code> includes <code class="docutils literal notranslate"><span class="pre">my_field</span></code>,
+you can do <code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">name=&quot;my_field&quot;</span> <span class="pre">type=&quot;checkbox&quot;</span> <span class="pre">/&gt;</span></code>
+(some other common types are <code class="docutils literal notranslate"><span class="pre">radio</span></code>, <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">number</span></code>, and <code class="docutils literal notranslate"><span class="pre">range</span></code>).</p>
+<p>Second, you should usually include <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfield_errors</span> <span class="pre">'xyz'</span> <span class="pre">}}</span></code>,
+so that if the participant submits an incorrect or missing value),
+they can see the error message.</p>
+<p>If you use raw HTML inputs, it’s recommended to also use <a class="reference internal" href="#preserve-unsubmitted-inputs"><span class="std std-ref">Preserving unsubmitted inputs</span></a>.
+Otherwise, if the user submits the form but it fails validation,
+they will have to restart the form from scratch.</p>
+<section id="raw-html-example-custom-user-interface-with-javascript">
+<h3>Raw HTML example: custom user interface with JavaScript<a class="headerlink" href="#raw-html-example-custom-user-interface-with-javascript" title="Link to this heading"></a></h3>
+<p>Let’s say you don’t want users to fill out form fields,
+but instead interact with some sort of visual app, like a clicking on a chart
+or playing a graphical game. Or, you want to record extra data like how long
+they spent on part of the page, how many times they clicked, etc.</p>
+<p>First, build your interface using HTML and JavaScript.
+Then use JavaScript to write the results into a
+hidden form field. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Player class</span>
+<span class="n">contribution</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+
+<span class="c1"># page</span>
+<span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;contribution&#39;</span><span class="p">]</span>
+
+<span class="c1"># HTML</span>
+<span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;hidden&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;contribution&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;contribution&quot;</span> <span class="o">/&gt;</span>
+
+<span class="c1"># JavaScript</span>
+<span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">&#39;contribution&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>When the page is submitted, the value of your hidden input will be recorded
+in oTree like any other form field.</p>
+<p>If this isn’t working, open your browser’s JavaScript console,
+see if there are any errors, and use <code class="docutils literal notranslate"><span class="pre">console.log()</span></code> (JavaScript’s equivalent of <code class="docutils literal notranslate"><span class="pre">print()</span></code>)
+to trace the execution of your code line by line.</p>
+</section>
+</section>
+<section id="preserving-unsubmitted-inputs">
+<span id="preserve-unsubmitted-inputs"></span><h2>Preserving unsubmitted inputs<a class="headerlink" href="#preserving-unsubmitted-inputs" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use this, you must install <a class="reference internal" href="misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a> (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">otree</span> <span class="pre">--upgrade</span></code>)</p>
+</div>
+<p>You can set the following attribute to preserve forms that were partially filled out
+before the page was reloaded:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">preserve_unsubmitted_inputs</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>This is useful in the following situations:</p>
+<ul class="simple">
+<li><p>If your forms are using <a class="reference internal" href="#raw-html"><span class="std std-ref">raw HTML inputs</span></a>,
+and the user submits the form but it fails validation
+(without <code class="docutils literal notranslate"><span class="pre">preserve_unsubmitted_inputs</span> <span class="pre">=</span> <span class="pre">True</span></code>, the user would have to restart the form from scratch)</p></li>
+<li><p>If the user fills out a form, but instead of clicking “next” clicks the “back” button, then later returns to this page.</p></li>
+<li><p>If the user is filling out a form, then reloads the page, or closes the page and starts again later.</p></li>
+</ul>
+<p>Note that these values are stored locally in the browser, not on the oTree server.</p>
+<p>If you are writing the raw HTML of the inputs,
+make sure they all have a <code class="docutils literal notranslate"><span class="pre">name=</span></code> attribute.</p>
+</section>
+<section id="buttons">
+<h2>Buttons<a class="headerlink" href="#buttons" title="Link to this heading"></a></h2>
+<section id="button-that-submits-the-form">
+<h3>Button that submits the form<a class="headerlink" href="#button-that-submits-the-form" title="Link to this heading"></a></h3>
+<p>If your page only contains 1 decision,
+you could omit the <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">next_button</span> <span class="pre">}}</span></code>
+and instead have the user click on one of several buttons
+to go to the next page.</p>
+<p>For example, let’s say your Player model has <code class="docutils literal notranslate"><span class="pre">offer_accepted</span> <span class="pre">=</span> <span class="pre">models.BooleanField()</span></code>,
+and rather than a radio button you’d like to present it as a button like this:</p>
+<img alt="_images/yes-no-buttons.png" class="align-center" src="_images/yes-no-buttons.png" />
+<p>First, put <code class="docutils literal notranslate"><span class="pre">offer_accepted</span></code> in your Page’s <code class="docutils literal notranslate"><span class="pre">form_fields</span></code> as usual.
+Then put this code in the template:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Do you wish to accept the offer?<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;offer_accepted&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;True&quot;</span><span class="p">&gt;</span>Yes<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;offer_accepted&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;False&quot;</span><span class="p">&gt;</span>No<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>You can use this technique for any type of field,
+not just <code class="docutils literal notranslate"><span class="pre">BooleanField</span></code>.</p>
+</section>
+<section id="button-that-doesn-t-submit-the-form">
+<h3>Button that doesn’t submit the form<a class="headerlink" href="#button-that-doesn-t-submit-the-form" title="Link to this heading"></a></h3>
+<p>If the button has some purpose other than submitting the form,
+add <code class="docutils literal notranslate"><span class="pre">type=&quot;button&quot;</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>
+    Clicking this will submit the form
+<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span><span class="p">&gt;</span>
+    Clicking this will not submit the form
+<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="miscellaneous-advanced">
+<h2>Miscellaneous &amp; advanced<a class="headerlink" href="#miscellaneous-advanced" title="Link to this heading"></a></h2>
+<section id="form-fields-with-dynamic-labels">
+<h3>Form fields with dynamic labels<a class="headerlink" href="#form-fields-with-dynamic-labels" title="Link to this heading"></a></h3>
+<p>If the label should contain a variable, you can construct the string in your page:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Contribute</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;player&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;contribution&#39;</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vars_for_template</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">contribution_label</span><span class="o">=</span><span class="s1">&#39;How much of your </span><span class="si">{}</span><span class="s1"> do you want to contribute?&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">endowment</span><span class="p">)</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, in the template:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ formfield &#39;contribution&#39; label=contribution_label }}
+</pre></div>
+</div>
+<p>If you use this technique, you may also want to use <a class="reference internal" href="#dynamic-validation"><span class="std std-ref">Dynamic form field validation</span></a>.</p>
+</section>
+<section id="javascript-access-to-form-inputs">
+<span id="forminputs"></span><h3>JavaScript access to form inputs<a class="headerlink" href="#javascript-access-to-form-inputs" title="Link to this heading"></a></h3>
+<p>In your JavaScript code you can use <code class="docutils literal notranslate"><span class="pre">forminputs.xyz</span></code> to access the <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code>
+element of form field <code class="docutils literal notranslate"><span class="pre">xyz</span></code>. For example, you can do:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// get the value of an input</span>
+<span class="nx">forminputs</span><span class="p">.</span><span class="nx">xyz</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span><span class="w"> </span><span class="c1">// returns &#39;42&#39; or &#39;&#39; etc.</span>
+
+<span class="c1">// set the value of a field.</span>
+<span class="nx">forminputs</span><span class="p">.</span><span class="nx">xyz</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;42&#39;</span><span class="p">;</span>
+
+<span class="c1">// dynamically set a field&#39;s properties -- readonly, size, step, pattern, etc.</span>
+<span class="nx">forminputs</span><span class="p">.</span><span class="nx">xyz</span><span class="p">.</span><span class="nx">minlength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;10&#39;</span><span class="p">;</span>
+
+<span class="c1">// do live calculations on inputs</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">myFunction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">forminputs</span><span class="p">.</span><span class="nx">aaa</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">forminputs</span><span class="p">.</span><span class="nx">bbb</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="sb">`Your total is </span><span class="si">${</span><span class="nx">sum</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// set an event handler (for oninput/onchange/etc)</span>
+<span class="nx">forminputs</span><span class="p">.</span><span class="nx">aaa</span><span class="p">.</span><span class="nx">oninput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">myFunction</span><span class="p">;</span>
+
+<span class="c1">// call methods on an input</span>
+<span class="nx">forminputs</span><span class="p">.</span><span class="nx">xyz</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+<span class="nx">forminputs</span><span class="p">.</span><span class="nx">xyz</span><span class="p">.</span><span class="nx">reportValidity</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Radio widgets work a bit differently:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_radio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+    <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// forminputs.my_radio is a RadioNodeList, not a single &lt;input&gt;</span>
+<span class="c1">// so you need to loop over all 3 options:</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">radio</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">forminputs</span><span class="p">.</span><span class="nx">my_radio</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">radio</span><span class="p">.</span><span class="nx">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">radio</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">forminputs</span><span class="p">.</span><span class="nx">my_radio</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">radio</span><span class="p">.</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;radio button changed&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// but the &#39;value&#39; attribute works the same way as non-radio widgets</span>
+<span class="nx">forminputs</span><span class="p">.</span><span class="nx">my_radio</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="templates.html" class="btn btn-neutral float-left" title="Templates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="multiplayer/intro.html" class="btn btn-neutral float-right" title="Multiplayer games" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

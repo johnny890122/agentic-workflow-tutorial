@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windows Server (advanced) &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Admin" href="../admin.html" />
+    <link rel="prev" title="Ubuntu Linux Server" href="ubuntu.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Server setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="heroku.html">Basic Server Setup (Heroku)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ubuntu.html">Ubuntu Linux Server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Windows Server (advanced)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-do-i-need-to-install-server-software">Why do I need to install server software?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database-postgres">Database (Postgres)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#resetdb">resetdb</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-production-server">Run the production server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-environment-variables">Set environment variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Server setup</a></li>
+      <li class="breadcrumb-item active">Windows Server (advanced)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server/server-windows.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="windows-server-advanced">
+<span id="server-windows"></span><h1>Windows Server (advanced)<a class="headerlink" href="#windows-server-advanced" title="Link to this heading"></a></h1>
+<p>If you are just testing your app on your personal computer, you can use
+<code class="docutils literal notranslate"><span class="pre">otree</span> <span class="pre">zipserver</span></code> or <code class="docutils literal notranslate"><span class="pre">otree</span> <span class="pre">devserver</span></code>. You don’t need a full server setup as described below,
+which is necessary for sharing your app with an audience.</p>
+<p>This section is for people who are experienced with setting up web servers.
+If you would like an easier and quicker way, we recommend using
+<a class="reference internal" href="heroku.html#heroku"><span class="std std-ref">Heroku</span></a>.</p>
+<section id="why-do-i-need-to-install-server-software">
+<span id="why-server"></span><h2>Why do I need to install server software?<a class="headerlink" href="#why-do-i-need-to-install-server-software" title="Link to this heading"></a></h2>
+<p>oTree’s development setup (<code class="docutils literal notranslate"><span class="pre">devserver</span></code>)
+is not designed for running actual studies.</p>
+<section id="database-postgres">
+<h3>Database (Postgres)<a class="headerlink" href="#database-postgres" title="Link to this heading"></a></h3>
+<p>Install Postgres and psycopg2, create a new database and set the <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code> env var, for example:
+to <code class="docutils literal notranslate"><span class="pre">postgres://postgres&#64;localhost/django_db</span></code></p>
+</section>
+</section>
+<section id="resetdb">
+<h2>resetdb<a class="headerlink" href="#resetdb" title="Link to this heading"></a></h2>
+<p>If all the above steps went well, you should be able to run <code class="docutils literal notranslate"><span class="pre">otree</span> <span class="pre">resetdb</span></code>.</p>
+<section id="run-the-production-server">
+<h3>Run the production server<a class="headerlink" href="#run-the-production-server" title="Link to this heading"></a></h3>
+<p>Run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">prodserver</span> <span class="mi">80</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="ubuntu.html#prodserver"><span class="std std-ref">here</span></a> for full instructions.
+The steps are essentially the same as on Linux.</p>
+</section>
+<section id="set-environment-variables">
+<h3>Set environment variables<a class="headerlink" href="#set-environment-variables" title="Link to this heading"></a></h3>
+<p>You should set <code class="docutils literal notranslate"><span class="pre">OTREE_ADMIN_PASSWORD</span></code>, <code class="docutils literal notranslate"><span class="pre">OTREE_PRODUCTION</span></code>, and <code class="docutils literal notranslate"><span class="pre">OTREE_AUTH_LEVEL</span></code>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ubuntu.html" class="btn btn-neutral float-left" title="Ubuntu Linux Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../admin.html" class="btn btn-neutral float-right" title="Admin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Rooms" href="rooms.html" />
+    <link rel="prev" title="Windows Server (advanced)" href="server/server-windows.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/intro.html">Server setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Admin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#password-protection">Password protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-links">Start links</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rooms">Rooms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-use-links">Single-use links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session-wide-link">Session-wide link</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#participant-labels">Participant labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arrival-order">Arrival order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-admin-interface">Customizing the admin interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#admin-view-fields">ADMIN_VIEW_FIELDS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-reports">Admin reports</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#export-data">Export Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#custom-data-exports">Custom data exports</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-custom-export-functions">Multiple custom_export functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#debug-info">Debug Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#payments">Payments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Admin</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/admin.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="admin">
+<h1>Admin<a class="headerlink" href="#admin" title="Link to this heading"></a></h1>
+<p>oTree’s admin interface lets you create, monitor,
+and export data from sessions.</p>
+<p>Open your browser to <code class="docutils literal notranslate"><span class="pre">localhost:8000</span></code> or whatever you server’s URL is.</p>
+<section id="password-protection">
+<span id="auth-level"></span><h2>Password protection<a class="headerlink" href="#password-protection" title="Link to this heading"></a></h2>
+<p>When you first install oTree, The entire admin interface is accessible
+without a password. However, when you are ready to deploy to your audience,
+you should password protect the admin.</p>
+<p>If you are launching an experiment and want visitors to only be able to
+play your app if you provided them with a start link, set the
+environment variable <code class="docutils literal notranslate"><span class="pre">OTREE_AUTH_LEVEL</span></code> to <code class="docutils literal notranslate"><span class="pre">STUDY</span></code>.</p>
+<p>To put your site online in public demo mode where
+anybody can play a demo version of your game
+(but not access the full admin interface), set <code class="docutils literal notranslate"><span class="pre">OTREE_AUTH_LEVEL</span></code>
+to <code class="docutils literal notranslate"><span class="pre">DEMO</span></code>.</p>
+<p>The normal admin username is “admin”.
+You should set your password in the <code class="docutils literal notranslate"><span class="pre">OTREE_ADMIN_PASSWORD</span></code> environment variable
+(on Heroku, log into your Heroku dashboard, and define it as a config var).</p>
+<p>If you change the admin username or password, you need to reset the database.</p>
+</section>
+<section id="start-links">
+<h2>Start links<a class="headerlink" href="#start-links" title="Link to this heading"></a></h2>
+<p>There are multiple types of start links you can use.</p>
+<section id="rooms">
+<h3>Rooms<a class="headerlink" href="#rooms" title="Link to this heading"></a></h3>
+<p>In most cases where you are doing a study, the best
+way to set up URLs is to make a <a class="reference internal" href="rooms.html#rooms"><span class="std std-ref">room</span></a>.</p>
+</section>
+<section id="single-use-links">
+<span id="id1"></span><h3>Single-use links<a class="headerlink" href="#single-use-links" title="Link to this heading"></a></h3>
+<p>If a room is not suited for your needs,
+you can use oTree’s single-use links.
+Every time you create a session, you will need to re-distribute URLs
+to each participant.</p>
+</section>
+<section id="session-wide-link">
+<h3>Session-wide link<a class="headerlink" href="#session-wide-link" title="Link to this heading"></a></h3>
+<p>The session-wide link lets you provide
+the same start link to all participants in the session.
+Note: this may result in the same participant playing twice, unless you use the
+<code class="docutils literal notranslate"><span class="pre">participant_label</span></code> parameter in the URL (see <a class="reference internal" href="#participant-label"><span class="std std-ref">Participant labels</span></a>).</p>
+<p>Before using the session-wide link, consider using a
+<a class="reference internal" href="rooms.html#rooms"><span class="std std-ref">room</span></a>, because you can also use a room without a
+participant label file to allow everyone to play with the same URL.
+The advantage of using a room is that the URL is simpler to type
+(doesn’t contain a randomly generated code),
+and you can reuse it across sessions.</p>
+</section>
+</section>
+<section id="participant-labels">
+<span id="participant-label"></span><h2>Participant labels<a class="headerlink" href="#participant-labels" title="Link to this heading"></a></h2>
+<p>Whether or not you’re using a <a class="reference internal" href="rooms.html#rooms"><span class="std std-ref">room</span></a>,
+you can append a <code class="docutils literal notranslate"><span class="pre">participant_label</span></code> parameter to each participant’s start
+URL to identify them, e.g. by name, ID number, or computer workstation.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8000/room/my_room_name/?participant_label=John
+</pre></div>
+</div>
+<p>oTree will record this participant label. It
+will be used to identify that participant in the
+oTree admin interface and the payments page, etc.
+You can also access it from your code as <code class="docutils literal notranslate"><span class="pre">participant.label</span></code>.</p>
+<p>Another benefit of participant labels is that if the participant opens their start link twice,
+they will be assigned back to the same participant (if you are using a room-wide or session-wide URL).
+This reduces duplicate participation.</p>
+</section>
+<section id="arrival-order">
+<h2>Arrival order<a class="headerlink" href="#arrival-order" title="Link to this heading"></a></h2>
+<p>oTree will assign the first person who arrives to be P1, the second to be P2, etc.,
+unless you are using single-use links.</p>
+</section>
+<section id="customizing-the-admin-interface">
+<h2>Customizing the admin interface<a class="headerlink" href="#customizing-the-admin-interface" title="Link to this heading"></a></h2>
+<p>You can customize what data is shown in the admin interface.
+For basic customization, you can define <code class="docutils literal notranslate"><span class="pre">ADMIN_VIEW_FIELDS</span></code> in your constants class.
+For advanced customization, you can create a custom “admin report” tab.</p>
+<section id="admin-view-fields">
+<span id="id2"></span><h3>ADMIN_VIEW_FIELDS<a class="headerlink" href="#admin-view-fields" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use this, you must install <a class="reference internal" href="misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a></p>
+</div>
+<p>You can choose what fields are shown in the admin’s “Session Data” view,
+to focus on the important fields and ignore the rest.
+Define <code class="docutils literal notranslate"><span class="pre">ADMIN_VIEW_FIELDS</span></code> in your constants class.
+It can have <code class="docutils literal notranslate"><span class="pre">'player'</span></code>, <code class="docutils literal notranslate"><span class="pre">'group'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'subsession'</span></code> keys.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">BaseConstants</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="n">ADMIN_VIEW_FIELDS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;player&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;guess&#39;</span><span class="p">,</span> <span class="s1">&#39;is_winner&#39;</span><span class="p">,</span> <span class="s1">&#39;payoff&#39;</span><span class="p">],</span>
+        <span class="c1"># &#39;group&#39;: [...],</span>
+        <span class="c1"># &#39;subsession&#39;: [...],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="admin-reports">
+<span id="admin-report"></span><h3>Admin reports<a class="headerlink" href="#admin-reports" title="Link to this heading"></a></h3>
+<p>You can add a custom tab to a session’s admin page with any content you want;
+for example:</p>
+<ul class="simple">
+<li><p>A chart/graph with the game’s results</p></li>
+<li><p>A custom payments page that is different from oTree’s built-in one</p></li>
+</ul>
+<p>Here is a screenshot:</p>
+<img alt="_images/admin-report.png" class="align-center" src="_images/admin-report.png" />
+<p>Here is a trivial example, where we add an admin report that
+displays a sorted list of payoffs for a given round.</p>
+<p>First, define a function <code class="docutils literal notranslate"><span class="pre">vars_for_admin_report</span></code>.
+This works the same way as <a class="reference internal" href="pages.html#vars-for-template"><span class="std std-ref">vars_for_template()</span></a>.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vars_for_admin_report</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+    <span class="n">payoffs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">payoff</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">subsession</span><span class="o">.</span><span class="n">get_players</span><span class="p">()])</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">payoffs</span><span class="o">=</span><span class="n">payoffs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then create an includable template <code class="docutils literal notranslate"><span class="pre">admin_report.html</span></code>
+in your app, and display whatever variables were passed in <code class="docutils literal notranslate"><span class="pre">vars_for_admin_report</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Here is the sorted list of payoffs in round {{ subsession.round_number }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    {{ for payoff in payoffs }}
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ payoff }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    {{ endfor }}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subsession</span></code>, <code class="docutils literal notranslate"><span class="pre">session</span></code>, and <code class="docutils literal notranslate"><span class="pre">C</span></code> are passed to the template
+automatically.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">admin_report.html</span></code> does not need to use <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">block</span> <span class="pre">}}</span></code>.
+The above example is valid as the full contents of <code class="docutils literal notranslate"><span class="pre">admin_report.html</span></code>.</p></li>
+</ul>
+<p>If one or more apps in your session have an <code class="docutils literal notranslate"><span class="pre">admin_report.html</span></code>,
+your admin page will have a “Reports” tab. Use the menu to select the app
+and the round number, to see the report for that subsession.</p>
+</section>
+</section>
+<section id="export-data">
+<h2>Export Data<a class="headerlink" href="#export-data" title="Link to this heading"></a></h2>
+<p>In the admin interface, click on “Data”
+to download your data as CSV or Excel.</p>
+<p>There is also a data export for “page times”, which shows the exact time when users completed every page.
+<a class="reference download internal" download="" href="_downloads/2e427248737c3cd097a32dad5bae8269/pagetimes.py"><code class="xref download docutils literal notranslate"><span class="pre">Here</span></code></a> is a Python script you can run that tabulates how much time
+is spent on each page. You can modify this script to calculate similar things, such as how much time each
+participant spends on wait pages in total.</p>
+<section id="custom-data-exports">
+<span id="custom-export"></span><h3>Custom data exports<a class="headerlink" href="#custom-data-exports" title="Link to this heading"></a></h3>
+<p>You can make your own custom data export for an app.
+In oTree Studio, go to the “Player” model and click on “custom_export” at the bottom.
+(If using a text editor, define the below function.)
+The argument <code class="docutils literal notranslate"><span class="pre">players</span></code> is a queryset of all the players in the database.
+Use a <code class="docutils literal notranslate"><span class="pre">yield</span></code> for each row of data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">custom_export</span><span class="p">(</span><span class="n">players</span><span class="p">):</span>
+    <span class="c1"># header row</span>
+    <span class="k">yield</span> <span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="s1">&#39;participant_code&#39;</span><span class="p">,</span> <span class="s1">&#39;round_number&#39;</span><span class="p">,</span> <span class="s1">&#39;id_in_group&#39;</span><span class="p">,</span> <span class="s1">&#39;payoff&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">players</span><span class="p">:</span>
+        <span class="n">participant</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">participant</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">session</span>
+        <span class="k">yield</span> <span class="p">[</span><span class="n">session</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">participant</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">round_number</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">id_in_group</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">payoff</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Or, you can ignore the <code class="docutils literal notranslate"><span class="pre">players</span></code> argument and export some other data instead, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">custom_export</span><span class="p">(</span><span class="n">players</span><span class="p">):</span>
+    <span class="c1"># Export an ExtraModel called &quot;Trial&quot;</span>
+
+    <span class="k">yield</span> <span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="s1">&#39;participant&#39;</span><span class="p">,</span> <span class="s1">&#39;round_number&#39;</span><span class="p">,</span> <span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="s1">&#39;response_msec&#39;</span><span class="p">]</span>
+
+    <span class="c1"># &#39;filter&#39; without any args returns everything</span>
+    <span class="n">trials</span> <span class="o">=</span> <span class="n">Trial</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="n">trials</span><span class="p">:</span>
+        <span class="n">player</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">player</span>
+        <span class="n">participant</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">participant</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">session</span>
+        <span class="k">yield</span> <span class="p">[</span><span class="n">session</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">participant</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">round_number</span><span class="p">,</span> <span class="n">trial</span><span class="o">.</span><span class="n">response</span><span class="p">,</span> <span class="n">trial</span><span class="o">.</span><span class="n">response_msec</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Once this function is defined, your custom data export will be available in the
+regular data export page.</p>
+<section id="multiple-custom-export-functions">
+<span id="multiple-custom-export"></span><h4>Multiple custom_export functions<a class="headerlink" href="#multiple-custom-export-functions" title="Link to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use this, you must install <a class="reference internal" href="misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a></p>
+</div>
+<p>You can define multiple custom export functions; just make sure they all start with <code class="docutils literal notranslate"><span class="pre">custom_export</span></code>;
+e.g. <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">custom_export_xyz(players):</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="debug-info">
+<h2>Debug Info<a class="headerlink" href="#debug-info" title="Link to this heading"></a></h2>
+<p>When oTree runs in <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> mode (i.e. when the environment variable
+<code class="docutils literal notranslate"><span class="pre">OTREE_PRODUCTION</span></code> is not set), debug information is displayed
+on the bottom of all screens.</p>
+</section>
+<section id="payments">
+<h2>Payments<a class="headerlink" href="#payments" title="Link to this heading"></a></h2>
+<p>If you define a <a class="reference internal" href="rounds.html#participant-fields"><span class="std std-ref">participant field</span></a> called <cite>finished</cite>,
+then you can set <code class="docutils literal notranslate"><span class="pre">participant.finished</span> <span class="pre">=</span> <span class="pre">True</span></code> when a participant finishes the session,
+and this will be displayed in various places such as the payments page.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="server/server-windows.html" class="btn btn-neutral float-left" title="Windows Server (advanced)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rooms.html" class="btn btn-neutral float-right" title="Rooms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

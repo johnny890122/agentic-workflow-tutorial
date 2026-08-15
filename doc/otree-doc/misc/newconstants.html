@@ -1,0 +1,171 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2022 Constants format change &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">2022 Constants format change</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/misc/newconstants.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="constants-format-change">
+<span id="newconstants"></span><h1>2022 Constants format change<a class="headerlink" href="#constants-format-change" title="Link to this heading"></a></h1>
+<section id="super-short-version">
+<h2>Super short version<a class="headerlink" href="#super-short-version" title="Link to this heading"></a></h2>
+<p>To ensure your code is following the latest format, run this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">otree</span>
+<span class="n">otree</span> <span class="n">upcase_constants</span>
+</pre></div>
+</div>
+</section>
+<section id="details">
+<h2>Details<a class="headerlink" href="#details" title="Link to this heading"></a></h2>
+<p>As of January 2022, there is a new format for constants.</p>
+<p>It changes from this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Constants</span><span class="p">(</span><span class="n">BaseConstants</span><span class="p">):</span>
+    <span class="n">name_in_url</span> <span class="o">=</span> <span class="s1">&#39;public_goods&#39;</span>
+    <span class="n">players_per_group</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">num_rounds</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">xyz</span> <span class="o">=</span> <span class="mi">42</span>
+</pre></div>
+</div>
+<p>To this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">BaseConstants</span><span class="p">):</span>
+    <span class="n">NAME_IN_URL</span> <span class="o">=</span> <span class="s1">&#39;public_goods&#39;</span>
+    <span class="n">PLAYERS_PER_GROUP</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">NUM_ROUNDS</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">XYZ</span> <span class="o">=</span> <span class="mi">42</span>
+</pre></div>
+</div>
+<p>Then to reference a constant, do <code class="docutils literal notranslate"><span class="pre">C.NUM_ROUNDS</span></code> or <code class="docutils literal notranslate"><span class="pre">C.XYZ</span></code>.</p>
+<p>If you want to update your existing projects to the new format,
+run the commands at the top of this page.</p>
+<p>Starting with oTree 5.7, newly created apps use this new all-caps format.</p>
+<p>Using the new constants format is not mandatory, but is recommended so that you can be consistent with the documentation
+and latest code samples. The previous format will continue to work fine.</p>
+<p>The purpose of the change is to harmonize oTree’s code style,
+especially in preparation for upcoming features.
+(Also, if you have prior experience in Python,
+you know that ALL_CAPS is the convention for defining constants.)</p>
+<p>If you are running an old version of oTree and try to run a project written with the new format,
+you will get the error <code class="docutils literal notranslate"><span class="pre">Constants</span> <span class="pre">class</span> <span class="pre">is</span> <span class="pre">missing</span></code> when trying to start the server.</p>
+</section>
+<section id="for-otree-studio-users">
+<h2>For oTree Studio users<a class="headerlink" href="#for-otree-studio-users" title="Link to this heading"></a></h2>
+<p>Your code has already been updated.</p>
+<p>If you haven’t updated oTree recently, just run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">otree</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

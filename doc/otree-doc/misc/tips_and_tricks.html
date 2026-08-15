@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tips and tricks &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced features" href="advanced.html" />
+    <link rel="prev" title="Localization" href="internationalization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Miscellaneous</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rest_api.html">REST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internationalization.html">Localization</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tips and tricks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preventing-code-duplication">Preventing code duplication</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#don-t-make-multiple-copies-of-your-app">Don’t make multiple copies of your app</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-make-many-fields">How to make many fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prevent-duplicate-pages-by-using-multiple-rounds">Prevent duplicate pages by using multiple rounds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avoid-duplicated-validation-methods">Avoid duplicated validation methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avoid-duplicated-page-functions">Avoid duplicated page functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#improving-code-performance">Improving code performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-booleanfield-instead-of-stringfield-where-possible">Use BooleanField instead of StringField, where possible</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#field-maybe-none">field_maybe_none</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bots_advanced.html">Bots: advanced features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otreelite.html">oTree Lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html">Version history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noself.html">The new no-self format</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Miscellaneous</a></li>
+      <li class="breadcrumb-item active">Tips and tricks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/misc/tips_and_tricks.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tips-and-tricks">
+<h1>Tips and tricks<a class="headerlink" href="#tips-and-tricks" title="Link to this heading"></a></h1>
+<section id="preventing-code-duplication">
+<h2>Preventing code duplication<a class="headerlink" href="#preventing-code-duplication" title="Link to this heading"></a></h2>
+<p>As much as possible, it’s good to avoid copy-pasting the same code in
+multiple places. Although it sometimes takes a bit of thinking to figure
+out how to avoid copy-pasting code, you will see that having your code in
+only one place usually saves you
+a lot of effort later when you need to change the design of your code
+or fix bugs.</p>
+<p>Below are some techniques to achieve code reuse.</p>
+<section id="don-t-make-multiple-copies-of-your-app">
+<h3>Don’t make multiple copies of your app<a class="headerlink" href="#don-t-make-multiple-copies-of-your-app" title="Link to this heading"></a></h3>
+<p>If possible, you should avoid copying an app’s folder to make a slightly different version, because then you have
+duplicated code that is harder to maintain.</p>
+<p>If you need multiple rounds, set <code class="docutils literal notranslate"><span class="pre">NUM_ROUNDS</span></code>.
+If you need slightly different versions (e.g. different treatments),
+then you should use the techniques described in <a class="reference internal" href="../treatments.html#treatments"><span class="std std-ref">Treatments</span></a>,
+such as making 2 session configs that have a different
+<code class="docutils literal notranslate"><span class="pre">'treatment'</span></code> parameter,
+and then checking for <code class="docutils literal notranslate"><span class="pre">session.config['treatment']</span></code> in your app’s code.</p>
+</section>
+<section id="how-to-make-many-fields">
+<span id="many-fields"></span><h3>How to make many fields<a class="headerlink" href="#how-to-make-many-fields" title="Link to this heading"></a></h3>
+<p>Let’s say your app has many fields that are almost the same, such as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f2</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f3</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f4</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f5</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f6</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f7</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f8</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f9</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">f10</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+
+    <span class="c1"># etc...</span>
+</pre></div>
+</div>
+<p>This is quite complex; you should look for a way to simplify.</p>
+<p>Are the fields all displayed on separate pages? If so, consider converting
+this to a 10-round game with just one field.</p>
+<p>If that’s not possible, then you can reduce the amount of repeated code
+by defining a function that returns a field:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_field</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioSelect</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+
+    <span class="n">q1</span> <span class="o">=</span> <span class="n">make_field</span><span class="p">(</span><span class="s1">&#39;I am quick to understand things.&#39;</span><span class="p">)</span>
+    <span class="n">q2</span> <span class="o">=</span> <span class="n">make_field</span><span class="p">(</span><span class="s1">&#39;I use difficult words.&#39;</span><span class="p">)</span>
+    <span class="n">q3</span> <span class="o">=</span> <span class="n">make_field</span><span class="p">(</span><span class="s1">&#39;I am full of ideas.&#39;</span><span class="p">)</span>
+    <span class="n">q4</span> <span class="o">=</span> <span class="n">make_field</span><span class="p">(</span><span class="s1">&#39;I have excellent ideas.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="prevent-duplicate-pages-by-using-multiple-rounds">
+<h3>Prevent duplicate pages by using multiple rounds<a class="headerlink" href="#prevent-duplicate-pages-by-using-multiple-rounds" title="Link to this heading"></a></h3>
+<p>If you have many many pages that are almost the same,
+consider just having 1 page and looping it for multiple rounds.
+One sign that your code can be simplified is if it looks
+something like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># [pages 1 through 7....]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Decision8</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;player&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;decision8&#39;</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Decision9</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;player&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;decision9&#39;</span><span class="p">]</span>
+
+<span class="c1"># etc...</span>
+</pre></div>
+</div>
+</section>
+<section id="avoid-duplicated-validation-methods">
+<span id="duplicate-validation-methods"></span><h3>Avoid duplicated validation methods<a class="headerlink" href="#avoid-duplicated-validation-methods" title="Link to this heading"></a></h3>
+<p>If you have many repetitive <a class="reference internal" href="../forms.html#foo-error-message"><span class="std std-ref">FIELD_error_message</span></a> methods,
+you can replace them with a single <a class="reference internal" href="../forms.html#error-message"><span class="std std-ref">error_message</span></a> function.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">quiz1_error_message</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="mi">42</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Wrong answer&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">quiz2_error_message</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="s1">&#39;Ottawa&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Wrong answer&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">quiz3_error_message</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="mf">3.14</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Wrong answer&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">quiz4_error_message</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="s1">&#39;George Washington&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Wrong answer&#39;</span>
+</pre></div>
+</div>
+<p>You can instead define this function on your page:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">error_message</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="n">solutions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">quiz1</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+        <span class="n">quiz2</span><span class="o">=</span><span class="s1">&#39;Ottawa&#39;</span><span class="p">,</span>
+        <span class="n">quiz3</span><span class="o">=</span><span class="s1">&#39;3.14&#39;</span><span class="p">,</span>
+        <span class="n">quiz4</span><span class="o">=</span><span class="s1">&#39;George Washington&#39;</span>
+    <span class="p">)</span>
+
+    <span class="n">error_messages</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">values</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">!=</span> <span class="n">solutions</span><span class="p">[</span><span class="n">field_name</span><span class="p">]:</span>
+            <span class="n">error_messages</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Wrong answer&#39;</span>
+
+    <span class="k">return</span> <span class="n">error_messages</span>
+</pre></div>
+</div>
+<p>(Usually <code class="docutils literal notranslate"><span class="pre">error_message</span></code> is used to return a single error message as a string, but you can also return a dict.)</p>
+</section>
+<section id="avoid-duplicated-page-functions">
+<span id="extract-page-method"></span><h3>Avoid duplicated page functions<a class="headerlink" href="#avoid-duplicated-page-functions" title="Link to this heading"></a></h3>
+<p>Any page function can be moved out of the page class, and into a top-level function.
+This is a handy way to share the same function across multiple pages.
+For example, let’s say many pages need to have these 2 functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Page1</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">:</span> <span class="n">Player</span><span class="p">):</span>
+        <span class="n">participant</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">participant</span>
+
+        <span class="k">return</span> <span class="n">participant</span><span class="o">.</span><span class="n">expiry</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_timeout_seconds</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="n">participant</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">participant</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+        <span class="k">return</span> <span class="n">participant</span><span class="o">.</span><span class="n">expiry</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can move those functions before all the pages (remove the <code class="docutils literal notranslate"><span class="pre">&#64;staticmethod</span></code>),
+and then reference them wherever they need to be used:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_displayed1</span><span class="p">(</span><span class="n">player</span><span class="p">:</span> <span class="n">Player</span><span class="p">):</span>
+    <span class="n">participant</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">participant</span>
+
+    <span class="k">return</span> <span class="n">participant</span><span class="o">.</span><span class="n">expiry</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_timeout_seconds1</span><span class="p">(</span><span class="n">player</span><span class="p">:</span> <span class="n">Player</span><span class="p">):</span>
+    <span class="n">participant</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">participant</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+    <span class="k">return</span> <span class="n">participant</span><span class="o">.</span><span class="n">expiry</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Page1</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">is_displayed</span> <span class="o">=</span> <span class="n">is_displayed1</span>
+    <span class="n">get_timeout_seconds</span> <span class="o">=</span> <span class="n">get_timeout_seconds1</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Page2</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">is_displayed</span> <span class="o">=</span> <span class="n">is_displayed1</span>
+    <span class="n">get_timeout_seconds</span> <span class="o">=</span> <span class="n">get_timeout_seconds1</span>
+</pre></div>
+</div>
+<p>(In the sample games, <code class="docutils literal notranslate"><span class="pre">after_all_players_arrive</span></code> and <code class="docutils literal notranslate"><span class="pre">live_method</span></code> are frequently defined in this manner.)</p>
+</section>
+</section>
+<section id="improving-code-performance">
+<h2>Improving code performance<a class="headerlink" href="#improving-code-performance" title="Link to this heading"></a></h2>
+<p>You should avoid redundant use of <code class="docutils literal notranslate"><span class="pre">get_players()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_player_by_id()</span></code>, <code class="docutils literal notranslate"><span class="pre">in_*_rounds()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">get_others_in_group()</span></code>, or any other methods that return a player or list of players.
+These methods all require a database query,
+which can be slow.</p>
+<p>For example, this code has a redundant query because it asks the database
+5 times for the exact same player:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">vars_for_template</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">player</span><span class="o">.</span><span class="n">in_round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">a</span><span class="p">,</span>
+        <span class="n">b</span><span class="o">=</span><span class="n">player</span><span class="o">.</span><span class="n">in_round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">b</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">player</span><span class="o">.</span><span class="n">in_round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">c</span><span class="p">,</span>
+        <span class="n">d</span><span class="o">=</span><span class="n">player</span><span class="o">.</span><span class="n">in_round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">d</span><span class="p">,</span>
+        <span class="n">e</span><span class="o">=</span><span class="n">player</span><span class="o">.</span><span class="n">in_round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">e</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>It should be simplified to this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">vars_for_template</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="n">round_1_player</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">in_round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">round_1_player</span><span class="o">.</span><span class="n">a</span><span class="p">,</span>
+        <span class="n">b</span><span class="o">=</span><span class="n">round_1_player</span><span class="o">.</span><span class="n">b</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">round_1_player</span><span class="o">.</span><span class="n">c</span><span class="p">,</span>
+        <span class="n">d</span><span class="o">=</span><span class="n">round_1_player</span><span class="o">.</span><span class="n">d</span><span class="p">,</span>
+        <span class="n">e</span><span class="o">=</span><span class="n">round_1_player</span><span class="o">.</span><span class="n">e</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>As an added benefit, this usually makes the code more readable.</p>
+</section>
+<section id="use-booleanfield-instead-of-stringfield-where-possible">
+<h2>Use BooleanField instead of StringField, where possible<a class="headerlink" href="#use-booleanfield-instead-of-stringfield-where-possible" title="Link to this heading"></a></h2>
+<p>Many <code class="docutils literal notranslate"><span class="pre">StringFields</span></code> should be broken down into <code class="docutils literal notranslate"><span class="pre">BooleanFields</span></code>, especially
+if they only have 2 distinct values.</p>
+<p>Suppose you have a field called <code class="docutils literal notranslate"><span class="pre">treatment</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">treatment</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>And let’s say <code class="docutils literal notranslate"><span class="pre">treatment</span></code> it can only have 4 different values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">high_income_high_tax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">high_income_low_tax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">low_income_high_tax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">low_income_low_tax</span></code></p></li>
+</ul>
+<p>In your pages, you might use it like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HighIncome</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s1">&#39;high_income_high_tax&#39;</span> <span class="ow">or</span> <span class="n">player</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s1">&#39;high_income_low_tax&#39;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HighTax</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s1">&#39;high_income_high_tax&#39;</span> <span class="ow">or</span> <span class="n">player</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s1">&#39;low_income_high_tax&#39;</span>
+</pre></div>
+</div>
+<p>It would be much better to break this to 2 separate BooleanFields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">high_income</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+<span class="n">high_tax</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then your pages could be simplified to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HighIncome</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">high_income</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HighTax</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">high_tax</span>
+</pre></div>
+</div>
+</section>
+<section id="field-maybe-none">
+<span id="id1"></span><h2>field_maybe_none<a class="headerlink" href="#field-maybe-none" title="Link to this heading"></a></h2>
+<p>If you access a Player/Group/Subsession field whose value is <code class="docutils literal notranslate"><span class="pre">None</span></code>, oTree will raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.
+This is designed to catch situations where a user forgot to assign a value to that field,
+or forgot to include it in <code class="docutils literal notranslate"><span class="pre">form_fields</span></code>.</p>
+<p>However, sometimes you need to intentionally access a field whose value may be <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+To do this, use <code class="docutils literal notranslate"><span class="pre">field_maybe_none</span></code>, which will suppress the error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># instead of player.abc, do:</span>
+<span class="n">abc</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">field_maybe_none</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+<span class="c1"># also works on group and subsession</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">field_maybe_none</span></code> is new in oTree 5.4 (August 2021).</p>
+</div>
+<p>An alternative solution is to assign an initial value to the field so that its value is never <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">xyz</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">StringField</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="internationalization.html" class="btn btn-neutral float-left" title="Localization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="advanced.html" class="btn btn-neutral float-right" title="Advanced features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

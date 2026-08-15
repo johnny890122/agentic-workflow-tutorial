@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pages &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Templates" href="templates.html" />
+    <link rel="prev" title="Models" href="models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#is-displayed">is_displayed()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vars-for-template">vars_for_template()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#before-next-page">before_next_page()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timeout-seconds">timeout_seconds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wait-pages">Wait pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#randomizing-page-sequence">Randomizing page sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app-after-this-page">app_after_this_page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#back-button">Back button</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#back-button-notes">Back button notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-usage">Advanced usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restrictions-of-back-button">Restrictions of back button</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Pages</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pages.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pages">
+<span id="id1"></span><h1>Pages<a class="headerlink" href="#pages" title="Link to this heading"></a></h1>
+<p>Each page that your participants see is defined by a <code class="docutils literal notranslate"><span class="pre">Page</span></code>.</p>
+<p>Your <code class="docutils literal notranslate"><span class="pre">page_sequence</span></code> gives the order of the pages.</p>
+<p>If your game has multiple rounds, this sequence will be repeated (see <a class="reference internal" href="rounds.html#rounds"><span class="std std-ref">Rounds</span></a>).</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Page</span></code> can have any of the following methods and attributes.</p>
+<section id="is-displayed">
+<span id="id2"></span><h2>is_displayed()<a class="headerlink" href="#is-displayed" title="Link to this heading"></a></h2>
+<p>You can define this function to return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the page should be shown,
+and False if the page should be skipped.
+If omitted, the page will be shown.</p>
+<p>For example, to only show the page to P2 in each group:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Or only show the page in round 1:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">round_number</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>If you need to repeat the same rule for many pages, use <a class="reference internal" href="#app-after-this-page"><span class="std std-ref">app_after_this_page</span></a>.</p>
+</section>
+<section id="vars-for-template">
+<span id="id3"></span><h2>vars_for_template()<a class="headerlink" href="#vars-for-template" title="Link to this heading"></a></h2>
+<p>Use this to pass variables to the template. Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">vars_for_template</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">num_apples</span> <span class="o">*</span> <span class="mi">10</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+        <span class="n">b</span><span class="o">=</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>Then in the template you can access <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> like this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Variables {{ a }} and {{ b }} ...
+</pre></div>
+</div>
+<p>oTree automatically passes the following objects to the template:
+<code class="docutils literal notranslate"><span class="pre">player</span></code>, <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">subsession</span></code>, <code class="docutils literal notranslate"><span class="pre">participant</span></code>, <code class="docutils literal notranslate"><span class="pre">session</span></code>, and <code class="docutils literal notranslate"><span class="pre">C</span></code>.
+You can access them in the template like this: <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">C.BLAH</span> <span class="pre">}}</span></code> or <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">player.blah</span> <span class="pre">}}</span></code>.</p>
+<p>If the user refreshes the page, <code class="docutils literal notranslate"><span class="pre">vars_for_template</span></code> gets re-executed.</p>
+</section>
+<section id="before-next-page">
+<span id="id4"></span><h2>before_next_page()<a class="headerlink" href="#before-next-page" title="Link to this heading"></a></h2>
+<p>Here you define any code that should be executed
+after form validation, before the player proceeds to the next page.</p>
+<p>If the page is skipped with <code class="docutils literal notranslate"><span class="pre">is_displayed</span></code>,
+then <code class="docutils literal notranslate"><span class="pre">before_next_page</span></code> will be skipped as well.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">before_next_page</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">timeout_happened</span><span class="p">):</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">tripled_apples</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">num_apples</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="timeout-seconds">
+<h2>timeout_seconds<a class="headerlink" href="#timeout-seconds" title="Link to this heading"></a></h2>
+<p>See <a class="reference internal" href="timeouts.html#timeouts"><span class="std std-ref">Timeouts</span></a></p>
+</section>
+<section id="wait-pages">
+<h2>Wait pages<a class="headerlink" href="#wait-pages" title="Link to this heading"></a></h2>
+<p>See <a class="reference internal" href="multiplayer/waitpages.html#wait-pages"><span class="std std-ref">Wait pages</span></a></p>
+</section>
+<section id="randomizing-page-sequence">
+<h2>Randomizing page sequence<a class="headerlink" href="#randomizing-page-sequence" title="Link to this heading"></a></h2>
+<p>You can randomize the order of pages using rounds.
+An example is <a class="reference external" href="https://www.otreehub.com/projects/otree-snippets/">here</a>.</p>
+</section>
+<section id="app-after-this-page">
+<span id="id5"></span><h2>app_after_this_page<a class="headerlink" href="#app-after-this-page" title="Link to this heading"></a></h2>
+<p>To skip entire apps, you can define <code class="docutils literal notranslate"><span class="pre">app_after_this_page</span></code>.
+For example, to skip to the next app, you would do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">app_after_this_page</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">upcoming_apps</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">whatever</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">upcoming_apps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">upcoming_apps</span></code> is the remainder of the <code class="docutils literal notranslate"><span class="pre">app_sequence</span></code> (a list of strings).
+Therefore, to skip to the last app, you would return <code class="docutils literal notranslate"><span class="pre">upcoming_apps[-1]</span></code>.
+Or you could just return a hardcoded string
+(as long as that string is in <code class="docutils literal notranslate"><span class="pre">upcoming_apps</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">app_after_this_page</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">upcoming_apps</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;upcoming_apps is&#39;</span><span class="p">,</span> <span class="n">upcoming_apps</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">player</span><span class="o">.</span><span class="n">whatever</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;public_goods&quot;</span>
+</pre></div>
+</div>
+<p>If this function doesn’t return anything,
+the player proceeds to the next page as usual.</p>
+</section>
+<section id="back-button">
+<span id="id6"></span><h2>Back button<a class="headerlink" href="#back-button" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use this, you must install <a class="reference internal" href="misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a></p>
+</div>
+<p>You can now allow participants to click a “Back” button to go to the previous page.</p>
+<p>On the <code class="docutils literal notranslate"><span class="pre">Page</span></code> class, add this attribute:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">allow_back_button</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Then in the template, use <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">back_button</span> <span class="pre">}}</span></code> just as you would use <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">next_button</span> <span class="pre">}}</span></code>.</p>
+<section id="back-button-notes">
+<h3>Back button notes<a class="headerlink" href="#back-button-notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">back_button</span> <span class="pre">}}</span></code> is not the same as the browser’s back button.
+As was the case previously,
+the user should not click the browser’s back button.</p></li>
+<li><p>If you use <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">back_button</span> <span class="pre">}}</span></code> on a page with a form,
+it’s recommended to also use
+<a class="reference internal" href="forms.html#preserve-unsubmitted-inputs"><span class="std std-ref">preserve_unsubmitted_inputs = True</span></a>
+so that the form will not be lost if the user clicks “back”.</p></li>
+</ul>
+</section>
+<section id="advanced-usage">
+<h3>Advanced usage<a class="headerlink" href="#advanced-usage" title="Link to this heading"></a></h3>
+<p>If you don’t want to use the built-in <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">back_button</span> <span class="pre">}}</span></code>,
+you can call the <code class="docutils literal notranslate"><span class="pre">back_button()</span></code> function using JavaScript,
+e.g. <code class="docutils literal notranslate"><span class="pre">&lt;button</span> <span class="pre">type=&quot;button&quot;</span> <span class="pre">onclick=&quot;back_button(1)&quot;&gt;...&lt;/button&gt;</span></code>.</p>
+</section>
+<section id="restrictions-of-back-button">
+<h3>Restrictions of back button<a class="headerlink" href="#restrictions-of-back-button" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Cannot go back through a wait page</p></li>
+<li><p>Cannot go to a previous app</p></li>
+</ul>
+<p>(These restrictions may be relaxed in future versions of oTree.)</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="models.html" class="btn btn-neutral float-left" title="Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="templates.html" class="btn btn-neutral float-right" title="Templates" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

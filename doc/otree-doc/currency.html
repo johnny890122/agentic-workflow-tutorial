@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency and Decimal &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MTurk &amp; Prolific" href="mturk.html" />
+    <link rel="prev" title="Rooms" href="rooms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Currency and Decimal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Currency</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-currency">Configuring currency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-currencies">Using currencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#payoffs">payoffs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#decimalfield">DecimalField</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#decimal-datatype">Decimal datatype</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Currency and Decimal</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/currency.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="currency-and-decimal">
+<span id="currency"></span><h1>Currency and Decimal<a class="headerlink" href="#currency-and-decimal" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>Currency<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>In many experiments, participants play for currency:
+either real money, or points.</p>
+<section id="configuring-currency">
+<h3>Configuring currency<a class="headerlink" href="#configuring-currency" title="Link to this heading"></a></h3>
+<p>Here is how to configure what currency you use (points, dollars, euros, etc.).</p>
+<p>If you are using oTree 6+ it’s recommended to define a <code class="docutils literal notranslate"><span class="pre">DecimalUnit</span></code> class in <code class="docutils literal notranslate"><span class="pre">units.py</span></code>,
+(see the section on <code class="docutils literal notranslate"><span class="pre">DecimalUnit</span></code> for more info):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">USD</span><span class="p">(</span><span class="n">DecimalUnit</span><span class="p">):</span>
+    <span class="n">storage_places</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">input_places</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">input_unit_label</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span>
+    <span class="n">output_min_places</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">output_max_places</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span><span class="n">formatted</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">formatted</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Then in <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> put the path to this class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CURRENCY_UNIT</span> <span class="o">=</span> <span class="s1">&#39;units.USD&#39;</span>
+</pre></div>
+</div>
+<p>If you are using oTree 5, then you should set the <code class="docutils literal notranslate"><span class="pre">REAL_WORLD_CURRENCY_CODE</span></code> and <code class="docutils literal notranslate"><span class="pre">USE_POINTS</span></code> settings.</p>
+</section>
+<section id="using-currencies">
+<h3>Using currencies<a class="headerlink" href="#using-currencies" title="Link to this heading"></a></h3>
+<p>You can write <code class="docutils literal notranslate"><span class="pre">cu(42)</span></code> to represent “42 currency units”.
+It works just like a number
+(e.g. <code class="docutils literal notranslate"><span class="pre">cu(0.1)</span> <span class="pre">+</span> <span class="pre">cu(0.2)</span> <span class="pre">==</span> <span class="pre">cu(0.3)</span></code>).
+The advantage is that when it’s displayed to users, it will automatically
+be formatted as <code class="docutils literal notranslate"><span class="pre">$0.30</span></code> or <code class="docutils literal notranslate"><span class="pre">0,30</span> <span class="pre">€</span></code>, etc., depending on your
+<code class="docutils literal notranslate"><span class="pre">REAL_WORLD_CURRENCY_CODE</span></code> and <code class="docutils literal notranslate"><span class="pre">LANGUAGE_CODE</span></code> settings.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">CurrencyField</span></code> to store currencies in the database.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">random_bonus</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To make a list of currency amounts, use <code class="docutils literal notranslate"><span class="pre">currency_range</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">currency_range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+<span class="c1"># this gives:</span>
+<span class="c1"># [$0.00, $0.02, $0.04, $0.06, $0.08, $0.10]</span>
+</pre></div>
+</div>
+<p>In templates, instead of using the <code class="docutils literal notranslate"><span class="pre">cu()</span></code> function, you should use the
+<code class="docutils literal notranslate"><span class="pre">|cu</span></code> filter.
+For example, <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">20|cu</span> <span class="pre">}}</span></code> displays as <code class="docutils literal notranslate"><span class="pre">20</span> <span class="pre">points</span></code>.</p>
+</section>
+<section id="payoffs">
+<span id="payoff"></span><h3>payoffs<a class="headerlink" href="#payoffs" title="Link to this heading"></a></h3>
+<p>Each player has a <code class="docutils literal notranslate"><span class="pre">payoff</span></code> field.
+If your player makes money, you should store it in this field.
+<code class="docutils literal notranslate"><span class="pre">participant.payoff</span></code> automatically stores the sum of payoffs
+from all subsessions. You can modify <code class="docutils literal notranslate"><span class="pre">participant.payoff</span></code> directly,
+e.g. to round the final payoff to a whole number.</p>
+<p>At the end of the experiment, a participant’s
+total profit can be accessed by <code class="docutils literal notranslate"><span class="pre">participant.payoff_plus_participation_fee()</span></code>.</p>
+</section>
+</section>
+<section id="decimalfield">
+<span id="id2"></span><h2>DecimalField<a class="headerlink" href="#decimalfield" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use this, you must install <a class="reference internal" href="misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a></p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">DecimalField</span></code> is based on the Python <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> datatype,
+which can represent base-10 numbers exactly and therefore avoids annoying arithmetic errors that occur with <code class="docutils literal notranslate"><span class="pre">float</span></code>.
+(You can find lots of info online about this subject.)</p>
+<p>When defining a <code class="docutils literal notranslate"><span class="pre">DecimalField</span></code>, you specify <code class="docutils literal notranslate"><span class="pre">unit=</span></code> to indicate what entity it represents,
+e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xyz</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">units</span><span class="o">.</span><span class="n">Celsius</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And create <code class="docutils literal notranslate"><span class="pre">units.py</span></code> in your project root folder and import that into your app.
+<code class="docutils literal notranslate"><span class="pre">units.py</span></code> should have content like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">otree.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecimalUnit</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Celsius</span><span class="p">(</span><span class="n">DecimalUnit</span><span class="p">):</span>
+    <span class="n">storage_places</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">output_max_places</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">output_min_places</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">input_places</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">input_unit_label</span> <span class="o">=</span> <span class="s1">&#39;°C&#39;</span>
+</pre></div>
+</div>
+<p>This lets you separately configure the precision used for <strong>input</strong> (participant filling a form),
+<strong>storage</strong> (internal calculations and database),
+and <strong>output</strong> (displaying in a template).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">storage_places</span></code> is the number of decimal places used internally (for database storage and calculations).
+If you set <code class="docutils literal notranslate"><span class="pre">storage_places=6</span></code>, then <code class="docutils literal notranslate"><span class="pre">1/3</span></code> will be stored as <code class="docutils literal notranslate"><span class="pre">0.333333</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">output_</span></code> properties apply when displaying the content in a template.
+If you set <code class="docutils literal notranslate"><span class="pre">output_max_places=2</span></code> and <code class="docutils literal notranslate"><span class="pre">output_min_places=0</span></code>, then <code class="docutils literal notranslate"><span class="pre">9.876</span></code> will display as <code class="docutils literal notranslate"><span class="pre">9.87</span></code>.
+but <code class="docutils literal notranslate"><span class="pre">9.000</span></code> will display as <code class="docutils literal notranslate"><span class="pre">9</span></code> (remove trailing zeros).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">input_</span></code> properties are relevant if the field is included in a form.
+If you set <code class="docutils literal notranslate"><span class="pre">input_places=0</span></code>, then the user must input a whole number.
+<code class="docutils literal notranslate"><span class="pre">input_unit_label</span></code> sets the label on the right edge of the number input.</p></li>
+</ul>
+<p>You can also define a function that will generate the display value.
+It takes 2 arguments: the formatted value (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;1,234.5&quot;</span></code>) and the raw numeric value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Celsius</span><span class="p">(</span><span class="n">DecimalUnit</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span><span class="n">formatted</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">raw</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+        <span class="k">elif</span> <span class="n">raw</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span>
+        <span class="k">elif</span> <span class="n">raw</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;yellow&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;span style=&#39;color: </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">;&#39;&gt;</span><span class="si">{</span><span class="n">formatted</span><span class="si">}</span><span class="s2">°C&lt;/span&gt;&quot;</span>
+</pre></div>
+</div>
+<section id="decimal-datatype">
+<h3>Decimal datatype<a class="headerlink" href="#decimal-datatype" title="Link to this heading"></a></h3>
+<p>Apart from database fields,
+you can define decimal values throughout your code by calling the unit type directly,
+e.g. <code class="docutils literal notranslate"><span class="pre">ROOM_TEMP</span> <span class="pre">=</span> <span class="pre">units.Celsius(25)</span></code>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rooms.html" class="btn btn-neutral float-left" title="Rooms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mturk.html" class="btn btn-neutral float-right" title="MTurk &amp; Prolific" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

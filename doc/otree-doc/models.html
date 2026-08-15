@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Models &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pages" href="pages.html" />
+    <link rel="prev" title="Conceptual overview" href="conceptual_overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#field-types">Field types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-default-value">Initial/default value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#min-max-choices">min, max, choices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-fields-and-methods">Built-in fields and methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subsession">Subsession</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#round-number">round_number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-groups">get_groups()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-players">get_players()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-subsession-methods">Other subsession methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#group">Group</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">round_number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-group-methods">Other group methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#player">Player</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id-in-group">id_in_group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#payoff">payoff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">round_number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-player-methods">Other player methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#session">Session</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#num-participants">num_participants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config">config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vars">vars</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#participant">Participant</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id-in-session">id_in_session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-participant-attributes-and-methods">Other participant attributes and methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h1>
+<p>An oTree app has 3 data models: Subsession, Group, and Player.</p>
+<p>A player is part of a group, which is part of a subsession.
+See <a class="reference internal" href="conceptual_overview.html#conceptual-overview"><span class="std std-ref">Conceptual overview</span></a>.</p>
+<p>Let’s say you want your experiment to generate data
+that looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span>    <span class="n">age</span> <span class="n">is_student</span>
+<span class="n">John</span>    <span class="mi">30</span>  <span class="kc">False</span>
+<span class="n">Alice</span>   <span class="mi">22</span>  <span class="kc">True</span>
+<span class="n">Bob</span>     <span class="mi">35</span>  <span class="kc">False</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Here is how to define the above table structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">is_student</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>So, a <strong>model</strong> is essentially a database table.
+And a <strong>field</strong> is a column in a table.</p>
+<section id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Link to this heading"></a></h2>
+<section id="field-types">
+<h3>Field types<a class="headerlink" href="#field-types" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BooleanField</span></code> (for true/false and yes/no values)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CurrencyField</span></code> for currency amounts; see <a class="reference internal" href="currency.html#currency"><span class="std std-ref">Currency and Decimal</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IntegerField</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FloatField</span></code> (for real numbers)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StringField</span></code> (for text strings)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LongStringField</span></code> (for long text strings; its form widget is a multi-line textarea)</p></li>
+</ul>
+</section>
+<section id="initial-default-value">
+<h3>Initial/default value<a class="headerlink" href="#initial-default-value" title="Link to this heading"></a></h3>
+<p>Your field’s initial value will be <code class="docutils literal notranslate"><span class="pre">None</span></code>, unless you set <code class="docutils literal notranslate"><span class="pre">initial=</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">some_number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="min-max-choices">
+<h3>min, max, choices<a class="headerlink" href="#min-max-choices" title="Link to this heading"></a></h3>
+<p>For info on how to set a field’s <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, or <code class="docutils literal notranslate"><span class="pre">choices</span></code>,
+see <a class="reference internal" href="forms.html#form-validation"><span class="std std-ref">Simple form field validation</span></a>.</p>
+</section>
+</section>
+<section id="built-in-fields-and-methods">
+<h2>Built-in fields and methods<a class="headerlink" href="#built-in-fields-and-methods" title="Link to this heading"></a></h2>
+<p>Player, group, and subsession already have some predefined fields.
+For example, <code class="docutils literal notranslate"><span class="pre">Player</span></code> has fields called <code class="docutils literal notranslate"><span class="pre">payoff</span></code>
+and <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>, as well as methods like
+<code class="docutils literal notranslate"><span class="pre">in_all_rounds()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_others_in_group()</span></code>.</p>
+<p>These built-in fields and methods are listed below.</p>
+<section id="subsession">
+<h3>Subsession<a class="headerlink" href="#subsession" title="Link to this heading"></a></h3>
+<section id="round-number">
+<h4>round_number<a class="headerlink" href="#round-number" title="Link to this heading"></a></h4>
+<p>Gives the current round number.
+Only relevant if the app has multiple rounds
+(set in <code class="docutils literal notranslate"><span class="pre">C.NUM_ROUNDS</span></code>).
+See <a class="reference internal" href="rounds.html#rounds"><span class="std std-ref">Rounds</span></a>.</p>
+</section>
+<section id="get-groups">
+<h4>get_groups()<a class="headerlink" href="#get-groups" title="Link to this heading"></a></h4>
+<p>Returns a list of all the groups in the subsession.</p>
+</section>
+<section id="get-players">
+<h4>get_players()<a class="headerlink" href="#get-players" title="Link to this heading"></a></h4>
+<p>Returns a list of all the players in the subsession.</p>
+</section>
+<section id="other-subsession-methods">
+<h4>Other subsession methods<a class="headerlink" href="#other-subsession-methods" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference internal" href="multiplayer/groups.html#shuffling"><span class="std std-ref">group_randomly()</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#shuffling"><span class="std std-ref">group_like_round()</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#shuffling"><span class="std std-ref">get_group_matrix()</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#shuffling"><span class="std std-ref">set_group_matrix()</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_all_rounds()</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_previous_rounds()</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_rounds(first, last)</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_round(round_number)</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="group">
+<h3>Group<a class="headerlink" href="#group" title="Link to this heading"></a></h3>
+<section id="id1">
+<h4>round_number<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>Gives the current round number.</p>
+</section>
+<section id="other-group-methods">
+<h4>Other group methods<a class="headerlink" href="#other-group-methods" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_all_rounds()</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_previous_rounds()</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_rounds(first, last)</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_round(round_number)</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#groups"><span class="std std-ref">get_player_by_role(role)</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#groups"><span class="std std-ref">get_player_by_id(id_in_group)</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#groups"><span class="std std-ref">get_players()</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#groups"><span class="std std-ref">set_players()</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="player">
+<h3>Player<a class="headerlink" href="#player" title="Link to this heading"></a></h3>
+<section id="id-in-group">
+<h4>id_in_group<a class="headerlink" href="#id-in-group" title="Link to this heading"></a></h4>
+<p>Automatically assigned integer starting from 1. In multiplayer games,
+indicates whether this is player 1, player 2, etc.</p>
+</section>
+<section id="payoff">
+<h4>payoff<a class="headerlink" href="#payoff" title="Link to this heading"></a></h4>
+<p>The player’s payoff in this round. See <a class="reference internal" href="currency.html#payoff"><span class="std std-ref">payoffs</span></a>.</p>
+</section>
+<section id="id2">
+<h4>round_number<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<p>Gives the current round number.</p>
+</section>
+<section id="other-player-methods">
+<h4>Other player methods<a class="headerlink" href="#other-player-methods" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_all_rounds()</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_previous_rounds()</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_rounds(first, last)</span></a></p></li>
+<li><p><a class="reference internal" href="rounds.html#in-rounds"><span class="std std-ref">in_round(round_number)</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#groups"><span class="std std-ref">get_others_in_subsession()</span></a></p></li>
+<li><p><a class="reference internal" href="multiplayer/groups.html#groups"><span class="std std-ref">get_others_in_group()</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="session">
+<h3>Session<a class="headerlink" href="#session" title="Link to this heading"></a></h3>
+<section id="num-participants">
+<h4>num_participants<a class="headerlink" href="#num-participants" title="Link to this heading"></a></h4>
+<p>The number of participants in the session.</p>
+</section>
+<section id="config">
+<h4>config<a class="headerlink" href="#config" title="Link to this heading"></a></h4>
+<p>See <a class="reference internal" href="treatments.html#session-config-treatments"><span class="std std-ref">Choosing which treatment to play</span></a>.</p>
+</section>
+<section id="vars">
+<h4>vars<a class="headerlink" href="#vars" title="Link to this heading"></a></h4>
+<p>See <a class="reference internal" href="rounds.html#session-vars"><span class="std std-ref">Session fields</span></a>.</p>
+</section>
+</section>
+<section id="participant">
+<h3>Participant<a class="headerlink" href="#participant" title="Link to this heading"></a></h3>
+<section id="id-in-session">
+<h4>id_in_session<a class="headerlink" href="#id-in-session" title="Link to this heading"></a></h4>
+<p>The participant’s ID in the session. This is the same as the player’s
+<code class="docutils literal notranslate"><span class="pre">id_in_subsession</span></code>.</p>
+</section>
+<section id="other-participant-attributes-and-methods">
+<h4>Other participant attributes and methods<a class="headerlink" href="#other-participant-attributes-and-methods" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference internal" href="rounds.html#vars"><span class="std std-ref">vars</span></a></p></li>
+<li><p><a class="reference internal" href="admin.html#participant-label"><span class="std std-ref">label</span></a></p></li>
+<li><p><a class="reference internal" href="currency.html#payoff"><span class="std std-ref">payoff</span></a></p></li>
+<li><p><a class="reference internal" href="currency.html#payoff"><span class="std std-ref">payoff_plus_participation_fee</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="constants">
+<span id="id3"></span><h3>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">C</span></code> is the recommended place to put your app’s
+parameters and constants that do not vary from player
+to player.</p>
+<p>Here are the built-in constants:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PLAYERS_PER_GROUP</span></code> (described in <a class="reference internal" href="multiplayer/groups.html#groups"><span class="std std-ref">Groups</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NUM_ROUNDS</span></code> (described in <a class="reference internal" href="rounds.html#rounds"><span class="std std-ref">Rounds</span></a>)</p></li>
+</ul>
+<p>if you don’t want your app’s real name
+to be displayed in URLs,
+define a string constant <code class="docutils literal notranslate"><span class="pre">NAME_IN_URL</span></code> with your desired name.</p>
+<p>Constants can be numbers, strings, booleans, lists, etc.
+But for more complex data types like dicts, lists of dicts, etc,
+you should instead define it in a function. For example,
+instead of defining a Constant called <code class="docutils literal notranslate"><span class="pre">my_dict</span></code>, do this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_dict</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conceptual_overview.html" class="btn btn-neutral float-left" title="Conceptual overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pages.html" class="btn btn-neutral float-right" title="Pages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

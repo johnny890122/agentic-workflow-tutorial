@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# oTree
+staticfiles
+_static_root
+*.sqlite3
+_bots*s
+__temp*
+*.otreezip
+.idea/
+.DS_Store

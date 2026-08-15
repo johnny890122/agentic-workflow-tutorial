@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Server Setup (Heroku) &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ubuntu Linux Server" href="ubuntu.html" />
+    <link rel="prev" title="Server setup" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Server setup</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basic Server Setup (Heroku)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#heroku-setup">Heroku setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#server-performance">Server performance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ubuntu.html">Ubuntu Linux Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server-windows.html">Windows Server (advanced)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Server setup</a></li>
+      <li class="breadcrumb-item active">Basic Server Setup (Heroku)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server/heroku.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-server-setup-heroku">
+<span id="heroku"></span><h1>Basic Server Setup (Heroku)<a class="headerlink" href="#basic-server-setup-heroku" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://www.heroku.com/">Heroku</a> is a commercial cloud hosting provider.
+It is the simplest way to deploy oTree.</p>
+<p>The Heroku free plan is sufficient for testing your app,
+but once you are ready to launch a study, you should upgrade to a paid server,
+which can handle more traffic. However, Heroku is quite inexpensive,
+because you only pay for the time you actually use it.
+If you run a study for only 1 day, you can turn off your dynos and addons,
+and then you only pay 1/30 of the monthly cost.
+Often this means you can run a study for just a few dollars.</p>
+<section id="heroku-setup">
+<h2>Heroku setup<a class="headerlink" href="#heroku-setup" title="Link to this heading"></a></h2>
+<p>To deploy to Heroku, you should use
+<a class="reference external" href="https://www.otreehub.com/">oTree Hub</a>, which automates your server setup
+and ensures your server is correctly configured.</p>
+<p>oTree Hub also offers error/performance monitoring.</p>
+</section>
+<section id="server-performance">
+<span id="perf"></span><h2>Server performance<a class="headerlink" href="#server-performance" title="Link to this heading"></a></h2>
+<p>Heroku offers different performance tiers for resources such as your dyno and database.
+What tier you need depends on how much traffic your app will get, and how it is coded.</p>
+<p>Performance is a complicated subject since there are many factors that affect performance.
+oTree Hub’s Pro plan has a “monitor” section that will analyze your logs to identify
+performance issues.</p>
+<p>General tips:</p>
+<ul class="simple">
+<li><p>Upgrade oTree to the latest version</p></li>
+<li><p>Use browser bots to stress-test your app.</p></li>
+<li><p>With the higher dyno tiers, Heroku provides a “Metrics” tab. Look at “Dyno load”.
+If users are experiencing slow page load times and your your dyno load stays above 1,
+then you should get a faster dyno. (But don’t run more than 1 web dyno.)</p></li>
+<li><p>If your dyno load stays under 1 but page load times are still slow,
+the bottleneck might be something else like your Postgres database.</p></li>
+</ul>
+<p>The most demanding sessions are the ones with a combination of (1) many rounds, (2) players
+spending just a few seconds on each page, and (3) many players playing concurrently,
+because these sessions have a high number of page requests per second, which can overload the server.
+Consider adapting these games to use <a class="reference internal" href="../live.html#live"><span class="std std-ref">Live pages</span></a>, which will result in much faster performance.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro.html" class="btn btn-neutral float-left" title="Server setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ubuntu.html" class="btn btn-neutral float-right" title="Ubuntu Linux Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

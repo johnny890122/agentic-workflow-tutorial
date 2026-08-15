@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooms &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Currency and Decimal" href="currency.html" />
+    <link rel="prev" title="Admin" href="admin.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rooms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-rooms">Creating rooms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#if-using-otree-studio">If using oTree Studio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-using-pycharm">If using PyCharm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-a-room">Configuring a room</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#participant-labels">Participant labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-secure-urls-optional">use_secure_urls (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-rooms">Using rooms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#if-you-have-a-participant-label-file">If you have a participant_label_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-you-don-t-have-a-participant-label-file">If you don’t have a participant_label_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reusing-for-multiple-sessions">Reusing for multiple sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-if-not-all-participants-show-up">What if not all participants show up?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pre-assigning-participants-to-labels">Pre-assigning participants to labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-data-about-a-participant-into-otree">Passing data about a participant into oTree</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#room-welcome-pages-consent-forms-etc">Room welcome pages (consent forms, etc)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#technical-details">Technical details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-case-button-only-no-form-fields">Simple case: button only, no form fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consent-form-quiz-etc">Consent form / quiz, etc.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-welcome-page-manual-entry-of-participant-label">Custom welcome page + manual entry of participant label</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Rooms</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rooms.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rooms">
+<span id="id1"></span><h1>Rooms<a class="headerlink" href="#rooms" title="Link to this heading"></a></h1>
+<p>oTree lets you configure “rooms”, which provide:</p>
+<ul class="simple">
+<li><p>Links that you can assign to participants or lab computers,
+which stay constant across sessions</p></li>
+<li><p>A “waiting room” that lets you see which participants are currently waiting to start a session.</p></li>
+<li><p>Short links that are easy for participants to type, good for quick live demos.</p></li>
+</ul>
+<p>Here is a screenshot:</p>
+<figure class="align-center">
+<img alt="_images/room-combined.png" src="_images/room-combined.png" />
+</figure>
+<section id="creating-rooms">
+<h2>Creating rooms<a class="headerlink" href="#creating-rooms" title="Link to this heading"></a></h2>
+<p>You can create multiple rooms – say, for for different classes you teach,
+or different labs you manage.</p>
+<section id="if-using-otree-studio">
+<h3>If using oTree Studio<a class="headerlink" href="#if-using-otree-studio" title="Link to this heading"></a></h3>
+<p>In the sidebar, go to “Settings” and then add a room at the bottom.</p>
+</section>
+<section id="if-using-pycharm">
+<h3>If using PyCharm<a class="headerlink" href="#if-using-pycharm" title="Link to this heading"></a></h3>
+<p>Go to your <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> and set <code class="docutils literal notranslate"><span class="pre">ROOMS</span></code>.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ROOMS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;econ101&#39;</span><span class="p">,</span>
+        <span class="n">display_name</span><span class="o">=</span><span class="s1">&#39;Econ 101 class&#39;</span><span class="p">,</span>
+        <span class="n">participant_label_file</span><span class="o">=</span><span class="s1">&#39;_rooms/econ101.txt&#39;</span><span class="p">,</span>
+        <span class="n">use_secure_urls</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">),</span>
+    <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;econ_lab&#39;</span><span class="p">,</span>
+        <span class="n">display_name</span><span class="o">=</span><span class="s1">&#39;Experimental Economics Lab&#39;</span>
+    <span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>If you are using participant labels (see below),
+you need a <code class="docutils literal notranslate"><span class="pre">participant_label_file</span></code> which is a relative (or absolute) path to a
+text file with the participant labels.</p>
+</section>
+</section>
+<section id="configuring-a-room">
+<h2>Configuring a room<a class="headerlink" href="#configuring-a-room" title="Link to this heading"></a></h2>
+<section id="participant-labels">
+<h3>Participant labels<a class="headerlink" href="#participant-labels" title="Link to this heading"></a></h3>
+<p>This is the “guest list” for the room.
+It should contain one participant label per line. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LAB01</span>
+<span class="n">LAB02</span>
+<span class="n">LAB03</span>
+<span class="n">LAB04</span>
+<span class="n">LAB05</span>
+<span class="n">LAB06</span>
+<span class="n">LAB07</span>
+<span class="n">LAB08</span>
+<span class="n">LAB09</span>
+<span class="n">LAB10</span>
+</pre></div>
+</div>
+<p>If you don’t specify participant labels, then anyone can join
+as long as they know the room-wide URL.
+See <a class="reference internal" href="#no-participant-labels"><span class="std std-ref">If you don’t have a participant_label_file</span></a>.</p>
+</section>
+<section id="use-secure-urls-optional">
+<h3>use_secure_urls (optional)<a class="headerlink" href="#use-secure-urls-optional" title="Link to this heading"></a></h3>
+<p>This setting provides extra security on top of the <code class="docutils literal notranslate"><span class="pre">participant_label_file</span></code>.
+For example, without secure URLs, your start URLs would look something
+like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8000/room/econ101/?participant_label=Student1
+http://localhost:8000/room/econ101/?participant_label=Student2
+</pre></div>
+</div>
+<p>If Student1 is mischievous,
+he might change his URL’s participant_label from “Student1” to “Student2”,
+so that he can impersonate Student2.
+However, if you use <code class="docutils literal notranslate"><span class="pre">use_secure_urls</span></code>,
+each URL gets a unique code like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8000/room/econ101/?participant_label=Student1&amp;hash=29cd655f
+http://localhost:8000/room/econ101/?participant_label=Student2&amp;hash=46d9f31d
+</pre></div>
+</div>
+<p>Then, Student1 can’t impersonate Student2 without the secret code.</p>
+</section>
+</section>
+<section id="using-rooms">
+<h2>Using rooms<a class="headerlink" href="#using-rooms" title="Link to this heading"></a></h2>
+<p>In the admin interface, click “Rooms” in the header bar,
+and click the room you created.
+Scroll down to the section with the participant URLs.</p>
+<section id="if-you-have-a-participant-label-file">
+<h3>If you have a participant_label_file<a class="headerlink" href="#if-you-have-a-participant-label-file" title="Link to this heading"></a></h3>
+<p>In the room’s admin page, monitor which participants are present,
+and when you are ready, create a session for the desired number of people.</p>
+<p>You can either use the participant-specific URLs, or the room-wide URL.</p>
+<p>The participant-specific URLs already contain the participant label.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8000/room/econ101/?participant_label=Student2
+</pre></div>
+</div>
+<p>The room-wide URL does not contain it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">room</span><span class="o">/</span><span class="n">econ101</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>So, if you use room-wide URLs, participants will be required to enter their participant label:</p>
+<figure class="align-center">
+<img alt="_images/room-combined.png" src="_images/room-combined.png" />
+</figure>
+</section>
+<section id="if-you-don-t-have-a-participant-label-file">
+<span id="no-participant-labels"></span><h3>If you don’t have a participant_label_file<a class="headerlink" href="#if-you-don-t-have-a-participant-label-file" title="Link to this heading"></a></h3>
+<p>Just have each participant open the room-wide URL.
+Then, in the room’s admin page, check how many people are present,
+and create a session for the desired number of people.</p>
+<p>Although this option is simple, it is less reliable than using participant labels,
+because someone could play twice by opening the URL in 2 different browsers.</p>
+</section>
+<section id="reusing-for-multiple-sessions">
+<h3>Reusing for multiple sessions<a class="headerlink" href="#reusing-for-multiple-sessions" title="Link to this heading"></a></h3>
+<p>Room URLs are designed to be reused across sessions.
+In a lab, you can set them as the browser’s home page
+(using either room-wide or participant-specific URLs).</p>
+<p>In classroom experiments, you can give each student their URL that they can use
+through the semester.</p>
+</section>
+<section id="what-if-not-all-participants-show-up">
+<h3>What if not all participants show up?<a class="headerlink" href="#what-if-not-all-participants-show-up" title="Link to this heading"></a></h3>
+<p>If you’re doing a lab experiment and the number of participants is unpredictable,
+you can consider using the room-wide URL, and asking participants to manually enter their
+participant label. Participants are only counted as present after they enter their participant label.</p>
+<p>Or, you can open the browsers to participant-specific URLs,
+but before creating the session, close the browsers on unattended computers.</p>
+<p>Participants can join after the session has been created, as long as there are spots remaining.</p>
+</section>
+<section id="pre-assigning-participants-to-labels">
+<h3>Pre-assigning participants to labels<a class="headerlink" href="#pre-assigning-participants-to-labels" title="Link to this heading"></a></h3>
+<p>oTree assigns participants based on arrival time, e.g. the first person to arrive is participant 1.
+However, in some situations this may be undesirable, for example:</p>
+<ul class="simple">
+<li><p>You want your participant labels to line up with the oTree IDs,
+in a fixed order, e.g. so that LAB29 will always be participant 29.</p></li>
+<li><p>You want Alice/Bob/Charlie to always be participants 1/2/3,
+so that they get grouped to play together.</p></li>
+</ul>
+<p>Just assign those participant labels in <code class="docutils literal notranslate"><span class="pre">creating_session</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">creating_session</span><span class="p">(</span><span class="n">subsession</span><span class="p">):</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">,</span> <span class="s1">&#39;charlie&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">player</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">subsession</span><span class="o">.</span><span class="n">get_players</span><span class="p">(),</span> <span class="n">labels</span><span class="p">):</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">participant</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+</pre></div>
+</div>
+<p>If someone opens a start link with <code class="docutils literal notranslate"><span class="pre">participant_label=alice</span></code>,
+oTree checks if any participant in the session already has that label.
+(This is necessary so that clicking a start link twice assigns back to the same participant.)</p>
+</section>
+<section id="passing-data-about-a-participant-into-otree">
+<h3>Passing data about a participant into oTree<a class="headerlink" href="#passing-data-about-a-participant-into-otree" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="misc/rest_api.html#participant-vars-rest"><span class="std std-ref">“Participant vars for room” endpoint</span></a>.</p>
+</section>
+</section>
+<section id="room-welcome-pages-consent-forms-etc">
+<span id="welcome-page"></span><h2>Room welcome pages (consent forms, etc)<a class="headerlink" href="#room-welcome-pages-consent-forms-etc" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use this, you must install <a class="reference internal" href="misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a></p>
+</div>
+<p>When you use a Room, oTree will show a Welcome page
+that asks the user to confirm to start.</p>
+<p>This page is customizable.
+This means you can put a consent form or questionnaire or any other content.</p>
+<section id="technical-details">
+<h3>Technical details<a class="headerlink" href="#technical-details" title="Link to this heading"></a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>, add <code class="docutils literal notranslate"><span class="pre">welcome_page</span></code> in your room definition:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ROOMS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_room&#39;</span><span class="p">,</span>
+        <span class="n">display_name</span><span class="o">=</span><span class="s2">&quot;My Room&quot;</span><span class="p">,</span>
+        <span class="n">welcome_page</span><span class="o">=</span><span class="s2">&quot;_welcome_pages/RoomWelcomePage.html&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The welcome page is raw HTML. It doesn’t use oTree’s template system with <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">formfields</span> <span class="pre">}}</span></code>,
+etc.</p>
+<p>The job of your welcome page is
+(1) to optionally validate the user (have them enter any info, check their response),
+and (2) when they submit, send them to the room by adding <code class="docutils literal notranslate"><span class="pre">welcome_page_ok=1</span></code> to the URL.</p>
+</section>
+<section id="simple-case-button-only-no-form-fields">
+<h3>Simple case: button only, no form fields<a class="headerlink" href="#simple-case-button-only-no-form-fields" title="Link to this heading"></a></h3>
+<p>If you only need the participant to click to start the experiment
+(without any form fields),
+all you need to do is add <code class="docutils literal notranslate"><span class="pre">welcome_page_ok=1</span></code> to the URL query string,
+then reload the page.</p>
+<div class="highlight-html+django notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Welcome<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>
+        Welcome
+    <span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Start<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">urlParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URLSearchParams</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="w">            </span><span class="nx">urlParams</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;welcome_page_ok&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+<span class="w">            </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;?&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">urlParams</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="consent-form-quiz-etc">
+<h3>Consent form / quiz, etc.<a class="headerlink" href="#consent-form-quiz-etc" title="Link to this heading"></a></h3>
+<p>You can add any form fields you want (dropdowns, checkboxes, etc.)
+and check the user’s inputs using JavaScript and HTML attributes such as
+<code class="docutils literal notranslate"><span class="pre">required</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, etc.
+When it’s validated, then add <code class="docutils literal notranslate"><span class="pre">welcome_page_ok</span></code> as above.</p>
+</section>
+<section id="custom-welcome-page-manual-entry-of-participant-label">
+<h3>Custom welcome page + manual entry of participant label<a class="headerlink" href="#custom-welcome-page-manual-entry-of-participant-label" title="Link to this heading"></a></h3>
+<p>If your app has a <code class="docutils literal notranslate"><span class="pre">participant_label_file</span></code> and you want users to enter their labels manually,
+then you need to validate that it’s correct.
+This can be done with an AJAX POST request to the page’s URL,
+passing JSON like <code class="docutils literal notranslate"><span class="pre">{&quot;participant_label&quot;:</span> <span class="pre">&quot;JohnSmith&quot;}</span></code>.
+If the validation fails, the server will send back JSON like
+<code class="docutils literal notranslate"><span class="pre">{&quot;errors&quot;:</span> <span class="pre">{&quot;participant_label&quot;:</span> <span class="pre">&quot;Invalid</span> <span class="pre">participant</span> <span class="pre">label&quot;}}</span></code>.
+Display a message to your user and ask them to re-enter.</p>
+<p>Once it succeeds, the server will return <code class="docutils literal notranslate"><span class="pre">{&quot;status&quot;:</span> <span class="pre">&quot;ok&quot;}</span></code>.
+in that case, you should append <code class="docutils literal notranslate"><span class="pre">welcome_page_ok=1</span></code> to the URL and reload.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="admin.html" class="btn btn-neutral float-left" title="Admin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="currency.html" class="btn btn-neutral float-right" title="Currency and Decimal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

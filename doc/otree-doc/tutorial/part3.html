@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Part 3: Trust game &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conceptual overview" href="../conceptual_overview.html" />
+    <link rel="prev" title="Part 2: Public goods game" href="part2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="part1_studio.html">Part 1: Simple survey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part2.html">Part 2: Public goods game</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Part 3: Trust game</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-the-app">Create the app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-the-templates-and-pages">Define the templates and pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#send-page">Send page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sendback-html">SendBack.html</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wait-pages-and-page-sequence">Wait pages and page sequence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#add-an-entry-to-your-session-configs">Add an entry to your <code class="docutils literal notranslate"><span class="pre">SESSION_CONFIGS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-server">Run the server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Tutorial</a></li>
+      <li class="breadcrumb-item active">Part 3: Trust game</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/part3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="part-3-trust-game">
+<h1>Part 3: Trust game<a class="headerlink" href="#part-3-trust-game" title="Link to this heading"></a></h1>
+<p>Now let’s create a 2-player <a class="reference external" href="https://en.wikibooks.org/wiki/Bestiary_of_Behavioral_Economics/Trust_Game">Trust game</a>,
+and learn some more features of oTree.</p>
+<p>To start, Player 1 receives 10 points; Player 2 receives nothing. Player
+1 can send some or all of his points to Player 2. Before P2 receives
+these points they will be tripled. Once P2 receives the tripled points he
+can decide to send some or all of his points to P1.</p>
+<p>The completed app is
+<a class="reference external" href="https://github.com/oTree-org/oTree/tree/lite/trust_simple">here</a>.</p>
+<section id="create-the-app">
+<h2>Create the app<a class="headerlink" href="#create-the-app" title="Link to this heading"></a></h2>
+<p>Just as in the previous part of the tutorial, create another app, called <code class="docutils literal notranslate"><span class="pre">my_trust</span></code>.</p>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p>Go to your app’s constants class (<code class="docutils literal notranslate"><span class="pre">C</span></code>).</p>
+<p>First we define our app’s constants. The endowment is 10 points and the
+donation gets tripled.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">BaseConstants</span><span class="p">):</span>
+    <span class="n">NAME_IN_URL</span> <span class="o">=</span> <span class="s1">&#39;my_trust&#39;</span>
+    <span class="n">PLAYERS_PER_GROUP</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">NUM_ROUNDS</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">ENDOWMENT</span> <span class="o">=</span> <span class="n">cu</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">MULTIPLICATION_FACTOR</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="models">
+<h2>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h2>
+<p>Then we add fields to player and group. There are 2
+critical data points to record: the “sent” amount from P1, and the
+“sent back” amount from P2.</p>
+<p>Your first instinct may be to define the fields on the Player like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t copy paste this</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+
+    <span class="n">sent_amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+    <span class="n">sent_back_amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The problem with this model is that <code class="docutils literal notranslate"><span class="pre">sent_amount</span></code> only applies to P1,
+and <code class="docutils literal notranslate"><span class="pre">sent_back_amount</span></code> only applies to P2. It does not make sense that
+P1 should have a field called <code class="docutils literal notranslate"><span class="pre">sent_back_amount</span></code>. How can we make our
+data model more accurate?</p>
+<p>We can do it by defining those fields at the <code class="docutils literal notranslate"><span class="pre">Group</span></code> level. This makes
+sense because each group has exactly 1 <code class="docutils literal notranslate"><span class="pre">sent_amount</span></code> and exactly 1
+<code class="docutils literal notranslate"><span class="pre">sent_back_amount</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">BaseGroup</span><span class="p">):</span>
+
+    <span class="n">sent_amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;How much do you want to send to participant B?&quot;</span>
+    <span class="p">)</span>
+    <span class="n">sent_back_amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;How much do you want to send back?&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>We also define a function called <code class="docutils literal notranslate"><span class="pre">sent_back_amount_choices</span></code> to populate the
+dropdown menu dynamically. This is the feature called
+<code class="docutils literal notranslate"><span class="pre">{field_name}_choices</span></code>, which is explained here: <a class="reference internal" href="../forms.html#dynamic-validation"><span class="std std-ref">Dynamic form field validation</span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sent_back_amount_choices</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">currency_range</span><span class="p">(</span>
+        <span class="mi">0</span><span class="p">,</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">sent_amount</span> <span class="o">*</span> <span class="n">C</span><span class="o">.</span><span class="n">MULTIPLICATION_FACTOR</span><span class="p">,</span>
+        <span class="mi">1</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="define-the-templates-and-pages">
+<h2>Define the templates and pages<a class="headerlink" href="#define-the-templates-and-pages" title="Link to this heading"></a></h2>
+<p>We need 3 pages:</p>
+<ul class="simple">
+<li><p>P1’s “Send” page</p></li>
+<li><p>P2’s “Send back” page</p></li>
+<li><p>“Results” page that both users see.</p></li>
+</ul>
+<section id="send-page">
+<h3>Send page<a class="headerlink" href="#send-page" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Send</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;group&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sent_amount&#39;</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>We use <a class="reference internal" href="../pages.html#is-displayed"><span class="std std-ref">is_displayed()</span></a> to only show this to P1; P2 skips the
+page. For more info on <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>, see <a class="reference internal" href="../multiplayer/groups.html#groups"><span class="std std-ref">Groups</span></a>.</p>
+<p>For the template, set the <code class="docutils literal notranslate"><span class="pre">title</span></code> to <code class="docutils literal notranslate"><span class="pre">Trust</span> <span class="pre">Game:</span> <span class="pre">Your</span> <span class="pre">Choice</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">content</span></code> to:</p>
+<div class="highlight-django notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;p&gt;</span>
+<span class="x">You are Participant A. Now you have </span><span class="cp">{{</span><span class="nv">C.ENDOWMENT</span><span class="cp">}}</span><span class="x">.</span>
+<span class="x">&lt;/p&gt;</span>
+
+<span class="cp">{{</span> <span class="nv">formfields</span> <span class="cp">}}</span>
+
+<span class="cp">{{</span> <span class="nv">next_button</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+</section>
+<section id="sendback-html">
+<h3>SendBack.html<a class="headerlink" href="#sendback-html" title="Link to this heading"></a></h3>
+<p>This is the page that P2 sees to send money back.
+Set the <code class="docutils literal notranslate"><span class="pre">title</span></code> block to <code class="docutils literal notranslate"><span class="pre">Trust</span> <span class="pre">Game:</span> <span class="pre">Your</span> <span class="pre">Choice</span></code>,
+and the <code class="docutils literal notranslate"><span class="pre">content</span></code> block to:</p>
+<div class="highlight-html+django notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    You are Participant B. Participant A sent you <span class="cp">{{</span><span class="nv">group.sent_amount</span><span class="cp">}}</span>
+    and you received <span class="cp">{{</span><span class="nv">tripled_amount</span><span class="cp">}}</span>.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="cp">{{</span> <span class="nv">formfields</span> <span class="cp">}}</span>
+
+<span class="cp">{{</span> <span class="nv">next_button</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>Here is the page code. Notes:</p>
+<ul class="simple">
+<li><p>We use <a class="reference internal" href="../pages.html#vars-for-template"><span class="std std-ref">vars_for_template()</span></a> to pass the variable <code class="docutils literal notranslate"><span class="pre">tripled_amount</span></code>
+to the template. You cannot do calculations directly in the HTML code,
+so this number needs to be calculated in Python code and
+passed to the template.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SendBack</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;group&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sent_back_amount&#39;</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span> <span class="o">==</span> <span class="mi">2</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vars_for_template</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">group</span>
+
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">tripled_amount</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">sent_amount</span> <span class="o">*</span> <span class="n">C</span><span class="o">.</span><span class="n">MULTIPLICATION_FACTOR</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h3>
+<p>The results page needs to look slightly different for P1 vs. P2. So, we
+use the <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">if</span> <span class="pre">}}</span></code> statement
+to condition on the current player’s <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>.
+Set the <code class="docutils literal notranslate"><span class="pre">title</span></code> block to <code class="docutils literal notranslate"><span class="pre">Results</span></code>, and the content block to:</p>
+<div class="highlight-html+django notranslate"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="k">if</span> <span class="nv">player.id_in_group</span> <span class="o">==</span> <span class="m">1</span> <span class="cp">}}</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        You sent Participant B <span class="cp">{{</span> <span class="nv">group.sent_amount</span> <span class="cp">}}</span>.
+        Participant B returned <span class="cp">{{</span> <span class="nv">group.sent_back_amount</span> <span class="cp">}}</span>.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="cp">{{</span> <span class="k">else</span> <span class="cp">}}</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        Participant A sent you <span class="cp">{{</span> <span class="nv">group.sent_amount</span> <span class="cp">}}</span>.
+        You returned <span class="cp">{{</span> <span class="nv">group.sent_back_amount</span> <span class="cp">}}</span>.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="cp">{{</span> <span class="nv">endif</span> <span class="cp">}}</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+Therefore, your total payoff is <span class="cp">{{</span> <span class="nv">player.payoff</span> <span class="cp">}}</span>.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Results</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="wait-pages-and-page-sequence">
+<h3>Wait pages and page sequence<a class="headerlink" href="#wait-pages-and-page-sequence" title="Link to this heading"></a></h3>
+<p>Add 2 wait pages:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">WaitForP1</span></code> (P2 needs to wait while P1 decides how much to send)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ResultsWaitPage</span></code> (P1 needs to wait while P2 decides how much to send back)</p></li>
+</ul>
+<p>After the second wait page, we should calculate the payoffs.
+So, we define a function called <code class="docutils literal notranslate"><span class="pre">set_payoffs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_payoffs</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_player_by_id</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_player_by_id</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">p1</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">ENDOWMENT</span> <span class="o">-</span> <span class="n">group</span><span class="o">.</span><span class="n">sent_amount</span> <span class="o">+</span> <span class="n">group</span><span class="o">.</span><span class="n">sent_back_amount</span>
+    <span class="n">p2</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">sent_amount</span> <span class="o">*</span> <span class="n">C</span><span class="o">.</span><span class="n">MULTIPLICATION_FACTOR</span> <span class="o">-</span> <span class="n">group</span><span class="o">.</span><span class="n">sent_back_amount</span>
+</pre></div>
+</div>
+<p>Then in <code class="docutils literal notranslate"><span class="pre">ResultsWaitPage</span></code>, set <code class="docutils literal notranslate"><span class="pre">after_all_players_arrive</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">after_all_players_arrive</span> <span class="o">=</span> <span class="n">set_payoffs</span>
+</pre></div>
+</div>
+<p>Make sure they are ordered correctly in the page_sequence:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">page_sequence</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Send</span><span class="p">,</span>
+    <span class="n">WaitForP1</span><span class="p">,</span>
+    <span class="n">SendBack</span><span class="p">,</span>
+    <span class="n">ResultsWaitPage</span><span class="p">,</span>
+    <span class="n">Results</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="add-an-entry-to-your-session-configs">
+<h2>Add an entry to your <code class="docutils literal notranslate"><span class="pre">SESSION_CONFIGS</span></code><a class="headerlink" href="#add-an-entry-to-your-session-configs" title="Link to this heading"></a></h2>
+<p>Create a session config with <code class="docutils literal notranslate"><span class="pre">my_trust</span></code> in the app sequence.</p>
+</section>
+<section id="run-the-server">
+<h2>Run the server<a class="headerlink" href="#run-the-server" title="Link to this heading"></a></h2>
+<p>Load the project again then open your browser to <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="part2.html" class="btn btn-neutral float-left" title="Part 2: Public goods game" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../conceptual_overview.html" class="btn btn-neutral float-right" title="Conceptual overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

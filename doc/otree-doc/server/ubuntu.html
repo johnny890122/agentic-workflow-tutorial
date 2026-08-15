@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ubuntu Linux Server &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Windows Server (advanced)" href="server-windows.html" />
+    <link rel="prev" title="Basic Server Setup (Heroku)" href="heroku.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Server setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="heroku.html">Basic Server Setup (Heroku)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Ubuntu Linux Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-apt-get-packages">Install apt-get packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-virtualenv">Create a virtualenv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-postgres">Database (Postgres)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reset-the-database-on-the-server">Reset the database on the server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-server">Running the server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#testing-the-production-server">Testing the production server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-remaining-environment-variables">Set remaining environment variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-process-control-system">(Optional) Process control system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-apache-nginx-etc">(Optional) Apache, Nginx, etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-a-server-with-other-otree-users">Sharing a server with other oTree users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server-windows.html">Windows Server (advanced)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Server setup</a></li>
+      <li class="breadcrumb-item active">Ubuntu Linux Server</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/server/ubuntu.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ubuntu-linux-server">
+<span id="server-ubuntu"></span><h1>Ubuntu Linux Server<a class="headerlink" href="#ubuntu-linux-server" title="Link to this heading"></a></h1>
+<p>We typically recommend newcomers to oTree to deploy to Heroku
+(see instructions <a class="reference internal" href="heroku.html#heroku"><span class="std std-ref">here</span></a>).</p>
+<p>However, you may prefer to run oTree on a proper Linux server. Reasons may include:</p>
+<ul class="simple">
+<li><p>Your lab doesn’t have internet</p></li>
+<li><p>You want full control over server configuration</p></li>
+<li><p>You want better performance (local servers have less latency)</p></li>
+</ul>
+<section id="install-apt-get-packages">
+<h2>Install apt-get packages<a class="headerlink" href="#install-apt-get-packages" title="Link to this heading"></a></h2>
+<p>Run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">git</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-virtualenv">
+<h2>Create a virtualenv<a class="headerlink" href="#create-a-virtualenv" title="Link to this heading"></a></h2>
+<p>It’s a best practice to use a virtualenv:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv_otree</span>
+</pre></div>
+</div>
+<p>To activate this venv every time you start your shell, put this in your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> or <code class="docutils literal notranslate"><span class="pre">.profile</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/</span><span class="n">venv_otree</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>Once your virtualenv is active, you will see <code class="docutils literal notranslate"><span class="pre">(venv_otree)</span></code> at the beginning
+of your prompt.</p>
+</section>
+<section id="database-postgres">
+<span id="postgres-linux"></span><h2>Database (Postgres)<a class="headerlink" href="#database-postgres" title="Link to this heading"></a></h2>
+<p>Install Postgres and psycopg2, create a new database and set the <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code> env var, for example:
+to <code class="docutils literal notranslate"><span class="pre">postgres://postgres&#64;localhost/django_db</span></code></p>
+</section>
+<section id="reset-the-database-on-the-server">
+<h2>Reset the database on the server<a class="headerlink" href="#reset-the-database-on-the-server" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cd</span></code> to the folder containing your oTree project.
+Install the requirements and reset the database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">otree</span> <span class="n">resetdb</span>
+</pre></div>
+</div>
+</section>
+<section id="running-the-server">
+<span id="prodserver"></span><h2>Running the server<a class="headerlink" href="#running-the-server" title="Link to this heading"></a></h2>
+<section id="testing-the-production-server">
+<h3>Testing the production server<a class="headerlink" href="#testing-the-production-server" title="Link to this heading"></a></h3>
+<p>From your project folder, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">prodserver</span> <span class="mi">8000</span>
+</pre></div>
+</div>
+<p>Then navigate in your browser to your server’s
+IP/hostname followed by <code class="docutils literal notranslate"><span class="pre">:8000</span></code>.</p>
+<p>If you’re not using a reverse proxy like Nginx or Apache,
+you probably want to run oTree directly on port 80.
+This requires superuser permission, so let’s use sudo,
+but add some extra args to preserve environment variables like <code class="docutils literal notranslate"><span class="pre">PATH</span></code>,
+<code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code>, etc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="n">env</span> <span class="s2">&quot;PATH=$PATH&quot;</span> <span class="n">otree</span> <span class="n">prodserver</span> <span class="mi">80</span>
+</pre></div>
+</div>
+<p>Try again to open your browser;
+this time, you don’t need to append :80 to the URL, because that is the default HTTP port.</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">devserver</span></code>, <code class="docutils literal notranslate"><span class="pre">prodserver</span></code> does not restart automatically
+when your files are changed.</p>
+</section>
+<section id="set-remaining-environment-variables">
+<h3>Set remaining environment variables<a class="headerlink" href="#set-remaining-environment-variables" title="Link to this heading"></a></h3>
+<p>Add these in the same place where you set <code class="docutils literal notranslate"><span class="pre">DATABASE_URL</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OTREE_ADMIN_PASSWORD</span><span class="o">=</span><span class="n">my_password</span>
+<span class="c1">#export OTREE_PRODUCTION=1 # uncomment this line to enable production mode</span>
+<span class="n">export</span> <span class="n">OTREE_AUTH_LEVEL</span><span class="o">=</span><span class="n">DEMO</span>
+</pre></div>
+</div>
+</section>
+<section id="optional-process-control-system">
+<h3>(Optional) Process control system<a class="headerlink" href="#optional-process-control-system" title="Link to this heading"></a></h3>
+<p>Once the server is working as described above,
+it’s a good practice to use
+a process control system like Supervisord or Circus.
+This will restart your processes in case they crash,
+keep it running if you log out, etc.</p>
+<section id="circus">
+<h4>Circus<a class="headerlink" href="#circus" title="Link to this heading"></a></h4>
+<p>Install Circus, then create a <code class="docutils literal notranslate"><span class="pre">circus.ini</span></code> in your project folder,
+with the following content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">watcher</span><span class="p">:</span><span class="n">webapp</span><span class="p">]</span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="n">otree</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">prodserver</span> <span class="mi">80</span>
+<span class="n">use_sockets</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">copy_env</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Then run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="n">env</span> <span class="s2">&quot;PATH=$PATH&quot;</span> <span class="n">circusd</span> <span class="n">circus</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>If this is working properly, you can start it as a daemon:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="n">env</span> <span class="s2">&quot;PATH=$PATH&quot;</span> <span class="n">circusd</span> <span class="o">--</span><span class="n">daemon</span> <span class="n">circus</span><span class="o">.</span><span class="n">ini</span> <span class="o">--</span><span class="n">log</span><span class="o">-</span><span class="n">output</span><span class="o">=</span><span class="n">circus</span><span class="o">-</span><span class="n">logs</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>To stop circus, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circusctl</span> <span class="n">stop</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="optional-apache-nginx-etc">
+<h3>(Optional) Apache, Nginx, etc.<a class="headerlink" href="#optional-apache-nginx-etc" title="Link to this heading"></a></h3>
+<p>You cannot use Apache or Nginx as your primary web server,
+because oTree must be run with an ASGI server.
+However, you still might want to use Apache/Nginx as a reverse proxy, for the following reasons:</p>
+<ul class="simple">
+<li><p>You are trying to optimize serving of static files
+(though oTree uses Whitenoise, which is already fairly efficient)</p></li>
+<li><p>You need to host other websites on the same server</p></li>
+<li><p>You need features like SSL or proxy buffering</p></li>
+</ul>
+<p>If you set up a reverse proxy, make sure to enable not only HTTP traffic
+but also websockets.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>If you get strange behavior,
+such as random changes each time the page reloads,
+it might be caused by another oTree instance that didn’t shut down.
+Try stopping oTree and reload again.</p>
+</section>
+<section id="sharing-a-server-with-other-otree-users">
+<h2>Sharing a server with other oTree users<a class="headerlink" href="#sharing-a-server-with-other-otree-users" title="Link to this heading"></a></h2>
+<p>You can share a server with other oTree users;
+you just have to make sure that the code and databases are kept separate,
+so they don’t conflict with each other.</p>
+<p>On the server you should create a different Unix user for each person
+using oTree. Then each person should follow the same steps described above,
+but in some cases name things differently to avoid clashes:</p>
+<ul class="simple">
+<li><p>Create a virtualenv in their home directory</p></li>
+<li><p>Create a different Postgres database, as described earlier,
+and set this in the DATABASE_URL env var.</p></li>
+</ul>
+<p>Once these steps are done, the second user can push code to the server,
+then run <code class="docutils literal notranslate"><span class="pre">otree</span> <span class="pre">resetdb</span></code>.</p>
+<p>If you don’t need multiple people to run experiments simultaneously,
+then each user can take turns running the server on port 80 with <code class="docutils literal notranslate"><span class="pre">otree</span> <span class="pre">prodserver</span> <span class="pre">80</span></code>.
+However, if multiple people need to run experiments at the same time,
+then you would need to run the server on multiple ports, e.g. <code class="docutils literal notranslate"><span class="pre">8000</span></code>,
+<code class="docutils literal notranslate"><span class="pre">8001</span></code>, etc.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="heroku.html" class="btn btn-neutral float-left" title="Basic Server Setup (Heroku)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="server-windows.html" class="btn btn-neutral float-right" title="Windows Server (advanced)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

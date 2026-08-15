@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live pages &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Server setup" href="server/intro.html" />
+    <link rel="prev" title="Bots" href="bots.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bots.html">Bots</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Live pages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sending-data-to-the-server">Sending data to the server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sending-data-to-the-page">Sending data to the page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-auction">Example: auction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#history">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extramodel">ExtraModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keeping-users-on-the-page">Keeping users on the page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#asynchronous-live-methods-ai-web-apis-etc">Asynchronous live methods (AI, web APIs, etc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-advice-about-live-pages">General advice about live pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-tic-tac-toe">Example: tic-tac-toe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Live pages</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/live.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="live-pages">
+<span id="live"></span><h1>Live pages<a class="headerlink" href="#live-pages" title="Link to this heading"></a></h1>
+<p>Live pages communicate with the server continuously
+and update in real time, enabling continuous time games.
+Live pages are a great fit for games with lots of back-and-forth interaction
+between users.</p>
+<p>There are a bunch of examples <a class="reference external" href="https://www.otreehub.com/projects/otree-more-demos/">here</a>.</p>
+<section id="sending-data-to-the-server">
+<h2>Sending data to the server<a class="headerlink" href="#sending-data-to-the-server" title="Link to this heading"></a></h2>
+<p>In your template’s JavaScript code,
+call the function <code class="docutils literal notranslate"><span class="pre">liveSend()</span></code>
+whenever you want to send data to the server.
+For example, to submit a bid of 99 on behalf of the user, call:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">liveSend</span><span class="p">(</span><span class="mf">99</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Define a function that will receive this message.
+Its argument is whatever data
+was sent.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;received a bid from&#39;</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you are using oTree Studio, you must define a player function whose name
+starts with <code class="docutils literal notranslate"><span class="pre">live_</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to use live methods on a WaitPage,
+you must install <a class="reference internal" href="misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a></p>
+</div>
+</section>
+<section id="sending-data-to-the-page">
+<h2>Sending data to the page<a class="headerlink" href="#sending-data-to-the-page" title="Link to this heading"></a></h2>
+<p>To send data back, return a dict whose keys are the IDs of the players
+to receive a message.
+For example, here is a method that simply sends “thanks”
+to whoever sends a message.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span><span class="p">:</span> <span class="s1">&#39;thanks&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>To send to multiple players, use their <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>.
+For example, this forwards every message to players 2 and 3:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>To broadcast it to the whole group, use <code class="docutils literal notranslate"><span class="pre">0</span></code>
+(special case since it is not an actual <code class="docutils literal notranslate"><span class="pre">id_in_group</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>In your JavaScript, define a function <code class="docutils literal notranslate"><span class="pre">liveRecv</span></code>.
+This will be automatically called each time a message is received from the server.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">liveRecv</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;received a message!&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// your code goes here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="example-auction">
+<h2>Example: auction<a class="headerlink" href="#example-auction" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">BaseGroup</span><span class="p">):</span>
+    <span class="n">highest_bidder</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">highest_bid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">bid</span><span class="p">):</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">group</span>
+    <span class="n">my_id</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span>
+    <span class="k">if</span> <span class="n">bid</span> <span class="o">&gt;</span> <span class="n">group</span><span class="o">.</span><span class="n">highest_bid</span><span class="p">:</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">highest_bid</span> <span class="o">=</span> <span class="n">bid</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">highest_bidder</span> <span class="o">=</span> <span class="n">my_id</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">id_in_group</span><span class="o">=</span><span class="n">my_id</span><span class="p">,</span> <span class="n">bid</span><span class="o">=</span><span class="n">bid</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">response</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;history&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Player<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Bid<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;inputbox&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;sendValue()&quot;</span><span class="p">&gt;</span>Send<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">inputbox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;inputbox&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">liveRecv</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">history</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39;&lt;tr&gt;&lt;td&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">id_in_group</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;/td&gt;&lt;td&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">bid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&lt;/td&gt;&lt;/tr&gt;&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">sendValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">liveSend</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">inputbox</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>(Note, in JavaScript <code class="docutils literal notranslate"><span class="pre">data.id_in_group</span> <span class="pre">==</span> <span class="pre">data['id_in_group']</span></code>.)</p>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading"></a></h2>
+<p>The data you send and receive can be any data type (as long as it is JSON serializable).
+For example these are all valid:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">liveSend</span><span class="p">(</span><span class="mf">99</span><span class="p">);</span>
+<span class="nx">liveSend</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">);</span>
+<span class="nx">liveSend</span><span class="p">([</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">]);</span>
+<span class="nx">liveSend</span><span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bid&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;value&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">10.5</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>The most versatile type of data is a dict,
+since it allows you to include multiple pieces of metadata,
+in particular what type of message it is:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">liveSend</span><span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;offer&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;value&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">99.9</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;to&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">})</span>
+<span class="nx">liveSend</span><span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;response&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;accepted&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;to&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Then you can use <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to process different types of messages:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;offer&#39;</span><span class="p">:</span>
+        <span class="n">other_player</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;to&#39;</span><span class="p">]</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;offer&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">other_player</span><span class="p">:</span> <span class="n">response</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="s1">&#39;response&#39;</span><span class="p">:</span>
+        <span class="c1"># etc</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="history">
+<h2>History<a class="headerlink" href="#history" title="Link to this heading"></a></h2>
+<p>By default, participants will not see messages that were sent before they arrived at the page.
+(And data will not be re-sent if they refresh the page.)
+If you want to save history, you should store it in the database.
+When a player loads the page, your JavaScript can call something like <code class="docutils literal notranslate"><span class="pre">liveSend({})</span></code>,
+and you can configure your live_method to retrieve the history of the game from the database.</p>
+</section>
+<section id="extramodel">
+<h2>ExtraModel<a class="headerlink" href="#extramodel" title="Link to this heading"></a></h2>
+<p>Live pages are often used together with an <a class="reference internal" href="misc/advanced.html#extramodel"><span class="std std-ref">ExtraModel</span></a>,
+which allows you to store each individual message or action in the database.</p>
+</section>
+<section id="keeping-users-on-the-page">
+<h2>Keeping users on the page<a class="headerlink" href="#keeping-users-on-the-page" title="Link to this heading"></a></h2>
+<p>Let’s say you require 10 messages to be sent before the users can proceed
+to the next page.</p>
+<p>First, you should omit the <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">next_button</span> <span class="pre">}}</span></code>.
+(Or use JS to hide it until the task is complete.)</p>
+<p>When the task is completed, you send a message:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">BaseGroup</span><span class="p">):</span>
+    <span class="n">num_messages</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">game_finished</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">group</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">num_messages</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">num_messages</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">group</span><span class="o">.</span><span class="n">game_finished</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;game_finished&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">response</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Then in the template, automatically submit the page via JavaScript:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">liveRecv</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;received&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;game_finished&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;form&quot;</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// handle other types of messages here..</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By the way, using a similar technique, you could implement a custom
+wait page, e.g. one that lets you proceed after a certain timeout,
+even if not all players have arrived.</p>
+</section>
+<section id="asynchronous-live-methods-ai-web-apis-etc">
+<span id="async-live-method"></span><h2>Asynchronous live methods (AI, web APIs, etc)<a class="headerlink" href="#asynchronous-live-methods-ai-web-apis-etc" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use this, you must install <a class="reference internal" href="misc/version_history.html#v60"><span class="std std-ref">oTree 6.0</span></a></p>
+</div>
+<p>If you want to call external APIs like OpenAI/ChatGPT during experiments,
+you should use an asynchronous live method as described below.
+(If you use a regular live method together with web requests,
+it can cause the server to freeze if multiple participants
+are trying to load pages at the same time.)</p>
+<p>Define your <code class="docutils literal notranslate"><span class="pre">live_method</span></code> as <code class="docutils literal notranslate"><span class="pre">async</span></code> and use <code class="docutils literal notranslate"><span class="pre">yield</span></code> instead of <code class="docutils literal notranslate"><span class="pre">return</span></code>.
+This means you must use <code class="docutils literal notranslate"><span class="pre">async</span></code>/<code class="docutils literal notranslate"><span class="pre">await</span></code> throughout the function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># IMPORTANT: make sure whatever API you are using has an async version,</span>
+<span class="c1"># and use that.</span>
+<span class="c1"># If they don&#39;t, consider making raw requests with httpx.</span>
+<span class="n">OPENAI_CLIENT</span> <span class="o">=</span> <span class="n">AsyncOpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">OPENAI_KEY</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">:</span> <span class="n">Player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">completion</span> <span class="o">=</span> <span class="k">await</span> <span class="n">OPENAI_CLIENT</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;chatgpt-4o-latest&quot;</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}],</span>
+            <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span><span class="p">:</span> <span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also stream content, rather than waiting for the full reply
+(useful for chat interfaces etc).
+Use the API provider’s streaming option and multiple <code class="docutils literal notranslate"><span class="pre">yield</span></code> statements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyPageWithStreaming</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">:</span> <span class="n">Player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">completion</span> <span class="o">=</span> <span class="k">await</span> <span class="n">OPENAI_CLIENT</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;chatgpt-4o-latest&quot;</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}],</span>
+            <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">completion</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">content</span>
+            <span class="k">yield</span> <span class="p">{</span><span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span><span class="p">:</span> <span class="n">content</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Async live method is safe to use if you are only modifying the current player,
+but you can get irregular behavior if multiple players are modifying the same object
+(e.g. the group).
+That’s because this function executes in parallel,
+meaning there is a risk of race conditions.</p>
+</section>
+<section id="general-advice-about-live-pages">
+<h2>General advice about live pages<a class="headerlink" href="#general-advice-about-live-pages" title="Link to this heading"></a></h2>
+<p>Here is some general advice (does not apply to all situations).
+We recommend implementing most of your logic in Python,
+and just using JavaScript to update the page’s HTML, because:</p>
+<ul class="simple">
+<li><p>The JavaScript language can be quite tricky to use properly</p></li>
+<li><p>Your Python code runs on the server, which is centralized and reliable.
+JavaScript runs on the clients, which can get out of sync with each other,
+and data can get lost when the page is closed or reloaded.</p></li>
+<li><p>Because Python code runs on the server, it is more secure and cannot be viewed or modified
+by participants.</p></li>
+</ul>
+<section id="example-tic-tac-toe">
+<h3>Example: tic-tac-toe<a class="headerlink" href="#example-tic-tac-toe" title="Link to this heading"></a></h3>
+<p>Let’s say you are implementing a game of tic-tac-toe.
+There are 2 types of messages your live_method can receive:</p>
+<ol class="arabic simple">
+<li><p>A user marks a square, so you need to notify the other player</p></li>
+<li><p>A user loads (or reloads) the page, so you need to send them the current board layout.</p></li>
+</ol>
+<p>For situation 1, you should use a JavaScript event handler like <code class="docutils literal notranslate"><span class="pre">onclick</span></code>, e.g. so when the user clicks on square 3,
+that move gets sent to the server:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">liveSend</span><span class="p">({</span><span class="nx">square</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>For situation 2, it’s good to put some code like this in your template, which sends an empty message
+to the server when the page loads:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">liveSend</span><span class="p">({});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The server handles these 2 situations with an “if” statement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">live_method</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">group</span>
+
+    <span class="k">if</span> <span class="s1">&#39;square&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="c1"># SITUATION 1</span>
+        <span class="n">square</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;square&#39;</span><span class="p">]</span>
+
+        <span class="c1"># save_move should save the move into a group field.</span>
+        <span class="c1"># for example, if player 1 modifies square 3,</span>
+        <span class="c1"># that changes group.board from &#39;X O XX  O&#39; to &#39;X OOXX  O&#39;</span>
+        <span class="n">save_move</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">square</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span><span class="p">)</span>
+        <span class="c1"># so that we can highlight the square (and maybe say who made the move)</span>
+        <span class="n">news</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;square&#39;</span><span class="p">:</span> <span class="n">square</span><span class="p">,</span> <span class="s1">&#39;id_in_group&#39;</span><span class="p">:</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span><span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># SITUATION 2</span>
+        <span class="n">news</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># get_state should contain the current state of the game, for example:</span>
+    <span class="c1"># {&#39;board&#39;: &#39;X O XX  O&#39;, &#39;whose_turn&#39;: 2}</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">get_state</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+    <span class="c1"># .update just combines 2 dicts</span>
+    <span class="n">payload</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">news</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">payload</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>In situation 2 (the player loads the page), the client gets a message like:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;board&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;X OOXX  O&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;whose_turn&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>In situation 1, the player gets the update about the move that was just made, AND the current state.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;board&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;X OOXX  O&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;whose_turn&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;square&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">square</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;id_in_group&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">id_in_group</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The JavaScript code can be “dumb”.
+It doesn’t need to keep track of whose move it is; it just trusts the info it receives from the server.
+It can even redraw the board each time it receives a message.</p>
+<p>Your code will also need to validate user input. For example, if player 1 tries to move when it is actually player 2’s
+turn, you need to block that. For reasons listed in the previous section, it’s better to do this in your live_method than
+in JavaScript code.</p>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h3>
+<p>As illustrated above, the typical pattern for a live_method is like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">the</span> <span class="n">user</span> <span class="n">made</span> <span class="n">an</span> <span class="n">action</span><span class="p">:</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="p">(</span><span class="n">get</span> <span class="n">the</span> <span class="n">current</span> <span class="n">state</span> <span class="n">of</span> <span class="n">the</span> <span class="n">game</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">action</span> <span class="ow">is</span> <span class="n">illegal</span><span class="o">/</span><span class="n">invalid</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="n">update</span> <span class="n">the</span> <span class="n">models</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">move</span><span class="o">.</span>
+    <span class="n">news</span> <span class="o">=</span> <span class="p">(</span><span class="n">produce</span> <span class="n">the</span> <span class="n">feedback</span> <span class="n">to</span> <span class="n">send</span> <span class="n">back</span> <span class="n">to</span> <span class="n">the</span> <span class="n">user</span><span class="p">,</span> <span class="ow">or</span> <span class="n">onward</span> <span class="n">to</span> <span class="n">other</span> <span class="n">users</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">news</span> <span class="o">=</span> <span class="p">(</span><span class="n">nothing</span><span class="p">)</span>
+<span class="n">state</span> <span class="o">=</span> <span class="p">(</span><span class="n">get</span> <span class="n">the</span> <span class="n">current</span> <span class="n">state</span> <span class="n">of</span> <span class="n">the</span> <span class="n">game</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">(</span><span class="n">state</span> <span class="n">combined</span> <span class="k">with</span> <span class="n">news</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">payload</span>
+</pre></div>
+</div>
+<p>Note that we get the game’s state twice. That’s because the state changes when we update our models,
+so we need to refresh it.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>If you call <code class="docutils literal notranslate"><span class="pre">liveSend</span></code> before the page has finished loading,
+you will get an error like <code class="docutils literal notranslate"><span class="pre">liveSend</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code>.
+So, wait for <code class="docutils literal notranslate"><span class="pre">DOMContentLoaded</span></code> (or jQuery document.ready, etc):</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// your code goes here...</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Don’t trigger <code class="docutils literal notranslate"><span class="pre">liveSend</span></code> when the user clicks the “next” button, since leaving the page might interrupt
+the <code class="docutils literal notranslate"><span class="pre">liveSend</span></code>. Instead, have the user click a regular button that triggers a <code class="docutils literal notranslate"><span class="pre">liveSend</span></code>, and
+then doing <code class="docutils literal notranslate"><span class="pre">document.getElementById(&quot;form&quot;).submit();</span></code> in your <code class="docutils literal notranslate"><span class="pre">liveRecv</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bots.html" class="btn btn-neutral float-left" title="Bots" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="server/intro.html" class="btn btn-neutral float-right" title="Server setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

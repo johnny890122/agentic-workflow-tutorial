@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced features &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bots: advanced features" href="bots_advanced.html" />
+    <link rel="prev" title="Tips and tricks" href="tips_and_tricks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Miscellaneous</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rest_api.html">REST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internationalization.html">Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips_and_tricks.html">Tips and tricks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Advanced features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extramodel">ExtraModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-csv-files">Reading CSV files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#templates">Templates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#template-name">template_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#css-js-and-base-templates">CSS/JS and base templates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#static-files">Static files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-pages">Wait pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-wait-page-template">Custom wait page template</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#currency">Currency</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bots_advanced.html">Bots: advanced features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otreelite.html">oTree Lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html">Version history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noself.html">The new no-self format</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Miscellaneous</a></li>
+      <li class="breadcrumb-item active">Advanced features</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/misc/advanced.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-features">
+<h1>Advanced features<a class="headerlink" href="#advanced-features" title="Link to this heading"></a></h1>
+<p>These are advanced features that are mostly unsupported in oTree Studio.</p>
+<section id="extramodel">
+<span id="id1"></span><h2>ExtraModel<a class="headerlink" href="#extramodel" title="Link to this heading"></a></h2>
+<p>An ExtraModel is useful when you need to store dozens or hundreds of data points about a single player.
+For example, a list of bids, or a list of stimuli and reaction times.
+They are frequently used together with <a class="reference internal" href="../live.html#live"><span class="std std-ref">Live pages</span></a>.</p>
+<p>There are a bunch of examples <a class="reference external" href="https://www.otreehub.com/projects/otree-more-demos/">here</a>.</p>
+<p>An ExtraModel should link to another model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Bid</span><span class="p">(</span><span class="n">ExtraModel</span><span class="p">):</span>
+    <span class="n">player</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Link</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Each time the user makes a bid, you store it in the database:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Bid</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">player</span><span class="o">=</span><span class="n">player</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Later, you can retrieve the list of a player’s bids:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bids</span> <span class="o">=</span> <span class="n">Bid</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">player</span><span class="o">=</span><span class="n">player</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An ExtraModel can have multiple links:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Offer</span><span class="p">(</span><span class="n">ExtraModel</span><span class="p">):</span>
+    <span class="n">sender</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Link</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span>
+    <span class="n">receiver</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Link</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Link</span><span class="p">(</span><span class="n">Group</span><span class="p">)</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+    <span class="n">accepted</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then you can query it in various ways:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">this_group_offers</span> <span class="o">=</span> <span class="n">Offer</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
+<span class="n">offers_i_accepted</span> <span class="o">=</span> <span class="n">Offer</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">receiver</span><span class="o">=</span><span class="n">player</span><span class="p">,</span> <span class="n">accepted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For more complex filters and sorting, you should use list operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">offers_over_500</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">Offer</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">)</span> <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">amount</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>See the example psychology games such as the Stroop task,
+which show how to generate ExtraModel data from each row of a CSV spreadsheet.</p>
+<p>To export your ExtraModel data to CSV/Excel, use <a class="reference internal" href="../admin.html#custom-export"><span class="std std-ref">Custom data exports</span></a>.</p>
+</section>
+<section id="reading-csv-files">
+<span id="read-csv"></span><h2>Reading CSV files<a class="headerlink" href="#reading-csv-files" title="Link to this heading"></a></h2>
+<p>To read a CSV file (which can be produced by Excel or any other spreadsheet app),
+you can use <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code>. For example, if you have a CSV file like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">,</span><span class="n">price</span><span class="p">,</span><span class="n">is_organic</span>
+<span class="n">Apple</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="n">TRUE</span>
+<span class="n">Mango</span><span class="p">,</span><span class="mf">3.79</span><span class="p">,</span><span class="n">FALSE</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> will output a list of dicts, like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Apple&#39;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">is_organic</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+ <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Mango&#39;</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mf">3.79</span><span class="p">,</span> <span class="n">is_organic</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>You call the function like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;my_app/my_data.csv&#39;</span><span class="p">,</span> <span class="n">Product</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second argument is a class that specifies the datatype of each column:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Product</span><span class="p">(</span><span class="n">ExtraModel</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FloatField</span><span class="p">()</span>
+    <span class="n">is_organic</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(Without this info, it would be ambiguous whether <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> is supposed to be a bool,
+or the string <code class="docutils literal notranslate"><span class="pre">'TRUE'</span></code>, etc.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> does not actually create any instances of that class.
+If you want that, you must use <code class="docutils literal notranslate"><span class="pre">.create()</span></code> additionally:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;my_app/my_data.csv&#39;</span><span class="p">,</span> <span class="n">Product</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="n">Product</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+        <span class="n">price</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span>
+        <span class="n">is_organic</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;is_organic&#39;</span><span class="p">],</span>
+        <span class="c1"># any other args:</span>
+        <span class="n">player</span><span class="o">=</span><span class="n">player</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>The model can be an <code class="docutils literal notranslate"><span class="pre">ExtraModel</span></code>, <code class="docutils literal notranslate"><span class="pre">Player</span></code>, <code class="docutils literal notranslate"><span class="pre">Group</span></code>, or <code class="docutils literal notranslate"><span class="pre">Subsession</span></code>.
+It’s fine if it also contains other fields; they will be ignored by <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code>.</p>
+</section>
+<section id="templates">
+<h2>Templates<a class="headerlink" href="#templates" title="Link to this heading"></a></h2>
+<section id="template-name">
+<h3>template_name<a class="headerlink" href="#template-name" title="Link to this heading"></a></h3>
+<p>If the template needs to have a different name from your
+page class (e.g. you are sharing the same template for multiple pages),
+set <code class="docutils literal notranslate"><span class="pre">template_name</span></code>. Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Page1</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;app_name/MyPage.html&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="css-js-and-base-templates">
+<span id="base-template"></span><h3>CSS/JS and base templates<a class="headerlink" href="#css-js-and-base-templates" title="Link to this heading"></a></h3>
+<p>To include the same JS/CSS in all pages of an app, either put it in a <a class="reference internal" href="#staticfiles"><span class="std std-ref">static file</span></a>
+or put it in an includable template.</p>
+</section>
+</section>
+<section id="static-files">
+<span id="staticfiles"></span><h2>Static files<a class="headerlink" href="#static-files" title="Link to this heading"></a></h2>
+<p>Here is how to include images (or any other static file like .css, .js, etc.) in your pages.</p>
+<p>At the root of your oTree project, there is a <code class="docutils literal notranslate"><span class="pre">_static/</span></code> folder.
+Put a file there, for example <code class="docutils literal notranslate"><span class="pre">puppy.jpg</span></code>.
+Then, in your template, you can get the URL to that file with
+<code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">static</span> <span class="pre">'puppy.jpg'</span> <span class="pre">}}</span></code>.</p>
+<p>To display an image, use the <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> tag, like this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ static &#39;puppy.jpg&#39; }}&quot;</span><span class="p">/&gt;</span>
+</pre></div>
+</div>
+<p>Above we saved our image in <code class="docutils literal notranslate"><span class="pre">_static/puppy.jpg</span></code>,
+But actually it’s better to make a subfolder with the name of your app,
+and save it as <code class="docutils literal notranslate"><span class="pre">_static/your_app_name/puppy.jpg</span></code>, to keep files organized
+and prevent name conflicts.</p>
+<p>Then your HTML code becomes:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ static &#39;your_app_name/puppy.jpg }}&quot;</span><span class="p">/&gt;</span>
+</pre></div>
+</div>
+<p>(If you prefer, you can also put static files inside your app folder,
+in a subfolder called <code class="docutils literal notranslate"><span class="pre">static/your_app_name</span></code>.)</p>
+<p>If a static file is not updating even after you changed it,
+this is because your browser cached the file. Do a full page reload
+(usually Ctrl+F5)</p>
+<p>If you have videos or high-resolution images,
+it’s preferable to store them somewhere online and reference them by URL
+because the large file size can make uploading your
+.otreezip file much slower.</p>
+</section>
+<section id="wait-pages">
+<h2>Wait pages<a class="headerlink" href="#wait-pages" title="Link to this heading"></a></h2>
+<section id="custom-wait-page-template">
+<span id="customize-wait-page"></span><h3>Custom wait page template<a class="headerlink" href="#custom-wait-page-template" title="Link to this heading"></a></h3>
+<p>You can make a custom wait page template.
+For example, save this to <code class="docutils literal notranslate"><span class="pre">your_app_name/MyWaitPage.html</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ extends &#39;otree/WaitPage.html&#39; }}
+{{ block title }}{{ title_text }}{{ endblock }}
+{{ block content }}
+    {{ body_text }}
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        My custom content here.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+{{ endblock }}
+</pre></div>
+</div>
+<p>Then tell your wait page to use this template:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;your_app_name/MyWaitPage.html&#39;</span>
+</pre></div>
+</div>
+<p>Then you can use <code class="docutils literal notranslate"><span class="pre">vars_for_template</span></code> in the usual way.
+Actually, the <code class="docutils literal notranslate"><span class="pre">body_text</span></code> and <code class="docutils literal notranslate"><span class="pre">title_text</span></code> attributes
+are just shorthand for setting <code class="docutils literal notranslate"><span class="pre">vars_for_template</span></code>;
+the following 2 code snippets are equivalent:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="n">body_text</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vars_for_template</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">body_text</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want to apply your custom wait page template globally,
+save it to <code class="docutils literal notranslate"><span class="pre">_templates/global/WaitPage.html</span></code>.
+oTree will then automatically use it everywhere instead of the built-in wait page.</p>
+</section>
+</section>
+<section id="currency">
+<h2>Currency<a class="headerlink" href="#currency" title="Link to this heading"></a></h2>
+<p>To customize the name “points” to something else like “tokens” or “credits”,
+set <code class="docutils literal notranslate"><span class="pre">POINTS_CUSTOM_NAME</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">POINTS_CUSTOM_NAME</span> <span class="pre">=</span> <span class="pre">'tokens'</span></code>.</p>
+<p>You can change the number of decimal places in real world currency amounts
+with the setting <code class="docutils literal notranslate"><span class="pre">REAL_WORLD_CURRENCY_DECIMAL_PLACES</span></code>.
+If the extra decimal places show up but are always 0,
+then you should reset the database.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tips_and_tricks.html" class="btn btn-neutral float-left" title="Tips and tricks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bots_advanced.html" class="btn btn-neutral float-right" title="Bots: advanced features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

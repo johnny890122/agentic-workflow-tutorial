@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Version history &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The new no-self format" href="noself.html" />
+    <link rel="prev" title="oTree Lite" href="otreelite.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Miscellaneous</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rest_api.html">REST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internationalization.html">Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips_and_tricks.html">Tips and tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bots_advanced.html">Bots: advanced features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otreelite.html">oTree Lite</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Version history</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#otree-6-0">oTree 6.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#support-for-ai-and-web-apis-chatgpt-etc">Support for AI and web APIs (ChatGPT etc)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-by-arrival-time-presence-detection">group_by_arrival_time presence detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-button">Back button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#welcome-pages-for-rooms">Welcome pages for rooms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#live-method-on-waitpage">live_method on WaitPage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#participant-status">participant.status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-custom-export-functions">Multiple custom_export functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preserving-unsubmitted-inputs">Preserving unsubmitted inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decimalfield">DecimalField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filtering-fields-in-admin-data-view">Filtering fields in admin data view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#improvements-to-admin-interface">Improvements to admin interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#session-wide-links">Session-wide links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#number-formatting">Number formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-export">Data export</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-10">oTree 5.10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-9">oTree 5.9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-8">oTree 5.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-6">oTree 5.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-4">oTree 5.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-3">oTree 5.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-2">oTree 5.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-1">oTree 5.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otree-5-0">oTree 5.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="noself.html">The new no-self format</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Miscellaneous</a></li>
+      <li class="breadcrumb-item active">Version history</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/misc/version_history.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="version-history">
+<span id="id1"></span><h1>Version history<a class="headerlink" href="#version-history" title="Link to this heading"></a></h1>
+<section id="otree-6-0">
+<span id="v60"></span><h2>oTree 6.0<a class="headerlink" href="#otree-6-0" title="Link to this heading"></a></h2>
+<p>You can install this release with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>otree<span class="w"> </span>--upgrade
+</pre></div>
+</div>
+<section id="support-for-ai-and-web-apis-chatgpt-etc">
+<h3>Support for AI and web APIs (ChatGPT etc)<a class="headerlink" href="#support-for-ai-and-web-apis-chatgpt-etc" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="../live.html#async-live-method"><span class="std std-ref">Asynchronous live methods (AI, web APIs, etc)</span></a>.</p>
+</section>
+<section id="group-by-arrival-time-presence-detection">
+<h3>group_by_arrival_time presence detection<a class="headerlink" href="#group-by-arrival-time-presence-detection" title="Link to this heading"></a></h3>
+<p>We changed how <code class="docutils literal notranslate"><span class="pre">group_by_arrival_time</span></code> excludes participants based on inactivity.
+Previously, inactivity was automatically determined based on whether the tab is open and active.</p>
+<p>Now, if a participant has not shown any signs of activity within <strong>2 minutes</strong>
+(e.g. not moved their mouse), they are asked if they are still there.
+Note the live countdown is also shown in the page tab title:</p>
+<a class="reference internal image-reference" href="../_images/countdown.png"><img alt="../_images/countdown.png" src="../_images/countdown.png" style="width: 500px;" />
+</a>
+<p>This starts a countdown. If they don’t respond within <strong>15 seconds</strong>
+(by clicking the button or at least moving their mouse),
+they are sent to an “inactive” page with a big button they can click to return to the wait page:</p>
+<a class="reference internal image-reference" href="../_images/inactive_page.png"><img alt="../_images/inactive_page.png" src="../_images/inactive_page.png" style="width: 500px;" />
+</a>
+<p>The timing parameters are configurable in <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> (these settings are experimental and may be removed or changed):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">GBAT_INACTIVE_SECONDS_UNTIL_PROMPT</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">GBAT_INACTIVE_SECONDS_TO_CONFIRM</span> <span class="o">=</span> <span class="mi">15</span>
+</pre></div>
+</div>
+</section>
+<section id="back-button">
+<h3>Back button<a class="headerlink" href="#back-button" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="../pages.html#back-button"><span class="std std-ref">Back button</span></a>.</p>
+</section>
+<section id="welcome-pages-for-rooms">
+<h3>Welcome pages for rooms<a class="headerlink" href="#welcome-pages-for-rooms" title="Link to this heading"></a></h3>
+<p>When you use a Room, oTree will always show a Welcome page
+that asks the user to confirm to start.</p>
+<p>Room without participant label file:</p>
+<a class="reference internal image-reference" href="../_images/welcome-page-nolabel.png"><img alt="../_images/welcome-page-nolabel.png" src="../_images/welcome-page-nolabel.png" style="width: 350px;" />
+</a>
+<p>Room with participant label file:</p>
+<a class="reference internal image-reference" href="../_images/welcome-page-label.png"><img alt="../_images/welcome-page-label.png" src="../_images/welcome-page-label.png" style="width: 500px;" />
+</a>
+<p>This solves the problem where start links were being opened
+by various platforms like WhatsApp that scan messages and open hyperlinks automatically,
+making oTree count those participants as having begun the experiment.</p>
+<p>Furthemore, these welcome pages are customizable.</p>
+<p>See <a class="reference internal" href="../rooms.html#welcome-page"><span class="std std-ref">Room welcome pages (consent forms, etc)</span></a>.</p>
+</section>
+<section id="live-method-on-waitpage">
+<h3>live_method on WaitPage<a class="headerlink" href="#live-method-on-waitpage" title="Link to this heading"></a></h3>
+<p>You can now define <code class="docutils literal notranslate"><span class="pre">live_method</span></code> on a WaitPage.</p>
+</section>
+<section id="participant-status">
+<h3>participant.status<a class="headerlink" href="#participant-status" title="Link to this heading"></a></h3>
+<p>There is a new field <code class="docutils literal notranslate"><span class="pre">participant.status</span></code> that you can set to anything you want,
+e.g. <code class="docutils literal notranslate"><span class="pre">finished</span></code>, <code class="docutils literal notranslate"><span class="pre">dropout</span></code>, etc.
+In the admin monitor page, there will be a dropdown that lets you filter based on this field.
+(In the initial view, only participants whose <code class="docutils literal notranslate"><span class="pre">status</span></code> is blank will be shown.)
+This is useful for things like hiding participants who are no longer doing the study,
+or organizing participants into segments.</p>
+</section>
+<section id="multiple-custom-export-functions">
+<h3>Multiple custom_export functions<a class="headerlink" href="#multiple-custom-export-functions" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="../admin.html#multiple-custom-export"><span class="std std-ref">Multiple custom_export functions</span></a></p>
+</section>
+<section id="preserving-unsubmitted-inputs">
+<h3>Preserving unsubmitted inputs<a class="headerlink" href="#preserving-unsubmitted-inputs" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="../forms.html#preserve-unsubmitted-inputs"><span class="std std-ref">Preserving unsubmitted inputs</span></a>.</p>
+</section>
+<section id="decimalfield">
+<h3>DecimalField<a class="headerlink" href="#decimalfield" title="Link to this heading"></a></h3>
+<p>oTree now has a versatile <code class="docutils literal notranslate"><span class="pre">DecimalField</span></code>, useful for enabling multiple currencies
+as well as various other data types (percentages, durations, resources, etc).</p>
+<p>See <a class="reference internal" href="../currency.html#decimalfield"><span class="std std-ref">DecimalField</span></a>.</p>
+</section>
+<section id="filtering-fields-in-admin-data-view">
+<h3>Filtering fields in admin data view<a class="headerlink" href="#filtering-fields-in-admin-data-view" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="../admin.html#admin-view-fields"><span class="std std-ref">ADMIN_VIEW_FIELDS</span></a>.</p>
+</section>
+<section id="improvements-to-admin-interface">
+<h3>Improvements to admin interface<a class="headerlink" href="#improvements-to-admin-interface" title="Link to this heading"></a></h3>
+<p>Many improvements to the admin UI.</p>
+</section>
+<section id="session-wide-links">
+<h3>Session-wide links<a class="headerlink" href="#session-wide-links" title="Link to this heading"></a></h3>
+<p>Previously, if a participant opened a session-wide start link twice in the same browser,
+it would use up 2 participants.
+Now, we check if the start link was already clicked, using a cookie.
+If yes, we continue where they left off.</p>
+<p>Caveats:</p>
+<ul class="simple">
+<li><p>This new behavior only applies with non-demo sessions.</p></li>
+<li><p>You generally shouldn’t be using session-wide links anyway, room links are much more stable.</p></li>
+</ul>
+</section>
+<section id="number-formatting">
+<h3>Number formatting<a class="headerlink" href="#number-formatting" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">THOUSAND_SEPARATOR</span></code> setting (to display numbers like “1,234,567.00”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to3</span></code> and <code class="docutils literal notranslate"><span class="pre">to4</span></code> filters in templates</p></li>
+</ul>
+<p>See <a class="reference internal" href="../templates.html#number-formatting"><span class="std std-ref">Number formatting</span></a> for details.</p>
+</section>
+<section id="data-export">
+<h3>Data export<a class="headerlink" href="#data-export" title="Link to this heading"></a></h3>
+<p>Automated data export added to REST API.
+Improved data export performance.</p>
+<section id="misc">
+<h4>Misc<a class="headerlink" href="#misc" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Bots do <code class="docutils literal notranslate"><span class="pre">custom_export</span></code></p></li>
+<li><p>Easier debugging of live pages. JS console shows when there is a server error,
+and server tracebacks are shorter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to3</span></code> and <code class="docutils literal notranslate"><span class="pre">to4</span></code> filter in templates</p></li>
+<li><p>green/gray presence icons in the “Monitor” page when participants are on waitpages</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> supports semicolon delimited files</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> mode, at the bottom of the page there is a link to start as a new participant.</p></li>
+<li><p>Made navigation between room and active session more intuitive and clear.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">live_method</span></code> cannot be a string anymore.</p></li>
+<li><p>chat widget now uses a <code class="docutils literal notranslate"><span class="pre">&lt;textarea&gt;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code>.</p></li>
+<li><p>Async <code class="docutils literal notranslate"><span class="pre">live_method</span></code> does not work with bots and <code class="docutils literal notranslate"><span class="pre">call_live_method</span></code> yet.</p></li>
+<li><p>Easier to define custom wait page templates.
+You don’t need to set <code class="docutils literal notranslate"><span class="pre">template_name</span></code> on the page class anymore.
+Just like with regular pages, define a template with the same name,
+and oTree will automatically detect it.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="otree-5-10">
+<h2>oTree 5.10<a class="headerlink" href="#otree-5-10" title="Link to this heading"></a></h2>
+<p>For IntegerField/FloatField/CurrencyField, if <code class="docutils literal notranslate"><span class="pre">min</span></code> is not specified, it will be assumed to be 0.
+If you need a form field to accept negative values, set <code class="docutils literal notranslate"><span class="pre">min=</span></code> to a negative value (or <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<p>Benefits of this change:</p>
+<ul class="simple">
+<li><p>Most numeric inputs on mobile can now use the numeric keypad</p></li>
+<li><p>Prevents unintended negative inputs from users.
+For example, if you forgot to specify <code class="docutils literal notranslate"><span class="pre">min=0</span></code> for your “contribution” field,
+then a user could ‘hack’ the game by entering a negative contribution.</p></li>
+</ul>
+<p>Other changes:</p>
+<ul class="simple">
+<li><p>MTurk integration works even on Python &gt;= 3.10 (removed dependency on the boto3 library)</p></li>
+<li><p>Python 3.11 support</p></li>
+<li><p>bots: better error message when bot is on the wrong page</p></li>
+</ul>
+</section>
+<section id="otree-5-9">
+<h2>oTree 5.9<a class="headerlink" href="#otree-5-9" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Improved dropout detection</p></li>
+<li><p>Renamed <code class="docutils literal notranslate"><span class="pre">formInputs</span></code> (JavaScript variable) to <code class="docutils literal notranslate"><span class="pre">forminputs</span></code></p></li>
+<li><p>5.9.5: fix bug that points inputs allow decimal numbers when they should be whole numbers.</p></li>
+</ul>
+</section>
+<section id="otree-5-8">
+<h2>oTree 5.8<a class="headerlink" href="#otree-5-8" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Better dropout detection with group_by_arrival_time; see <a class="reference external" href="https://groups.google.com/g/otree/c/XsFMNoZR7PY">here</a>.</p></li>
+<li><p>Python 3.10 support</p></li>
+<li><p>Fix various websocket-related errors such as ConnectionClosedOK, IncompleteReadError, ClientDisconnect that tend to happen intermittently, especially with browser bots.</p></li>
+</ul>
+</section>
+<section id="otree-5-6">
+<h2>oTree 5.6<a class="headerlink" href="#otree-5-6" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Added access to form inputs through JavaScript.</p></li>
+</ul>
+</section>
+<section id="otree-5-4">
+<h2>oTree 5.4<a class="headerlink" href="#otree-5-4" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>PARTICIPANT_FIELDS are now included in data export</p></li>
+<li><p><a class="reference internal" href="tips_and_tricks.html#field-maybe-none"><span class="std std-ref">field_maybe_none</span></a></p></li>
+<li><p>Radio buttons can now be accessed by numeric index, e.g. <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">form.my_field.0</span> <span class="pre">}}</span></code>.</p></li>
+<li><p>Bugfix with numpy data types assigned to model fields</p></li>
+<li><p>Misc improvements and fixes</p></li>
+</ul>
+</section>
+<section id="otree-5-3">
+<h2>oTree 5.3<a class="headerlink" href="#otree-5-3" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Bugfix to deleting sessions in devserver</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">static</span> <span class="pre">}}</span></code> tag checks that the file exists</p></li>
+<li><p>In SessionData tab, fix the “next round”/”previous round” icons on Mac</p></li>
+<li><p>Fix to currency formatting in Japanese/Korean/Turkish currency (numbers were displayed with a decimal when there should be none)</p></li>
+<li><p>allow error_message to be run on non-form pages (e.g. live pages)</p></li>
+<li><p>Better error reporting when an invalid value is passed to <code class="docutils literal notranslate"><span class="pre">js_vars</span></code></p></li>
+<li><p>Minor fixes &amp; improvements</p></li>
+</ul>
+</section>
+<section id="otree-5-2">
+<h2>oTree 5.2<a class="headerlink" href="#otree-5-2" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>For compatibility with oTree 3.x,
+formfield <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> elements now prefix their <code class="docutils literal notranslate"><span class="pre">id</span></code> attribute with <code class="docutils literal notranslate"><span class="pre">id_</span></code>.
+If you use <code class="docutils literal notranslate"><span class="pre">getElementById</span></code>/<code class="docutils literal notranslate"><span class="pre">querySelector</span></code>/etc. to select any formfield inputs,
+you might need to update your selectors.</p></li>
+<li><p>The data export now outputs “time started” as UTC.</p></li>
+<li><p>“Time spent” data export has a column name change.
+If you have been using the <code class="docutils literal notranslate"><span class="pre">pagetimes.py</span></code> script,
+you should download the new version.</p></li>
+</ul>
+</section>
+<section id="otree-5-1">
+<h2>oTree 5.1<a class="headerlink" href="#otree-5-1" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Breaking changes to REST API</p></li>
+</ul>
+</section>
+<section id="otree-5-0">
+<h2>oTree 5.0<a class="headerlink" href="#otree-5-0" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>oTree Lite</p></li>
+<li><p>The no-self format</p></li>
+<li><p>The beta method <code class="docutils literal notranslate"><span class="pre">Player.start()</span></code> has been removed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cu()</span></code> is now available as an alias for <code class="docutils literal notranslate"><span class="pre">Currency</span></code>.
+<code class="docutils literal notranslate"><span class="pre">c()</span></code> will still work as long as you have <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">otree.api</span> <span class="pre">import</span> <span class="pre">Currency</span> <span class="pre">as</span> <span class="pre">c</span></code>
+at the top of your file.
+More details <a class="reference external" href="https://groups.google.com/g/otree/c/Bwv67asPIlo">here</a>.</p></li>
+<li><p>oTree 3.x used two types of tags in templates: <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">}}</span></code> and <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">%}</span></code>.
+Starting in oTree 5, however, you can forget about <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">%}</span></code> and just use <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">}}</span></code> everywhere if you want.
+More details <a class="reference external" href="https://groups.google.com/g/otree/c/Bwv67asPIlo">here</a>.</p></li>
+<li><p>All REST API calls now return JSON</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="otreelite.html" class="btn btn-neutral float-left" title="oTree Lite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="noself.html" class="btn btn-neutral float-right" title="The new no-self format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

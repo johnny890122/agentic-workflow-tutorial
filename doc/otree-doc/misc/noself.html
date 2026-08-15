@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The new no-self format &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Version history" href="version_history.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Miscellaneous</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rest_api.html">REST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internationalization.html">Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips_and_tricks.html">Tips and tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bots_advanced.html">Bots: advanced features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otreelite.html">oTree Lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html">Version history</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The new no-self format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#about-the-new-format">About the new format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-does-this-affect-you">How does this affect you?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-it">How to use it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-otree-remove-self-command">The “otree remove_self” command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#misc-notes">Misc notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Miscellaneous</a></li>
+      <li class="breadcrumb-item active">The new no-self format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/misc/noself.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-new-no-self-format">
+<span id="noself"></span><h1>The new no-self format<a class="headerlink" href="#the-new-no-self-format" title="Link to this heading"></a></h1>
+<p>Since 2021, there has been a new optional format for oTree apps.
+It replaces <code class="docutils literal notranslate"><span class="pre">models.py</span></code> and <code class="docutils literal notranslate"><span class="pre">pages.py</span></code> with a single <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
+<p>The new format unifies oTree’s syntax.
+For example, before, you needed to write either <code class="docutils literal notranslate"><span class="pre">player.payoff</span></code>, <code class="docutils literal notranslate"><span class="pre">self.payoff</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">self.player.payoff</span></code>, depending on what part of the code you were in.
+Now, you can always write <code class="docutils literal notranslate"><span class="pre">player.payoff</span></code>.
+In fact, the <code class="docutils literal notranslate"><span class="pre">self</span></code> keyword has been eliminated entirely</p>
+<p><strong>If you use oTree Studio</strong>, your code has already been upgraded to the no-self format.</p>
+<p><strong>If you use a text editor</strong>, you can keep using the existing format, or use the new one if you wish.
+They both have access to the same features. The models.py format will continue to be fully supported
+and get access to the newest features.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In January 2022, constants changed format also. See <a class="reference internal" href="newconstants.html#newconstants"><span class="std std-ref">2022 Constants format change</span></a></p>
+</div>
+<section id="about-the-new-format">
+<h2>About the new format<a class="headerlink" href="#about-the-new-format" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>“self” is totally gone from your app’s code.</p></li>
+<li><p>Whenever you want to refer to the player, you write player. Same for group and subsession.</p></li>
+<li><p>Each method in oTree is changed to a function.</p></li>
+<li><p>There is no more models.py and pages.py. The whole game fits into one file (__init__.py).</p></li>
+<li><p>Everything else stays the same. All functions and features do the same thing as before.</p></li>
+</ol>
+<p>Here is an example of an __init__.py in the “no self” format (with the dictator game):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Subsession</span><span class="p">(</span><span class="n">BaseSubsession</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">BaseGroup</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">kept</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">(</span>
+        <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="nb">max</span><span class="o">=</span><span class="n">C</span><span class="o">.</span><span class="n">ENDOWMENT</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;I will keep&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># FUNCTIONS</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_payoffs</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="n">player1</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_player_by_id</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">player2</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_player_by_id</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">player1</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">kept</span>
+    <span class="n">player2</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">ENDOWMENT</span> <span class="o">-</span> <span class="n">group</span><span class="o">.</span><span class="n">kept</span>
+
+
+<span class="c1"># PAGES</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Introduction</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Offer</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;group&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kept&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_displayed</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ResultsWaitPage</span><span class="p">(</span><span class="n">WaitPage</span><span class="p">):</span>
+    <span class="n">after_all_players_arrive</span> <span class="o">=</span> <span class="s1">&#39;set_payoffs&#39;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Results</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vars_for_template</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">group</span>
+
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">payoff</span><span class="o">=</span><span class="n">player</span><span class="o">.</span><span class="n">payoff</span><span class="p">,</span> <span class="n">offer</span><span class="o">=</span><span class="n">C</span><span class="o">.</span><span class="n">ENDOWMENT</span> <span class="o">-</span> <span class="n">group</span><span class="o">.</span><span class="n">kept</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So, what has changed?</p>
+<ol class="arabic simple">
+<li><p>As you see, set_payoffs has changed from a group method to a regular function that takes “group” as its argument. This should be clearer to most people.</p></li>
+<li><p>is_displayed and vars_for_template are no longer page methods that take an argument ‘self’, but direct functions of the player. Now you can directly write ‘player’ without needing ‘self.’ in front of it. (If you are using a text editor like PyCharm, you should add &#64;staticmethod before vars_for_template and is_displayed to indicate that they are not regular methods.)</p></li>
+<li><p>There is no longer any distinction between page methods and model methods. The is_displayed and vars_for_template can freely be moved up into the “FUNCTIONS” section, and reused between pages, or put inside a page class if they only pertain to that class.</p></li>
+<li><p>The app folder is simplified from this:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dictator</span><span class="o">/</span>
+    <span class="n">_builtin</span><span class="o">/</span>
+    <span class="n">templates</span><span class="o">/</span>
+        <span class="n">dictator</span><span class="o">/</span>
+            <span class="n">Decide</span><span class="o">.</span><span class="n">html</span>
+            <span class="n">Results</span><span class="o">.</span><span class="n">html</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">pages</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>To this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dictator</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">Decide</span><span class="o">.</span><span class="n">html</span>
+    <span class="n">Results</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Also, the “import” section at the top is simplified.</p>
+<p>Before:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># models.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">otree.api</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">models</span><span class="p">,</span>
+    <span class="n">widgets</span><span class="p">,</span>
+    <span class="n">BaseConstants</span><span class="p">,</span>
+    <span class="n">BaseSubsession</span><span class="p">,</span>
+    <span class="n">BaseGroup</span><span class="p">,</span>
+    <span class="n">BasePlayer</span><span class="p">,</span>
+    <span class="n">Currency</span> <span class="k">as</span> <span class="n">c</span><span class="p">,</span>
+    <span class="n">currency_range</span>
+<span class="p">)</span>
+
+<span class="c1"># pages.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">otree.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Currency</span> <span class="k">as</span> <span class="n">c</span><span class="p">,</span> <span class="n">currency_range</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">._builtin</span><span class="w"> </span><span class="kn">import</span> <span class="n">Page</span><span class="p">,</span> <span class="n">WaitPage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Constants</span>
+</pre></div>
+</div>
+<p>After:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># __init__.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">otree.api</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>You can see the sample games in the new format here:
+<a class="reference external" href="https://github.com/oTree-org/otree">here</a>.</p>
+</section>
+<section id="how-does-this-affect-you">
+<h2>How does this affect you?<a class="headerlink" href="#how-does-this-affect-you" title="Link to this heading"></a></h2>
+<p>This no-self format is only available with oTree Lite.
+oTree Lite supports both formats. Within the same project, you can have some apps that use the models.py format, and some that use the no-self format.</p>
+<p>There is a command “otree remove_self” that can automatically convert the models.py format to the no-self format. This is for people who are curious what their app would look like in the no-self format. Later, I will describe this command and how to use it.</p>
+</section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
+<p>Q: Do I need to change my existing apps?
+A: No, you can keep them as is. The “no-self” format is optional.</p>
+<p>Q: Will I have to re-learn oTree for this new format?
+A: No, you don’t really need to relearn anything. Every function, from creating_session, to before_next_page, etc, does the same thing as before. And there are no changes to other parts of oTree like templates or settings.py.</p>
+<p>Q: Why didn’t you implement it this way originally?
+A: The first reason is that oTree got its structure from Django. But now that I made oTree Lite which is not based on Django, I have more freedom to design the app structure the way I see fit. The second reason is that this is quite a tailored design. It was necessary to wait and see how oTree evolved and how people use oTree before I could come up with the most appropriate design.</p>
+</section>
+<section id="how-to-use-it">
+<h2>How to use it<a class="headerlink" href="#how-to-use-it" title="Link to this heading"></a></h2>
+<p>First, ensure that you are using oTree Lite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">otree</span>
+</pre></div>
+</div>
+<p>Then do one of the following:</p>
+<ol class="loweralpha simple">
+<li><p>Convert your existing apps using <code class="docutils literal notranslate"><span class="pre">otree</span> <span class="pre">remove_self</span></code>, as described in this page.</p></li>
+<li><p>Create a new project.</p></li>
+</ol>
+<p>There are now 2 branches of the documentation. These docs you are reading now are based on the no-self format
+(see the note at the top of the page).</p>
+<p>Try it out and send me any feedback!</p>
+</section>
+<section id="the-otree-remove-self-command">
+<h2>The “otree remove_self” command<a class="headerlink" href="#the-otree-remove-self-command" title="Link to this heading"></a></h2>
+<p>If you prefer the no-self format, or are curious what your app would look like in this format, follow these steps.
+First, then install oTree Lite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">otree</span>
+</pre></div>
+</div>
+<p>Run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">remove_self</span>
+<span class="n">otree</span> <span class="n">upcase_constants</span>
+</pre></div>
+</div>
+<p>Note this command pretty aggressively converts all your model methods to functions,
+e.g. changing <code class="docutils literal notranslate"><span class="pre">player.foo()</span></code> to <code class="docutils literal notranslate"><span class="pre">foo(player)</span></code>.
+If you have a lot of custom methods,
+you should check that your method calls still work.</p>
+</section>
+<section id="misc-notes">
+<h2>Misc notes<a class="headerlink" href="#misc-notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">before_next_page</span></code> now takes a second arg <code class="docutils literal notranslate"><span class="pre">timeout_happened</span></code>.</p></li>
+<li><p>You can optionally add a type hint to your function signatures. For example,
+change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">xyz(player)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">xyz(player:</span> <span class="pre">Player)</span></code>. If you use PyCharm or VS Code,
+that will mean you get better autocompletion.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="version_history.html" class="btn btn-neutral float-left" title="Version history" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

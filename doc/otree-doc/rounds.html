@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apps &amp; rounds &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Treatments" href="treatments.html" />
+    <link rel="prev" title="Chat" href="multiplayer/chat.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Apps &amp; rounds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#apps">Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#combining-apps">Combining apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-data-between-apps">Passing data between apps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rounds">Rounds</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#round-numbers">Round numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-data-between-rounds-or-apps">Passing data between rounds or apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#in-rounds-in-previous-rounds-in-round-etc">in_rounds, in_previous_rounds, in_round, etc.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#participant-fields">Participant fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#session-fields">Session fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-number-of-rounds">Variable number of rounds</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Apps &amp; rounds</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rounds.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apps-rounds">
+<h1>Apps &amp; rounds<a class="headerlink" href="#apps-rounds" title="Link to this heading"></a></h1>
+<section id="apps">
+<h2>Apps<a class="headerlink" href="#apps" title="Link to this heading"></a></h2>
+<p>An oTree app is a folder containing Python and HTML code.
+A project contains multiple apps.
+A session is basically a sequence of apps that are played one after the other.</p>
+<section id="combining-apps">
+<h3>Combining apps<a class="headerlink" href="#combining-apps" title="Link to this heading"></a></h3>
+<p>You can combine apps by setting your session config’s <code class="docutils literal notranslate"><span class="pre">app_sequence</span></code>.</p>
+</section>
+<section id="passing-data-between-apps">
+<h3>Passing data between apps<a class="headerlink" href="#passing-data-between-apps" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="#vars"><span class="std std-ref">participant fields</span></a> and <a class="reference internal" href="#session-vars"><span class="std std-ref">session fields</span></a>.</p>
+</section>
+</section>
+<section id="rounds">
+<span id="id1"></span><h2>Rounds<a class="headerlink" href="#rounds" title="Link to this heading"></a></h2>
+<p>You can make a game run for multiple rounds by setting <code class="docutils literal notranslate"><span class="pre">C.NUM_ROUNDS</span></code>.
+For example, if your session config’s <code class="docutils literal notranslate"><span class="pre">app_sequence</span></code> is <code class="docutils literal notranslate"><span class="pre">['app1',</span> <span class="pre">'app2']</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">app1</span></code> has <code class="docutils literal notranslate"><span class="pre">NUM_ROUNDS</span> <span class="pre">=</span> <span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">app2</span></code> has <code class="docutils literal notranslate"><span class="pre">NUM_ROUNDS</span> <span class="pre">=</span> <span class="pre">1</span></code>,
+then your sessions will contain 4 subsessions.</p>
+<section id="round-numbers">
+<h3>Round numbers<a class="headerlink" href="#round-numbers" title="Link to this heading"></a></h3>
+<p>You can get the current round number with <code class="docutils literal notranslate"><span class="pre">player.round_number</span></code>
+(this attribute is present on subsession, group, and player objects).
+Round numbers start from 1.</p>
+</section>
+<section id="passing-data-between-rounds-or-apps">
+<span id="in-rounds"></span><h3>Passing data between rounds or apps<a class="headerlink" href="#passing-data-between-rounds-or-apps" title="Link to this heading"></a></h3>
+<p>Each round has separate subsession, <code class="docutils literal notranslate"><span class="pre">Group</span></code>, and <code class="docutils literal notranslate"><span class="pre">Player</span></code> objects.
+For example, let’s say you set <code class="docutils literal notranslate"><span class="pre">player.my_field</span> <span class="pre">=</span> <span class="pre">True</span></code> in round 1.
+In round 2, if you try to access <code class="docutils literal notranslate"><span class="pre">player.my_field</span></code>,
+you will find its value is <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+This is because the <code class="docutils literal notranslate"><span class="pre">Player</span></code> objects
+in round 1 are separate from <code class="docutils literal notranslate"><span class="pre">Player</span></code> objects in round 2.</p>
+<p>To access data from a previous round or app,
+you can use one of the techniques described below.</p>
+<section id="in-rounds-in-previous-rounds-in-round-etc">
+<h4>in_rounds, in_previous_rounds, in_round, etc.<a class="headerlink" href="#in-rounds-in-previous-rounds-in-round-etc" title="Link to this heading"></a></h4>
+<p>Player, group, and subsession objects have the following methods:</p>
+<ul class="simple">
+<li><p>in_previous_rounds()</p></li>
+<li><p>in_all_rounds()</p></li>
+<li><p>in_rounds()</p></li>
+<li><p>in_round()</p></li>
+</ul>
+<p>For example, if you are in the last round of a 10-round game,
+<code class="docutils literal notranslate"><span class="pre">player.in_previous_rounds()</span></code> will return a list with 9 player objects,
+which represent the current participant in all previous rounds.</p>
+<p><code class="docutils literal notranslate"><span class="pre">player.in_all_rounds()</span></code> is almost the same but the list will have 10 objects,
+because it includes the current round’s player.</p>
+<p><code class="docutils literal notranslate"><span class="pre">player.in_rounds(m,</span> <span class="pre">n)</span></code> returns a list of players representing the same participant from rounds <code class="docutils literal notranslate"><span class="pre">m</span></code> to <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">player.in_round(m)</span></code> returns just the player in round <code class="docutils literal notranslate"><span class="pre">m</span></code>.
+For example, to get the player’s payoff in the previous round,
+you would do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prev_player</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">in_round</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">round_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prev_player</span><span class="o">.</span><span class="n">payoff</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These methods work the same way for subsessions (e.g. <code class="docutils literal notranslate"><span class="pre">subsession.in_all_rounds()</span></code>).</p>
+<p>They also work the same way for groups, but it does not make sense to use them if you re-shuffle groups between rounds.</p>
+</section>
+<section id="participant-fields">
+<span id="vars"></span><span id="id2"></span><h4>Participant fields<a class="headerlink" href="#participant-fields" title="Link to this heading"></a></h4>
+<p>If you want to access a participant’s data from a previous app,
+you should store this data on the participant object,
+which persists across apps (see <a class="reference internal" href="conceptual_overview.html#participants-and-players"><span class="std std-ref">Participant</span></a>).
+(<code class="docutils literal notranslate"><span class="pre">in_all_rounds()</span></code> only is useful when you need to access data from a previous
+round of the same app.)</p>
+<p>Go to settings and define <code class="docutils literal notranslate"><span class="pre">PARTICIPANT_FIELDS</span></code>,
+which is a list of the names of fields you want to define on your participant.</p>
+<p>Then in your code, you can get and set any type of data on these fields:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">participant</span><span class="o">.</span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>(Internally, all participant fields are stored in a dict called <code class="docutils literal notranslate"><span class="pre">participant.vars</span></code>.
+<code class="docutils literal notranslate"><span class="pre">participant.xyz</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">participant.vars['xyz']</span></code>.)</p>
+</section>
+<section id="session-fields">
+<span id="session-vars"></span><h4>Session fields<a class="headerlink" href="#session-fields" title="Link to this heading"></a></h4>
+<p>For global variables that are the same for all participants in the session,
+add them to the <code class="docutils literal notranslate"><span class="pre">SESSION_FIELDS</span></code>, which works the same as <code class="docutils literal notranslate"><span class="pre">PARTICIPANT_FIELDS</span></code>.
+Internally, all session fields are stored in <code class="docutils literal notranslate"><span class="pre">session.vars</span></code>.</p>
+</section>
+</section>
+<section id="variable-number-of-rounds">
+<h3>Variable number of rounds<a class="headerlink" href="#variable-number-of-rounds" title="Link to this heading"></a></h3>
+<p>If you want a variable number of rounds, consider using <a class="reference internal" href="live.html#live"><span class="std std-ref">Live pages</span></a>.</p>
+<p>Alternatively, you can set <code class="docutils literal notranslate"><span class="pre">NUM_ROUNDS</span></code> to some high number, and then in your app, conditionally hide the
+<code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">next_button</span> <span class="pre">}}</span></code> element, so that the user cannot proceed to the next
+page, or use <a class="reference internal" href="pages.html#app-after-this-page"><span class="std std-ref">app_after_this_page</span></a>. But note that having many rounds (e.g. more than 100)
+might cause performance problems, so test your app carefully.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="multiplayer/chat.html" class="btn btn-neutral float-left" title="Chat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="treatments.html" class="btn btn-neutral float-right" title="Treatments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

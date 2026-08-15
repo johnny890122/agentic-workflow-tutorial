@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Part 2: Public goods game &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Part 3: Trust game" href="part3.html" />
+    <link rel="prev" title="Part 1: Simple survey" href="part1_studio.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="part1_studio.html">Part 1: Simple survey</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Part 2: Public goods game</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-the-app">Create the app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models">Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pages">Pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#page-1-contribute">Page 1: Contribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page-2-resultswaitpage">Page 2: ResultsWaitPage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page-3-results">Page 3: Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#page-sequence">Page sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-the-session-config">Define the session config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-code">Run the code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshoot-with-print">Troubleshoot with print()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#print-statement-not-displayed-in-console-logs">print statement not displayed in console/logs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="part3.html">Part 3: Trust game</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/intro.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Tutorial</a></li>
+      <li class="breadcrumb-item active">Part 2: Public goods game</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/part2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="part-2-public-goods-game">
+<h1>Part 2: Public goods game<a class="headerlink" href="#part-2-public-goods-game" title="Link to this heading"></a></h1>
+<p>(A video of this tutorial is on
+<a class="reference external" href="https://www.youtube.com/channel/UCR9BIa4PqQJt1bjXoe7ffPg/videos">YouTube</a>
+)</p>
+<p>We will now create a simple <a class="reference external" href="https://en.wikipedia.org/wiki/Public_goods_game">public goods game</a>.
+The public goods game is a classic game in economics.</p>
+<p>This is a three player game where each player is initially endowed with 100 points.
+Each player individually makes a decision about how many of their points they want to contribute to the group.
+The combined contributions are multiplied by 2, and then divided evenly three ways and redistributed back to the players.</p>
+<p>The full code for the app we will write is
+<a class="reference external" href="https://github.com/oTree-org/oTree/tree/lite/public_goods_simple">here</a>.</p>
+<section id="create-the-app">
+<h2>Create the app<a class="headerlink" href="#create-the-app" title="Link to this heading"></a></h2>
+<p>Just as in the previous part of the tutorial, create another app, called <code class="docutils literal notranslate"><span class="pre">my_public_goods</span></code>.</p>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p>Go to your app’s constants class (<code class="docutils literal notranslate"><span class="pre">C</span></code>).
+(For more info, see <a class="reference internal" href="../models.html#constants"><span class="std std-ref">Constants</span></a>.)</p>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">PLAYERS_PER_GROUP</span></code> to 3.
+oTree will then automatically divide players into groups of 3.</p></li>
+<li><p>The endowment to each player is 1000 points. So, let’s define
+<code class="docutils literal notranslate"><span class="pre">ENDOWMENT</span></code> and set it to a currency value of <code class="docutils literal notranslate"><span class="pre">1000</span></code>.</p></li>
+<li><p>Each contribution is multiplied by 2. So define an integer
+constant called <code class="docutils literal notranslate"><span class="pre">MULTIPLIER</span> <span class="pre">=</span> <span class="pre">2</span></code>:</p></li>
+</ul>
+<p>Now we have the following constants:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PLAYERS_PER_GROUP</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">NUM_ROUNDS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ENDOWMENT</span> <span class="o">=</span> <span class="n">cu</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">MULTIPLIER</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</section>
+<section id="models">
+<h2>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h2>
+<p>After the game is played,
+what data points will we need about each player?
+It’s important to record how much each person contributed.
+So, go to the Player model and define a <code class="docutils literal notranslate"><span class="pre">contribution</span></code> column:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
+    <span class="n">contribution</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">(</span>
+        <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="nb">max</span><span class="o">=</span><span class="n">C</span><span class="o">.</span><span class="n">ENDOWMENT</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;How much will you contribute?&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>We also need to record the payoff the user makes at the end of the game,
+but we don’t need to explicitly define a <code class="docutils literal notranslate"><span class="pre">payoff</span></code> field,
+because in oTree, the Player already contains a <code class="docutils literal notranslate"><span class="pre">payoff</span></code> column.</p>
+<p>What data points are we interested in recording about each group? We
+might be interested in knowing the total contributions to the group, and
+the individual share returned to each player. So, we define those 2
+fields on the Group:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">BaseGroup</span><span class="p">):</span>
+    <span class="n">total_contribution</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+    <span class="n">individual_share</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CurrencyField</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="pages">
+<h2>Pages<a class="headerlink" href="#pages" title="Link to this heading"></a></h2>
+<p>This game has 3 pages:</p>
+<ul class="simple">
+<li><p>Page 1: players decide how much to contribute</p></li>
+<li><p>Page 2: Wait page: players wait for others in their group</p></li>
+<li><p>Page 3: players are told the results</p></li>
+</ul>
+<section id="page-1-contribute">
+<h3>Page 1: Contribute<a class="headerlink" href="#page-1-contribute" title="Link to this heading"></a></h3>
+<p>First let’s define <code class="docutils literal notranslate"><span class="pre">Contribute</span></code>. This page contains a form, so
+we need to define <code class="docutils literal notranslate"><span class="pre">form_model</span></code> and <code class="docutils literal notranslate"><span class="pre">form_fields</span></code>.
+Specifically, this form should let you set the <code class="docutils literal notranslate"><span class="pre">contribution</span></code>
+field on the player. (For more info, see <a class="reference internal" href="../forms.html#forms"><span class="std std-ref">Forms</span></a>.)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Contribute</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+
+    <span class="n">form_model</span> <span class="o">=</span> <span class="s1">&#39;player&#39;</span>
+    <span class="n">form_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;contribution&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now, we create the HTML template.</p>
+<p>Set the <code class="docutils literal notranslate"><span class="pre">title</span></code> block to <code class="docutils literal notranslate"><span class="pre">Contribute</span></code>,
+and the <code class="docutils literal notranslate"><span class="pre">content</span></code> block to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    This is a public goods game with
+    {{ C.PLAYERS_PER_GROUP }} players per group,
+    an endowment of {{ C.ENDOWMENT }},
+    and a multiplier of {{ C.MULTIPLIER }}.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+{{ formfields }}
+
+{{ next_button }}
+</pre></div>
+</div>
+</section>
+<section id="page-2-resultswaitpage">
+<h3>Page 2: ResultsWaitPage<a class="headerlink" href="#page-2-resultswaitpage" title="Link to this heading"></a></h3>
+<p>When all players have completed the <code class="docutils literal notranslate"><span class="pre">Contribute</span></code> page,
+the players’ payoffs can be calculated.
+Add a group function called <code class="docutils literal notranslate"><span class="pre">set_payoffs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_payoffs</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="n">players</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">get_players</span><span class="p">()</span>
+    <span class="n">contributions</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">contribution</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">players</span><span class="p">]</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">total_contribution</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">contributions</span><span class="p">)</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">individual_share</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">total_contribution</span> <span class="o">*</span> <span class="n">C</span><span class="o">.</span><span class="n">MULTIPLIER</span> <span class="o">/</span> <span class="n">C</span><span class="o">.</span><span class="n">PLAYERS_PER_GROUP</span>
+    <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">players</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">ENDOWMENT</span> <span class="o">-</span> <span class="n">player</span><span class="o">.</span><span class="n">contribution</span> <span class="o">+</span> <span class="n">group</span><span class="o">.</span><span class="n">individual_share</span>
+</pre></div>
+</div>
+<p>After a player makes a
+contribution, they cannot see the results page right away; they first
+need to wait for the other players to contribute. You therefore need to
+add a <code class="docutils literal notranslate"><span class="pre">WaitPage</span></code>. Let’s call it <code class="docutils literal notranslate"><span class="pre">ResultsWaitPage</span></code>.
+When a player arrives at a wait page,
+they must wait until all other players in the group have arrived.
+Then everyone can proceed to the next page. (For more info, see <a class="reference internal" href="../multiplayer/waitpages.html#wait-pages"><span class="std std-ref">Wait pages</span></a>).</p>
+<p>Add <code class="docutils literal notranslate"><span class="pre">after_all_players_arrive</span></code> to <code class="docutils literal notranslate"><span class="pre">ResultsWaitPage</span></code>,
+and set it to trigger <code class="docutils literal notranslate"><span class="pre">set_payoffs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">after_all_players_arrive</span> <span class="o">=</span> <span class="s1">&#39;set_payoffs&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="page-3-results">
+<h3>Page 3: Results<a class="headerlink" href="#page-3-results" title="Link to this heading"></a></h3>
+<p>Now we create a page called <code class="docutils literal notranslate"><span class="pre">Results</span></code>.
+Set the template’s content to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    You started with an endowment of {{ C.ENDOWMENT }},
+    of which you contributed {{ player.contribution }}.
+    Your group contributed {{ group.total_contribution }},
+    resulting in an individual share of {{ group.individual_share }}.
+    Your profit is therefore {{ player.payoff }}.
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+{{ next_button }}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="page-sequence">
+<h2>Page sequence<a class="headerlink" href="#page-sequence" title="Link to this heading"></a></h2>
+<p>Make sure your page_sequence is correct:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">page_sequence</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Contribute</span><span class="p">,</span>
+    <span class="n">ResultsWaitPage</span><span class="p">,</span>
+    <span class="n">Results</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="define-the-session-config">
+<h2>Define the session config<a class="headerlink" href="#define-the-session-config" title="Link to this heading"></a></h2>
+<p>We add another session config with <code class="docutils literal notranslate"><span class="pre">my_public_goods</span></code> in the app sequence.</p>
+</section>
+<section id="run-the-code">
+<h2>Run the code<a class="headerlink" href="#run-the-code" title="Link to this heading"></a></h2>
+<p>Load the project again then open your browser to <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code>.</p>
+</section>
+<section id="troubleshoot-with-print">
+<span id="print-debugging"></span><h2>Troubleshoot with print()<a class="headerlink" href="#troubleshoot-with-print" title="Link to this heading"></a></h2>
+<p>I often read messages on programming forums like,
+“My program is not working. I can’t find the mistake,
+even though I have spent hours looking at my code”.</p>
+<p>The solution is not to re-read the code until you find an error;
+it’s to interactively <strong>test</strong> your program.</p>
+<p>The simplest way is using <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements.
+If you don’t learn this technique, you won’t be able to program games effectively.</p>
+<p>You just need to insert a line in your code like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;group.total_contribution is&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">.</span><span class="n">total_contribution</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Put this line in the part of your code that’s not working,
+such as the payoff function defined above.
+When you play the game in your browser and that code gets executed,
+your print statement will be displayed in your command prompt window
+(not in your web browser).</p>
+<p>You can sprinkle lots of prints in your code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in payoff function&#39;</span><span class="p">)</span>
+<span class="n">contributions</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">contribution</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">players</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;contributions:&#39;</span><span class="p">,</span> <span class="n">contributions</span><span class="p">)</span>
+<span class="n">group</span><span class="o">.</span><span class="n">total_contribution</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">contributions</span><span class="p">)</span>
+<span class="n">group</span><span class="o">.</span><span class="n">individual_share</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">total_contribution</span> <span class="o">*</span> <span class="n">C</span><span class="o">.</span><span class="n">MULTIPLIER</span> <span class="o">/</span> <span class="n">C</span><span class="o">.</span><span class="n">PLAYERS_PER_GROUP</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;individual share&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">.</span><span class="n">individual_share</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">individual_share</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;inside if statement&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">players</span><span class="p">:</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">ENDOWMENT</span> <span class="o">-</span> <span class="n">p</span><span class="o">.</span><span class="n">contribution</span> <span class="o">+</span> <span class="n">group</span><span class="o">.</span><span class="n">individual_share</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;payoff after&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">payoff</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="print-statement-not-displayed-in-console-logs">
+<span id="no-print-output"></span><h3>print statement not displayed in console/logs<a class="headerlink" href="#print-statement-not-displayed-in-console-logs" title="Link to this heading"></a></h3>
+<p>If you don’t see the output of the print statement in your console window,
+that means that line is not getting executed! (Which is why it isn’t working.)</p>
+<p>Maybe it’s because your code is in some unreachable place like after a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement,
+or inside an “if” statement that is always <code class="docutils literal notranslate"><span class="pre">False</span></code>. Start putting print statements from the top of the function,
+then see where they stop getting displayed.</p>
+<p>Or maybe your code is in a function that never gets called (executed).
+oTree’s built-in methods such as <code class="docutils literal notranslate"><span class="pre">creating_session</span></code> and <code class="docutils literal notranslate"><span class="pre">before_next_page</span></code> are automatically executed,
+but if you define a custom function such as <code class="docutils literal notranslate"><span class="pre">set_payoffs</span></code>, you need to remember to call that function
+from a built-in function.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="part1_studio.html" class="btn btn-neutral float-left" title="Part 1: Simple survey" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="part3.html" class="btn btn-neutral float-right" title="Part 3: Trust game" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

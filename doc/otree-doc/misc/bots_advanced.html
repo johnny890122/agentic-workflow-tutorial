@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bots: advanced features &mdash; oTree  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="oTree Lite" href="otreelite.html" />
+    <link rel="prev" title="Advanced features" href="advanced.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            oTree
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing oTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">About Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/intro.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual_overview.html">Conceptual overview</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.otreehub.com">OTAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages.html">Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiplayer/intro.html">Multiplayer games</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rounds.html">Apps &amp; rounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../treatments.html">Treatments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeouts.html">Timeouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bots.html">Bots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../live.html">Live pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/intro.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../currency.html">Currency and Decimal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mturk.html">MTurk &amp; Prolific</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Miscellaneous</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rest_api.html">REST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internationalization.html">Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips_and_tricks.html">Tips and tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced features</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bots: advanced features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-bots">Command line bots</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-data">Exporting data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-browser-bots">Command-line browser bots</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#command-line-browser-bots-on-a-remote-server-e-g-heroku">Command-line browser bots on a remote server (e.g. Heroku)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#choosing-session-configs-and-sizes">Choosing session configs and sizes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#browser-bots-misc-notes">Browser bots: misc notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#test-cases">Test cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-fields">error_fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#misc-note">Misc note</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#live-pages">Live pages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="otreelite.html">oTree Lite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_history.html">Version history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noself.html">The new no-self format</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oTree</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="intro.html">Miscellaneous</a></li>
+      <li class="breadcrumb-item active">Bots: advanced features</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/misc/bots_advanced.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bots-advanced-features">
+<span id="bots-advanced"></span><h1>Bots: advanced features<a class="headerlink" href="#bots-advanced-features" title="Link to this heading"></a></h1>
+<p>These are advanced features that are mostly unsupported in oTree Studio.</p>
+<section id="command-line-bots">
+<span id="cli-bots"></span><h2>Command line bots<a class="headerlink" href="#command-line-bots" title="Link to this heading"></a></h2>
+<p>An alternative to running bots in your web browser is to run them in the command line.
+Command line bots run faster and require less setup.</p>
+<p>Run this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">test</span> <span class="n">mysession</span>
+</pre></div>
+</div>
+<p>To test with a specific number of participants
+(otherwise it will default to <code class="docutils literal notranslate"><span class="pre">num_demo_participants</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">test</span> <span class="n">mysession</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>To run tests for all session configs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">test</span>
+</pre></div>
+</div>
+<section id="exporting-data">
+<h3>Exporting data<a class="headerlink" href="#exporting-data" title="Link to this heading"></a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--export</span></code> flag to export the results to a CSV file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">test</span> <span class="n">mysession</span> <span class="o">--</span><span class="n">export</span>
+</pre></div>
+</div>
+<p>To specify the folder where the data is saved, do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">test</span> <span class="n">mysession</span> <span class="o">--</span><span class="n">export</span><span class="o">=</span><span class="n">myfolder</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="command-line-browser-bots">
+<h2>Command-line browser bots<a class="headerlink" href="#command-line-browser-bots" title="Link to this heading"></a></h2>
+<p>You can launch browser bots from the command line, using <code class="docutils literal notranslate"><span class="pre">otree</span> <span class="pre">browser_bots</span></code>.</p>
+<ul>
+<li><p>Make sure Google Chrome is installed, or set <code class="docutils literal notranslate"><span class="pre">BROWSER_COMMAND</span></code> in <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>
+(more info below).</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">OTREE_REST_KEY</span></code> env var as described in <a class="reference internal" href="rest_api.html#rest"><span class="std std-ref">REST</span></a>.</p></li>
+<li><p>Run your server</p></li>
+<li><p>Close all Chrome windows.</p></li>
+<li><p>Run this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">browser_bots</span> <span class="n">mysession</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>This will launch several Chrome tabs and run the bots.
+When finished, the tabs will close, and you will see a report in
+your terminal window.</p>
+<p>If Chrome doesn’t close windows properly,
+make sure you closed all Chrome windows prior to launching the command.</p>
+<section id="command-line-browser-bots-on-a-remote-server-e-g-heroku">
+<h3>Command-line browser bots on a remote server (e.g. Heroku)<a class="headerlink" href="#command-line-browser-bots-on-a-remote-server-e-g-heroku" title="Link to this heading"></a></h3>
+<p>If the server is running on a host/port other than the usual <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code>,
+you need to pass <code class="docutils literal notranslate"><span class="pre">--server-url</span></code>.
+For example, if it’s on Heroku, you would do like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">browser_bots</span> <span class="n">mysession</span> <span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">url</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">YOUR</span><span class="o">-</span><span class="n">SITE</span><span class="o">.</span><span class="n">herokuapp</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+</section>
+<section id="choosing-session-configs-and-sizes">
+<h3>Choosing session configs and sizes<a class="headerlink" href="#choosing-session-configs-and-sizes" title="Link to this heading"></a></h3>
+<p>You can specify the number of participants:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">browser_bots</span> <span class="n">mysession</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>To test all session configs, just run this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">otree</span> <span class="n">browser_bots</span>
+</pre></div>
+</div>
+</section>
+<section id="browser-bots-misc-notes">
+<h3>Browser bots: misc notes<a class="headerlink" href="#browser-bots-misc-notes" title="Link to this heading"></a></h3>
+<p>You can use a browser other than Chrome by setting <code class="docutils literal notranslate"><span class="pre">BROWSER_COMMAND</span></code>
+in <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>. Then, oTree will open the browser by doing something like
+<code class="docutils literal notranslate"><span class="pre">subprocess.Popen(settings.BROWSER_COMMAND)</span></code>.</p>
+</section>
+</section>
+<section id="test-cases">
+<span id="cases"></span><h2>Test cases<a class="headerlink" href="#test-cases" title="Link to this heading"></a></h2>
+<p>You can define an attribute <code class="docutils literal notranslate"><span class="pre">cases</span></code> on your PlayerBot class
+that lists different test cases.
+For example, in a public goods game, you may want to test 3 scenarios:</p>
+<ul class="simple">
+<li><p>All players contribute half their endowment</p></li>
+<li><p>All players contribute nothing</p></li>
+<li><p>All players contribute their entire endowment (100 points)</p></li>
+</ul>
+<p>We can call these 3 test cases “basic”, “min”, and “max”, respectively,
+and put them in <code class="docutils literal notranslate"><span class="pre">cases</span></code>. Then, oTree will execute the bot 3 times, once for
+each test case. Each time, a different value from <code class="docutils literal notranslate"><span class="pre">cases</span></code> will be assigned to <code class="docutils literal notranslate"><span class="pre">self.case</span></code>
+in the bot.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerBot</span><span class="p">(</span><span class="n">Bot</span><span class="p">):</span>
+
+    <span class="n">cases</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;basic&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">play_round</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">Introduction</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;basic&#39;</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">payoff</span> <span class="o">==</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;basic&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">invalid_contribution</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">]:</span>
+                    <span class="k">yield</span> <span class="n">SubmissionMustFail</span><span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">Contribute</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;contribution&#39;</span><span class="p">:</span> <span class="n">invalid_contribution</span><span class="p">})</span>
+        <span class="n">contribution</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s1">&#39;basic&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">case</span><span class="p">]</span>
+
+        <span class="k">yield</span> <span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">Contribute</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;contribution&quot;</span><span class="p">:</span> <span class="n">contribution</span><span class="p">})</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">Results</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span>
+                <span class="n">expected_payoff</span> <span class="o">=</span> <span class="mi">110</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span>
+                <span class="n">expected_payoff</span> <span class="o">=</span> <span class="mi">190</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">expected_payoff</span> <span class="o">=</span> <span class="mi">150</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">payoff</span> <span class="o">==</span> <span class="n">expected_payoff</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use cases, it’s better to use <a class="reference internal" href="#cli-bots"><span class="std std-ref">Command line bots</span></a> since browser bots will only execute a single case.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cases</span></code> needs to be a list, but it can contain any data type, such as strings,
+integers, or even dictionaries. Here is a trust game bot that uses dictionaries
+as cases.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerBot</span><span class="p">(</span><span class="n">Bot</span><span class="p">):</span>
+
+    <span class="n">cases</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;offer&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;return&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;p1_payoff&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;p2_payoff&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;offer&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;return&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;p1_payoff&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;p2_payoff&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;offer&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;return&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;p1_payoff&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;p2_payoff&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">play_round</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">case</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">case</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">Send</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;sent_amount&quot;</span><span class="p">:</span> <span class="n">case</span><span class="p">[</span><span class="s1">&#39;offer&#39;</span><span class="p">]})</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">invalid_return</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">case</span><span class="p">[</span><span class="s1">&#39;offer&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">C</span><span class="o">.</span><span class="n">MULTIPLICATION_FACTOR</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="k">yield</span> <span class="n">SubmissionMustFail</span><span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">SendBack</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;sent_back_amount&#39;</span><span class="p">:</span> <span class="n">invalid_return</span><span class="p">})</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">SendBack</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;sent_back_amount&#39;</span><span class="p">:</span> <span class="n">case</span><span class="p">[</span><span class="s1">&#39;return&#39;</span><span class="p">]})</span>
+
+        <span class="k">yield</span> <span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">Results</span><span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">id_in_group</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">expected_payoff</span> <span class="o">=</span> <span class="n">case</span><span class="p">[</span><span class="s1">&#39;p1_payoff&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">expected_payoff</span> <span class="o">=</span> <span class="n">case</span><span class="p">[</span><span class="s1">&#39;p2_payoff&#39;</span><span class="p">]</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">payoff</span> <span class="o">==</span> <span class="n">expected_payoff</span>
+</pre></div>
+</div>
+</section>
+<section id="error-fields">
+<span id="id1"></span><h2>error_fields<a class="headerlink" href="#error-fields" title="Link to this heading"></a></h2>
+<p>When using <code class="docutils literal notranslate"><span class="pre">SubmissionMustFail</span></code> on forms with multiple fields, you can
+use <code class="docutils literal notranslate"><span class="pre">error_fields</span></code> for extra thoroughness.</p>
+<p>For example, let’s say we a submit a valid <code class="docutils literal notranslate"><span class="pre">age</span></code>, but
+an invalid <code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield</span> <span class="n">SubmissionMustFail</span><span class="p">(</span>
+    <span class="n">pages</span><span class="o">.</span><span class="n">Survey</span><span class="p">,</span>
+    <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">weight</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>What’s missing is that the bot system doesn’t tell us exactly <em>why</em>
+the submission fails. Is it an invalid <code class="docutils literal notranslate"><span class="pre">weight</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code>, or both?
+<code class="docutils literal notranslate"><span class="pre">error_fields</span></code> can resolve the ambiguity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield</span> <span class="n">SubmissionMustFail</span><span class="p">(</span>
+    <span class="n">pages</span><span class="o">.</span><span class="n">Survey</span><span class="p">,</span>
+    <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">weight</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">error_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This will verify that <code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> contained errors,
+but <code class="docutils literal notranslate"><span class="pre">age</span></code> did not.</p>
+<p>If <a class="reference internal" href="../forms.html#error-message"><span class="std std-ref">error_message</span></a> returns an error,
+then <code class="docutils literal notranslate"><span class="pre">error_fields</span></code> will be <code class="docutils literal notranslate"><span class="pre">['__all__']</span></code>.</p>
+</section>
+<section id="misc-note">
+<h2>Misc note<a class="headerlink" href="#misc-note" title="Link to this heading"></a></h2>
+<p>In bots, it is risky to assign
+<code class="docutils literal notranslate"><span class="pre">player</span> <span class="pre">=</span> <span class="pre">self.player</span></code> (or <code class="docutils literal notranslate"><span class="pre">participant</span> <span class="pre">=</span> <span class="pre">self.participant</span></code>, etc),
+even though that kind of code is encouraged elsewhere.</p>
+<p>Because if there is a <code class="docutils literal notranslate"><span class="pre">yield</span></code> in between, the data can be stale:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">money_left</span><span class="p">,</span> <span class="n">cu</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">yield</span> <span class="n">pages</span><span class="o">.</span><span class="n">Contribute</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">contribution</span><span class="o">=</span><span class="n">cu</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1"># don&#39;t do this!</span>
+<span class="c1"># &quot;player&quot; variable still has the data from BEFORE pages.Contribute was submitted.</span>
+<span class="n">expect</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">money_left</span><span class="p">,</span> <span class="n">cu</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>It’s safer to use <code class="docutils literal notranslate"><span class="pre">self.player.money_left</span></code> directly,
+because doing <code class="docutils literal notranslate"><span class="pre">self.player</span></code> gets the most recent data from the database.</p>
+</section>
+<section id="live-pages">
+<h2>Live pages<a class="headerlink" href="#live-pages" title="Link to this heading"></a></h2>
+<p>To test live methods with bots, define <code class="docutils literal notranslate"><span class="pre">call_live_method</span></code> as a top-level function in <code class="docutils literal notranslate"><span class="pre">tests.py</span></code>.
+(Not available in oTree Studio.)
+This function should simulate the sequence of calls to your <code class="docutils literal notranslate"><span class="pre">live_method</span></code>.
+The argument <code class="docutils literal notranslate"><span class="pre">method</span></code> simulates the live method on your Player model.
+For example, <code class="docutils literal notranslate"><span class="pre">method(3,</span> <span class="pre">'hello')</span></code> calls the live method on Player 3 with <code class="docutils literal notranslate"><span class="pre">data</span></code> set to <code class="docutils literal notranslate"><span class="pre">'hello'</span></code>.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">call_live_method</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">method</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;offer&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">})</span>
+    <span class="n">method</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;accepted&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+    <span class="n">method</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;offer&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">})</span>
+    <span class="n">retval</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;accepted&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+    <span class="c1"># you can do asserts on retval</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> contains at least the following parameters.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">case</span></code> as described in <a class="reference internal" href="#cases"><span class="std std-ref">Test cases</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">page_class</span></code>: the current page class, e.g. <code class="docutils literal notranslate"><span class="pre">pages.MyPage</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">round_number</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">call_live_method</span></code> will be automatically executed when the fastest bot in the group
+arrives on a page with <code class="docutils literal notranslate"><span class="pre">live_method</span></code>.
+(Other bots may be on previous pages at that point, unless you restrict this with a WaitPage.)</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="advanced.html" class="btn btn-neutral float-left" title="Advanced features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="otreelite.html" class="btn btn-neutral float-right" title="oTree Lite" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright oTree team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
