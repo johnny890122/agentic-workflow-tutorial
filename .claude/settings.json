@@ -7,7 +7,12 @@
       "Bash(git show *)",
       "Bash(python --version)",
       "Bash(python3 --version)",
-      "Bash(ls *)"
+      "Bash(ls *)",
+      "Bash(uv sync)",
+      "Bash(uv lock --check)",
+      "Bash(uv run otree test *)",
+      "Bash(uv run otree --version)",
+      "Bash(uv run otree --help)"
     ],
     "deny": [
       "Bash(rm -rf *)"

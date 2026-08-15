@@ -2,4 +2,21 @@
 name = "agentic-workflow-tutorial"
 version = "0.1.0"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "otree==6.0.15",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    # oTree's bot client (starlette TestClient) needs requests, but oTree does
+    # not declare it. Dev-only, so it stays out of the deployed dependencies.
+    "requests>=2.32",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# demo/<app>/tests.py holds oTree bots, not pytest tests; the default
+# python_files patterns already skip it, but be explicit about where to look.
+norecursedirs = ["demo", "doc", ".venv"]
+addopts = "-ra"
