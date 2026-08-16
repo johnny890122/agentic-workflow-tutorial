@@ -29,6 +29,9 @@ Keep exploratory details in `demo/modules/`; promote deliberate requirements to
   `refine-requirement` skill. If the requirement turns out to be wrong or
   incomplete, say so and send the user back to that skill rather than patching
   the gap inside the ticket.
+  **One exception:** adding this ticket's id to the requirement's `tickets:`
+  frontmatter list, which Upstream Requirement below requires. Frontmatter only —
+  never a word of the requirement's prose.
 - `doc/otree-doc/` is read-only vendored documentation. Consult it to get the
   oTree API right in a ticket; never edit it.
 - `doc/validated-doc/data-schema/` is generated and owned by the `schema-writer`
@@ -60,6 +63,17 @@ Check `doc/requirements/` before creating a feature ticket.
   the requirement does not mention is a signal to go back to stage 1.
 - **A draft `REQ-XXXX` exists but is not settled.** Say so and stop. Drafts have
   open questions by design; building a ticket on one buries them.
+- **A settled `REQ-XXXX` that still carries open questions.** Common, and not the
+  same as a draft — settling means the design is agreed, not that every question
+  is answered. Judge by **what the open questions block**, not by the status
+  field:
+  - Questions about *what to build* — an unpinned rule, a number nobody chose, a
+    screen nobody has decided — block the ticket. Go back to stage 1.
+  - Questions about *why* or *what happens afterwards* — which hypothesis the
+    study tests, the payment rate, whether a known limitation is acceptable —
+    do not block the build. Carry each onto the ticket's `## Open Questions`,
+    and name the story or stage each one does block, so it cannot be lost.
+  - If a question could be read either way, ask the user rather than deciding.
 - **No requirement exists.** Fine for a bug fix, a test, a docs change, or any
   small change to established behavior. For a new experiment feature described
   in vague or participant-level terms, recommend `refine-requirement` first
@@ -264,6 +278,27 @@ index. Run it after every ticket edit; never move ticket files by hand.
   `in-progress` → `in_progress`, `done` → `resolved`. Always write the canonical
   values (`pending`, `in_progress`, `resolved`, `wont_fix`) in new and edited
   tickets.
+
+### Blocked work
+
+There is no `blocked` status, deliberately — four statuses are enough to keep the
+generator simple. Work that cannot proceed closes as **`wont_fix`**, with the
+Resolving Tickets rules below applied in full plus three extra requirements:
+
+1. The `## Resolution` opens by saying it is **blocked, not abandoned**, and names
+   the blocker concretely.
+2. It states the **condition for reopening**, so a later reader knows what would
+   change the answer.
+3. Acceptance criteria are **rewritten with notes**, never silently ticked — say
+   which were carried forward to another ticket and which are simply unmet.
+
+`wont_fix` overstates finality here, and that is a known cost of keeping the
+status set small. The Resolution is what carries the truth, so it has to be
+written properly. Add a `blocked` tag so these are findable.
+
+Do **not** leave blocked work `pending` to signal that it is unfinished: a
+pending story prevents its parent epic from ever resolving, which converts one
+blocked ticket into a blocked initiative.
 
 ## Epics and Stories
 

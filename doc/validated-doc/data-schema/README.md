@@ -9,13 +9,13 @@ from source ([demo/settings.py](../../../demo/settings.py) and each
 
 | App label | URL name | Rounds | Players/group | Doc |
 | --- | --- | --- | --- | --- |
-| `public_goods_simple` | `public_goods_simple` | `1` | `3` | [public_goods_simple.md](public_goods_simple.md) |
+| `network_public_goods` | `network_public_goods` | `10` | `4` | [network_public_goods.md](network_public_goods.md) |
 
 ## Session configs
 
 | Name | Display name | App sequence | Demo participants |
 | --- | --- | --- | --- |
-| `public_goods_simple` | Public Goods (simple) | `['public_goods_simple']` | `3` |
+| `network_public_goods` | Networked public goods (4 players, 10 rounds) | `['network_public_goods']` | `4` |
 
 ### `SESSION_CONFIG_DEFAULTS`
 
@@ -68,3 +68,5 @@ The per-app export is one row per player per round —
 | Date | Change |
 | --- | --- |
 | 2026-08-15 | Initial index |
+| 2026-08-15 | `public_goods_simple` removed — the app no longer exists in `demo/`; replaced by the disposable `scaffold_check` (`OT-0001-01`) |
+| 2026-08-15 | `scaffold_check` removed — the scaffolding app was deleted once the real app existed; `network_public_goods` added (`OT-0002`) |

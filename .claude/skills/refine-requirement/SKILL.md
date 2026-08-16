@@ -62,6 +62,13 @@ translation notes you write afterwards.
 | "Do they do this once, or repeat it?" | "What is `C.NUM_ROUNDS`?" |
 | "How are their earnings worked out?" | "What does `set_payoffs` compute?" |
 
+The line is **oTree vocabulary**, not technical vocabulary. Experimental-economics
+terms a researcher already uses — *round*, *treatment*, *endowment*, *matching*,
+*payoff* — are theirs, not oTree's, and are fine in a question. `page_sequence`,
+`form_fields`, `Player`, `Group`, `WaitPage` and `C` are not. If you are unsure
+which side a word falls on, ask whether the researcher would have used it before
+this repo existed.
+
 Method:
 
 - **One topic at a time.** Batch at most three questions per AskUserQuestion
@@ -102,7 +109,14 @@ template.
   excluded. This is the section that prevents scope creep two stages later.
 - **Visual questions** — see below.
 - **Conflicts with what exists** — anything here that contradicts the current
-  `demo/` app or a promoted spec, called out plainly.
+  `demo/` app or a promoted spec, called out plainly. This has no section of its
+  own: it goes in the last bullet of `## Translation notes`. Write `**none**`
+  there explicitly when there is nothing to conflict with — silence reads as an
+  unchecked box.
+
+Scaffolding, placeholder, and throwaway apps in `demo/` are **not** prior art.
+An app with no fields, no form, and no payoff rule conflicts with nothing; say so
+rather than treating its existence as a constraint.
 
 ## Visual questions
 
@@ -144,22 +158,51 @@ mechanism you name — a translation note that gets the API wrong sends the tick
 in the wrong direction.
 
 Nothing here may introduce behavior absent from the sections above. If writing
-the notes reveals a gap, go back and ask.
+the notes reveals a gap, go back and ask — but first work out which kind of gap
+it is, because they need opposite handling:
+
+- **A gap in what the user wants** — a rule that stops half-stated, a number
+  nobody named. Go back and ask. This is the case the rule above is for.
+- **A consequence of what they already said** — two reasonable answers that
+  combine into something nobody intended, visible only once the arithmetic is
+  written out. Do **not** send this back as an interview question: it usually
+  cannot be posed in participant language without asking the researcher to hold
+  the arithmetic in their head, which is your job. Write the consequence out
+  plainly, with a worked example, and route it to whoever can actually settle
+  it — a constraint on the artifact stage if it is decided by looking, an
+  `## Open questions` entry with the alternatives spelled out if it is a
+  judgment call.
 
 ## Readiness
 
-A requirement is ready to hand off when all of these hold. Say which ones fail
-if you hand off anyway.
+**Hard gates.** A requirement cannot be settled while any of these fails. Fix it
+or keep the requirement a draft.
 
 - [ ] A reader who was not in the conversation can describe what a participant
       does, screen by screen, without asking a question.
 - [ ] Every rule is checkable against a single observed run.
 - [ ] Every number has a value or is explicitly marked provisional or open.
-- [ ] The out-of-scope section names something real.
 - [ ] Everything undecidable-in-words is a visual question, not vague prose.
 - [ ] Translation notes name the app, the screens-to-pages mapping, the data
       entered, and the data computed.
-- [ ] Nothing in the requirement is there because you assumed it.
+- [ ] Nothing in the requirement is there because you assumed it — or, where an
+      inference was unavoidable to make the requirement coherent, it is flagged
+      inline **and** listed in `## Open questions`.
+
+**Waivable, with the user's agreement.** These can be left open in a settled
+requirement, as long as the requirement says so and names what each one blocks.
+
+- [ ] The out-of-scope section names something real.
+- [ ] The purpose is pinned down.
+
+A requirement whose **design** is complete but whose **purpose** is not can be
+settled: the researcher may know exactly what they want built and not yet know
+which hypothesis they are testing. Say plainly in
+`## What we are trying to learn` that the hypothesis is undecided, list the
+candidates in `## Open questions`, and name what it blocks — usually the stage-5
+promotion rather than the build. Do not invent a purpose to fill the section.
+
+Say which boxes are unticked when you hand off, either way.
 
 ## Writing the file
 
@@ -173,12 +216,29 @@ if you hand off anyway.
 
 ## Refining an existing requirement
 
+Expect this. A settled requirement gets corrected when a later stage learns
+something stage 1 could not have known — a downstream answer that retires an
+option this requirement listed, or a rule that turns out to be **unimplementable
+as written** rather than wrong. Both come back here; neither is a failure of the
+original requirement.
+
 - Preserve `id`, `created`, and the filename, even if the title changes.
 - Ask about existing open questions before rewriting them; keep the uncertainty
   unless the user resolves it.
 - When intent changes rather than sharpens, note what changed and why — the
   requirement is the record of the decision, and a ticket may already reference
   the old version.
+- **Note the change inline, next to what changed**, as a short italic aside
+  carrying the date and the reason — not in a change log at the bottom. A reader
+  hits the amended rule and the reason for it together, which is where the
+  reason is useful. There is no change-log section in the template, on purpose.
+- **Never renumber the rules.** Tickets cite them by number (`REQ-0001 rule 7`),
+  so the list is append-only: a new rule goes at the end even when it belongs
+  logically beside rule 4. Renumbering silently repoints every citation in the
+  ticket store and nothing will catch it.
+- After amending, check whether the tickets in `tickets:` now contradict the
+  requirement, and say so if they do. Do not edit them — that is stage 2 — but
+  the divergence must be stated rather than left for someone to trip over.
 - When a requirement is replaced wholesale, set `status: superseded` and name
   its replacement rather than deleting it.
 

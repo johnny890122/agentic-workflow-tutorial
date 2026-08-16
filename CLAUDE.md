@@ -27,6 +27,9 @@ Rules that make the flow hold:
 - **Validation gates promotion.** "Validation passes" means `uv run pytest` is green (both layers — see [Tests](#tests)) *and* the behavior has been seen working, not merely tested. Never write into `doc/validated-doc/` on the strength of an unvalidated prototype.
 - **Promote the deliberate, not the incidental.** Stage 5 records requirements the experiment must meet. A bug fix that changes no requirement promotes nothing.
 - **Keep the chain in sync.** Code diverging from its requirement, ticket, or validated doc is a defect in the docs as much as in the code. Fix both in the same turn, or say plainly which one you left behind. A requirement that turns out to be wrong gets corrected at stage 1, not silently overridden downstream.
+- **Work moves backward too, and nothing will remind you.** A later stage regularly learns something the earlier stage could not have known — an answer that retires an option the requirement listed, or a rule that turns out to be *unimplementable as written* rather than wrong. Both go back to stage 1. Nothing detects this: the ticket generator cannot see requirements, and `promotion-debt.md` only tracks closure hygiene. The discipline is the mechanism. When you cannot correct it in the same turn, say so in the ticket's `## Resolution` in plain words.
+- **Requirement rule numbers are load-bearing.** Tickets cite them (`REQ-0001 rule 7`), so the numbered list is effectively append-only: add at the end, never renumber. Renumbering silently repoints every citation and no tool will catch it.
+- **Validated is not the same as ready to run.** The promotion gate asks whether the prototype demonstrates the requirement, not whether the experiment is fit to put in front of participants. A validated doc may legitimately carry open decisions — promote it with them listed plainly rather than withholding promotion or quietly resolving them.
 
 ### Stage 3 is conditional
 
@@ -48,7 +51,11 @@ When a ticket carries a visual question:
 - Build **two or three** standalone `.html` files under `artifacts/<OT-XXXX>-<slug>/`, one per variant. Self-contained — no build step, no devserver, no oTree, no external assets — with hardcoded stand-in data where player values would go.
 - Screenshot each at the standard viewport (**1555 × 885**, see [Visual QA](#visual-qa)) into `shots/`.
 - Present them together and ask the user to choose. Variants must differ on the question being asked; three shades of one layout is not a choice. Say what each trades away.
-- Record the outcome in `DECISION.md`: which variant won, why, what was rejected, and what the real implementation must keep.
+- Record the outcome in `DECISION.md`: which variant won, why, what was rejected, and what the real implementation must keep — plus **who decided and on what evidence**.
+
+That last part is not bookkeeping. A `DECISION.md` reading "ring — symmetric, simplest to verify" is indistinguishable from a design decision, and it gets promoted to `doc/validated-doc/` as one. If nobody looked at alternatives, or an implementer picked for convenience because the stage could not run, the file must say so in those words, and say what was rejected unexamined. Otherwise the fact that nobody chose is lost at exactly the point the document becomes authoritative.
+
+Mark such a decision **provisional** and name the condition for revisiting it.
 
 The winner is a decision, not code. It gets rewritten as a real oTree page in `demo/` against real fields and real data, while the artifact folder stays behind as the record of why the screen looks the way it does. Fold the decision into the requirement when promoting to stage 5.
 
@@ -75,9 +82,20 @@ Guidelines to reduce common mistakes. Bias toward caution; use judgment on trivi
 
 ### Visual QA
 
-Use the browser tooling available in the current agent environment. Run the dev server first (`cd demo && uv run --project .. otree devserver`), then drive `http://localhost:8000` — participant pages via the session's start links, and the admin UI for session creation and data export.
+Run the dev server first (`cd demo && uv run --project .. otree devserver`), then drive it — participant pages via the session's start links, and the admin UI for session creation and data export.
 
 Visual QA is **desktop only**. Standard viewport: **1555 × 885 CSS px at 100% zoom**.
+
+**Check for browser tooling before promising a screenshot.** This needs a real browser driver in the agent environment — something that can navigate and capture at a set viewport. Not every environment has one, and its absence is not a small inconvenience: it blocks [stage 3](#visual-variants) outright, because there the screenshot *is* the deliverable.
+
+When there is no browser, in order of preference:
+
+1. **Build the variants anyway and hand the user the file paths** to open at 1555 × 885 themselves. The choice stays theirs, made by looking, which is the whole point. `shots/` stays empty and the reason goes in `DECISION.md`.
+2. **Say the stage is blocked** and let the user decide whether to proceed without it. Record the outcome per [Visual variants](#visual-variants).
+
+Never substitute a written description of a variant for the variant itself and call the stage done — a choice made by reading is not the choice this stage exists to obtain.
+
+**Without a browser, `demo/` can still be exercised over HTTP**, which is worth doing and is not the same thing. Create a session with `POST /api/sessions`, read participant codes from `/SessionStartLinks/<code>`, then `GET`/`POST` the participant URLs to walk the page sequence and inspect the rendered HTML. That proves the flow, the fields, and the arithmetic. It proves nothing about whether the screen is any good to look at.
 
 ## Commands
 
@@ -90,11 +108,20 @@ uv run pytest                            # run the test suite (repo root)
 
 cd demo
 uv run --project .. otree devserver      # dev server on http://localhost:8000
+uv run --project .. otree devserver 8001 # ...or any free port; 8000 is only a default
 uv run --project .. otree resetdb        # drop and recreate the database
 uv run --project .. otree startapp <name>  # scaffold a new app package
 uv run --project .. otree test <app>     # run one app's bots; omit <app> for all
+uv run --project .. otree test <app> --export <dir>  # ...and write the CSVs it produced
 uv run --project .. otree browser_bots   # run bots through a real browser
 ```
+
+`8000` is a default, not a requirement — it is often taken by something else. Pass
+a port. Everything below that says `localhost:8000` means "wherever the devserver
+is listening".
+
+`otree test <app> --export <dir>` is the working way to see the data an app
+produces. The REST export endpoints need auth that is not set up here.
 
 Production is served via [Procfile](Procfile), which splits the server across two processes: `otree prodserver1of2` (web) and `otree prodserver2of2` (worker).
 
@@ -102,16 +129,20 @@ Production is served via [Procfile](Procfile), which splits the server across tw
 
 Two layers, both run by `uv run pytest` from the repo root:
 
-- **pytest** ([tests/](tests/)) for model and payoff logic — assertions about `set_payoffs`, constants, and field values. Put new logic tests here.
+- **pytest** ([tests/](tests/)) for model and payoff logic — assertions about payoff functions, constants, and field values. Put new logic tests here, named by topic (`test_<topic>.py`) rather than one file per app.
 - **oTree bots** (`demo/<app>/tests.py`) for page-flow coverage — form validation, wait pages, page sequence. Put new page-flow expectations here. [tests/test_bots.py](tests/test_bots.py) runs every session config's bots as a parametrized pytest case, so `uv run pytest` covers both layers; `otree test` remains available for bot-only runs.
 
 [tests/conftest.py](tests/conftest.py) does the bootstrapping the `otree` CLI would otherwise do:
 
 - Sets `OTREE_IN_MEMORY`, chdirs into [demo/](demo/), and calls `otree.main.setup()` — all before the first `import otree.*`, since both are read at import time and cannot be changed after.
 - An autouse fixture keeps each test running under `demo/`, because oTree resolves `import settings`, `_static/`, app layout, and page templates relative to the cwd — several of them `lru_cache`d on first use.
-- The `otree_session_factory` / `public_goods_session` fixtures build real sessions in the in-memory database. Tests touching `Player` / `Group` fields need one, since those are ORM objects rather than plain Python.
+- The `otree_session_factory` fixture builds real sessions in the in-memory database. Tests touching `Player` / `Group` fields need one, since those are ORM objects rather than plain Python. Keep app-specific fixtures in the test module that uses them, not in `conftest.py` — a fixture naming an app outlives the app and breaks collection for everything.
+
+**A test that imports an app at module scope breaks the whole suite when that app goes.** `from <app> import ...` at the top of a test file means pytest fails at *collection*, so nothing runs — not one failing test, a suite that cannot be built. When an app is deleted, delete or rewrite its tests in the same change.
 
 Gotcha: because `OTREE_IN_MEMORY` loads `demo/db.sqlite3` into memory at startup, a database left by a different oTree version aborts the run with `oTree has been updated. Please delete your database (db.sqlite3)`. Delete `demo/db.sqlite3` and rerun. This hits `otree test` and `pytest` identically; it is oTree behavior, not something the test setup adds.
+
+The same in-memory behavior applies to **`otree devserver`**, and it surprises people: the running server holds the database in memory, so a session created by an external script against `demo/db.sqlite3` is invisible to it and its start link 404s. To drive participants over HTTP, create the session through the server itself — `POST /api/sessions` with `{"session_config_name": ..., "num_participants": ...}` — and read the participant codes from `/SessionStartLinks/<code>`.
 
 There is no lint config.
 
@@ -121,23 +152,37 @@ An oTree project expects a `settings.py` at its root defining `SESSION_CONFIGS`,
 
 **The repo root has no `settings.py`** — commit `541a310` removed the sample games that `otree startproject` generates. The oTree project lives in [demo/](demo/) instead:
 
+Rows marked **required** are what oTree itself expects of any project here; the
+rest is whatever apps happen to exist right now. Read the tree that way — the
+app names change, the required shape does not.
+
 ```text
 demo/
-  settings.py                 # SESSION_CONFIGS -> public_goods_simple
-  public_goods_simple/        # oTree's built-in sample, copied verbatim
-    __init__.py               # C / Group / Player / set_payoffs / pages
-    Contribute.html
-    Results.html
-    tests.py                  # PlayerBot
-  modules/                    # stage 4 — implementation notes, markdown only
+  settings.py                 # REQUIRED — SESSION_CONFIGS, currency, language
+  _static/global/empty.css    # REQUIRED — oTree expects a global stylesheet
+  modules/                    # REQUIRED — stage 4 notes, markdown only
     README.md                 # what exists and what each piece does
     page-flow.md              # page_sequence, wait pages, form fields, rounds
-  _static/global/empty.css
+  <app>/                      # one package per app; currently network_public_goods
+    __init__.py               # C / Subsession / Group / Player / functions / pages
+    <Page>.html               # one template per page class
+    tests.py                  # PlayerBot
 tests/                        # pytest suite (repo root, outside the oTree project)
-  conftest.py                 # oTree bootstrap + session fixtures
-  test_public_goods_payoffs.py
-  test_bots.py                # runs demo/<app>/tests.py bots under pytest
+  conftest.py                 # REQUIRED — oTree bootstrap + session fixtures
+  test_bots.py                # REQUIRED — runs demo/<app>/tests.py bots under pytest
+  test_<topic>.py             # logic tests; one per area, not one per app
 ```
+
+`demo/` needs **no `__init__.py`**. It is a working directory that oTree runs
+from, not an importable package — `tests/conftest.py` puts it on `sys.path` and
+chdirs into it. An empty one existed for a while and was removed once it was
+established that nothing reads it.
+
+**Scaffolding a new project is ordinary stage-4 work**, done before the first
+feature ticket rather than as a stage of its own: create the required rows above,
+plus one app and one session config so `tests/test_bots.py` has something to
+parametrize over. An empty `SESSION_CONFIGS` collects zero bot tests and still
+reports success, which is the failure mode worth designing out.
 
 Two constraints explain that layout:
 
@@ -157,10 +202,21 @@ doc/
   validated-doc/              # stage 5 — researcher-facing, promoted after validation
     guide/                    # hand-written: architecture, system design, why
     data-schema/              # GENERATED by schema-writer — do not hand-edit
+  workflow-validation/        # meta: how this workflow itself performs
   otree-doc/                  # vendored oTree docs (build artifact, do not edit)
 artifacts/                    # stage 3 — disposable spikes, probes, and visual variants
   <OT-XXXX>-<slug>/           # variant-*.html, shots/, DECISION.md
 ```
+
+[doc/workflow-validation/](doc/workflow-validation/) is the standing home for
+work *about* the workflow rather than about an experiment: validation runs,
+friction logs, and the reasoning behind the rules on this page. It is permanent,
+not an archive of any one run — a finding is only worth keeping because a later
+run might contradict it, and records of rules that **worked** matter as much as
+records of rules that failed.
+
+It is not a stage and never gates anything. Nothing in `demo/` or
+`doc/validated-doc/` should ever depend on it.
 
 Running the server writes `db.sqlite3` and `__pycache__` into `demo/`; both are gitignored. Bots need `requests` (oTree's bot client is a starlette `TestClient`), which oTree does not declare; it is in the `dev` dependency group alongside `pytest`, so `uv sync` installs it. Keep it out of `[project.dependencies]` — it is not needed to serve the experiment.
 

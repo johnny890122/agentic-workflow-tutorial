@@ -11,7 +11,7 @@ as a ticket here.
 
 - [In Progress](./in-progress.md) — 0
 - [Pending](./pending.md) — 0
-- [Done](./done.md) — 0 (resolved 0, won't-fix 0)
+- [Done](./done.md) — 18 (resolved 17, won't-fix 1)
 - [Promotion Debt](./promotion-debt.md) — 0 completed ticket(s) not fully closed
 
 ## Folder Layout

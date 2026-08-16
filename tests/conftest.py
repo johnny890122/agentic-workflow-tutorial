@@ -62,8 +62,3 @@ def otree_session_factory():
         return session
 
     return factory
-
-
-@pytest.fixture
-def public_goods_session(otree_session_factory):
-    return otree_session_factory("public_goods_simple", num_participants=3)

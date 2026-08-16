@@ -1,0 +1,29 @@
+{{ block title }}
+    Round {{ player.round_number }} results
+{{ endblock }}
+
+{{ block content }}
+
+    <p>
+        You contributed {{ player.contribution }} and kept {{ kept }}.
+    </p>
+
+    <table class="table table-sm" style="max-width: 30rem">
+        <thead>
+            <tr><th>Connected to</th><th>They contributed</th></tr>
+        </thead>
+        <tbody>
+            {{ for partner in partners }}
+                <tr>
+                    <td>Player {{ partner.id_in_group }}</td>
+                    <td>{{ partner.contribution }}</td>
+                </tr>
+            {{ endfor }}
+        </tbody>
+    </table>
+
+    <p>Your earnings this round: <strong>{{ player.payoff }}</strong>.</p>
+
+    {{ next_button }}
+
+{{ endblock }}

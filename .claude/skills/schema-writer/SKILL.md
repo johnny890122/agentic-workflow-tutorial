@@ -50,6 +50,14 @@ vendored Sphinx build.
    listed in some `app_sequence` in `demo/settings.py`. The app *label* is the
    directory name; `C.NAME_IN_URL` is a separate, URL-only alias — record both.
 
+   **Then prune.** Any `<app_label>.md` in this directory with no matching
+   package is an orphan documenting an app that no longer exists: delete the
+   file, drop its row from the `README.md` app and session-config tables, and
+   add a `README.md` change-log line naming the app and saying it was removed.
+   Do this without being asked — nobody will mention that an app was deleted,
+   and a stale doc describing a vanished app is worse than no doc, because it
+   reads as current.
+
 3. **Read the source.** For each in-scope app read `demo/<app>/__init__.py` in
    full, plus its `.html` templates when you need to know which fields a page
    actually renders. Read `demo/settings.py` once.
@@ -76,6 +84,8 @@ vendored Sphinx build.
      `grep -n "models\." demo/<app>/__init__.py`
    - every `form_fields` entry maps to a documented field
    - no field documented that no longer exists in source
+   - no `<app_label>.md` without a matching package in `demo/`, and no
+     `README.md` row pointing at a deleted app
    - if models changed, the app's bots still pass:
      `cd demo && uv run --project .. --with requests otree test <app>`
 

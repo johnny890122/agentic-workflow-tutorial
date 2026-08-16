@@ -1,0 +1,54 @@
+{{ block title }}
+    Round {{ player.round_number }} of {{ C.NUM_ROUNDS }}
+{{ endblock }}
+
+{{ block content }}
+
+    <p>
+        You are <strong>player {{ player.id_in_group }}</strong>. This round you are
+        connected to
+        {{ for pid in partner_ids }}<strong>player {{ pid }}</strong>{{ endfor }}.
+        Whatever you contribute is doubled and shared evenly between you and them
+        — nobody else receives any of it.
+    </p>
+
+    {{ if history_rows }}
+        <p>
+            What they have contributed in every earlier round. A
+            <strong>&#9679;</strong> marks the rounds you were connected to them
+            — those are the ones where their contribution reached you.
+        </p>
+        <table class="table table-sm" style="max-width: 34rem">
+            <thead>
+                <tr>
+                    <th>Round</th>
+                    {{ for pid in partner_ids }}<th>Player {{ pid }}</th>{{ endfor }}
+                </tr>
+            </thead>
+            <tbody>
+                {{ for row in history_rows }}
+                    <tr>
+                        <td>{{ row.round_number }}</td>
+                        {{ for cell in row.cells }}
+                            <td>
+                                {{ cell.contribution }}
+                                {{ if cell.was_linked }}
+                                    <strong title="you were connected to them">&#9679;</strong>
+                                {{ endif }}
+                            </td>
+                        {{ endfor }}
+                    </tr>
+                {{ endfor }}
+            </tbody>
+        </table>
+    {{ else }}
+        <p>This is the first round, so there is no history to go on yet.</p>
+    {{ endif }}
+
+    <p>You have {{ C.ENDOWMENT }} this round. Whatever you do not contribute, you keep.</p>
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{{ endblock }}
